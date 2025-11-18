@@ -3,8 +3,8 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #3b2c24;            /* softer dark brown instead of pure gray */
-    background: #fffaf3;       /* light cream global background */
+    color: #3b2c24;          /* warm dark text */
+    background: #fffaf3;     /* light cream */
 }
 
 .container {
@@ -15,18 +15,19 @@ body {
 
 .section {
     padding: 60px 0;
-    background: #fffaf3;       /* match cream background */
+    background: #fffaf3;     /* cream */
 }
 
+/* alternate sections for subtle variation */
 .section:nth-of-type(even) {
-    background: #fff3e2;       /* very light pastel orange for alternating sections */
+    background: #fff3e2;     /* very light pastel orange */
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2.5rem;
-    color: #4a3324;            /* warm dark brown */
+    color: #4a3324;
 }
 
 /* Navigation */
@@ -67,7 +68,7 @@ body {
 
 .nav-link:hover {
     text-decoration: none;
-    color: #c25b2a; /* deeper orange hover */
+    color: #c25b2a;
 }
 
 .hamburger {
@@ -83,7 +84,7 @@ body {
     margin: 3px 0;
 }
 
-/* Hero Section -> Tractor Autosteer Section */
+/* Tractor Autosteer (hero) */
 .tractor_Autosteer {
     position: relative;
     overflow: hidden;
@@ -93,7 +94,7 @@ body {
     background: radial-gradient(circle at top left, #ffe8c7 0, #fffaf3 45%, #ffe1c2 100%);
 }
 
-/* animated “robots” pattern overlay */
+/* animated pastel "robots" overlay */
 .tractor_Autosteer::before {
     content: "";
     position: absolute;
@@ -115,7 +116,7 @@ body {
     100% { transform: translate3d(0, 0, 0); }
 }
 
-/* keep video behind everything */
+/* video always behind pastel overlay and content */
 .tractor_Autosteer-video {
     position: absolute;
     top: 50%;
@@ -127,10 +128,10 @@ body {
     transform: translate(-50%, -50%);
     object-fit: cover;
     z-index: -2;
-    filter: saturate(0.8) brightness(0.95); /* soften underlying video colors */
+    filter: saturate(0.8) brightness(0.95);
 }
 
-/* Ensure hero text is above video and animated overlay */
+/* hero text above everything */
 .hero-content,
 .hero-image {
     position: relative;
@@ -172,12 +173,12 @@ body {
 }
 
 .btn-primary {
-    background: #ffc58a;          /* pastel orange */
+    background: #ffc58a;
     border-color: #f2a45a;
 }
 
 .btn-secondary {
-    background: #ffe9c5;          /* lighter cream/orange */
+    background: #ffe9c5;
     border-color: #f1c58b;
 }
 
@@ -303,6 +304,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    background: transparent; /* use section background */
 }
 
 .contact-items {
@@ -314,15 +316,13 @@ body {
     align-items: center;
     gap: 10px;
     margin: 10px 0;
+    color: #5a4334;
 }
 
-.contact-form .form-group {
-    margin-bottom: 20px;
-}
-
+.form-input,
 .contact-form input,
-.contact-form textarea,
-.form-input {
+.contact-form textarea {
+    width: 100%;
     width: 100%;
     padding: 10px;
     border: 1px solid #f1c58b;
