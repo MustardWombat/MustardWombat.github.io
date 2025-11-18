@@ -73,8 +73,8 @@ body {
     margin: 3px 0;
 }
 
-/* Hero Section */
-.hero {
+/* Hero Section -> Tractor Autosteer Section */
+.tractor_Autosteer {
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -127,7 +127,7 @@ body {
 }
 
 /* Fullscreen background video */
-.hero-video {
+.tractor_Autosteer-video {
     position: absolute;
     top: 50%;
     left: 50%;
