@@ -326,39 +326,26 @@ body {
 .hero-project-image {
     flex: 1 1 280px;
     min-height: 220px;
-    background: linear-gradient(135deg, #ffe9c5, #ffc58a);
+    max-height: 260px;              /* keep it from getting too tall */
+    background: #000;               /* simple fallback behind video */
     position: relative;
+    overflow: hidden;
+}
+
+/* video inside hero project card */
+.hero-project-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;                  /* fill container height */
+    object-fit: cover;             /* crop to fit nicely */
 }
 
 /* simple abstract "tractor" illustration using CSS only */
+/* disabled so no weird blocks appear over the video */
 .hero-project-image::before,
 .hero-project-image::after {
-    content: "";
-    position: absolute;
-}
-
-.hero-project-image::before {
-    /* tractor body */
-    left: 15%;
-    bottom: 35%;
-    width: 55%;
-    height: 30%;
-    border-radius: 18px;
-    background: #f07f3a;
-    box-shadow: 0 6px 15px rgba(140, 70, 30, 0.4);
-}
-
-.hero-project-image::after {
-    /* two wheels using radial gradient */
-    left: 18%;
-    bottom: 20%;
-    width: 48%;
-    height: 26%;
-    background:
-        radial-gradient(circle at 20% 50%, #3b2c24 0, #3b2c24 26%, #ffe9c5 27%, #ffe9c5 38%, transparent 39%),
-        radial-gradient(circle at 80% 50%, #3b2c24 0, #3b2c24 26%, #ffe9c5 27%, #ffe9c5 38%, transparent 39%);
-    background-repeat: no-repeat;
-    background-size: 45% 100%, 45% 100%;
+    content: none;
 }
 
 /* content side */
