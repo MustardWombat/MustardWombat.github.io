@@ -312,6 +312,117 @@ body {
     color: #c25b2a;
 }
 
+/* Hero Project (Autonomous Electric Tractor) directly under hero/profile */
+.hero-project-section {
+    padding-top: 40px; /* slightly tighter to hero */
+}
+
+.hero-project-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: stretch;
+    background: #fffdf7;
+    border-radius: 16px;
+    border: 1px solid #f5d3aa;
+    box-shadow: 0 6px 18px rgba(180, 120, 70, 0.18);
+    overflow: hidden;
+}
+
+.hero-project-image {
+    flex: 1 1 280px;
+    min-height: 220px;
+    background: linear-gradient(135deg, #ffe9c5, #ffc58a);
+    position: relative;
+}
+
+/* simple abstract "tractor" illustration using CSS only */
+.hero-project-image::before,
+.hero-project-image::after {
+    content: "";
+    position: absolute;
+}
+
+.hero-project-image::before {
+    /* tractor body */
+    left: 15%;
+    bottom: 35%;
+    width: 55%;
+    height: 30%;
+    border-radius: 18px;
+    background: #f07f3a;
+    box-shadow: 0 6px 15px rgba(140, 70, 30, 0.4);
+}
+
+.hero-project-image::after {
+    /* two wheels using radial gradient */
+    left: 18%;
+    bottom: 20%;
+    width: 48%;
+    height: 26%;
+    background:
+        radial-gradient(circle at 20% 50%, #3b2c24 0, #3b2c24 26%, #ffe9c5 27%, #ffe9c5 38%, transparent 39%),
+        radial-gradient(circle at 80% 50%, #3b2c24 0, #3b2c24 26%, #ffe9c5 27%, #ffe9c5 38%, transparent 39%);
+    background-repeat: no-repeat;
+    background-size: 45% 100%, 45% 100%;
+}
+
+/* content side */
+.hero-project-content {
+    flex: 2 1 360px;
+    padding: 24px 24px 28px;
+}
+
+.hero-project-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #4a3324;
+    font-size: 1.6rem;
+}
+
+.hero-project-content p {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: #5a4334;
+}
+
+.hero-project-list {
+    margin: 0 0 16px 18px;
+    padding: 0;
+    color: #5a4334;
+}
+
+.hero-project-list li {
+    margin-bottom: 6px;
+}
+
+.hero-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.hero-project-tech span {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #ffe1c2;
+    color: #3b2c24;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* responsive stack */
+@media (max-width: 768px) {
+    .hero-project-card {
+        flex-direction: column;
+    }
+
+    .hero-project-image {
+        min-height: 180px;
+    }
+}
+
 /* Contact Section */
 .contact-content {
     display: flex;
