@@ -323,13 +323,15 @@ body {
     overflow: hidden;
 }
 
+/* smaller, thumbnail‑style video area */
 .hero-project-image {
-    flex: 1 1 280px;
-    min-height: 220px;
-    max-height: 260px;              /* keep it from getting too tall */
-    background: #000;               /* simple fallback behind video */
+    flex: 0 0 320px;          /* fixed width column on desktop */
+    aspect-ratio: 16 / 9;     /* controls height */
+    background: #000;         /* fallback behind video */
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
+    align-self: center;       /* vertically center within card */
 }
 
 /* video inside hero project card */
@@ -337,12 +339,11 @@ body {
     position: absolute;
     inset: 0;
     width: 100%;
-    height: 100%;                  /* fill container height */
-    object-fit: cover;             /* crop to fit nicely */
+    height: 100%;
+    object-fit: cover;
 }
 
-/* simple abstract "tractor" illustration using CSS only */
-/* disabled so no weird blocks appear over the video */
+/* no custom pseudo‑tractor any more */
 .hero-project-image::before,
 .hero-project-image::after {
     content: none;
@@ -350,7 +351,7 @@ body {
 
 /* content side */
 .hero-project-content {
-    flex: 2 1 360px;
+    flex: 1 1 320px;
     padding: 24px 24px 28px;
 }
 
@@ -397,10 +398,13 @@ body {
 @media (max-width: 768px) {
     .hero-project-card {
         flex-direction: column;
+        align-items: center;
     }
 
     .hero-project-image {
-        min-height: 180px;
+        width: 100%;
+        max-width: 480px;   /* keep it reasonable on small screens */
+        flex: 0 0 auto;
     }
 }
 
