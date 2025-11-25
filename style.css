@@ -85,15 +85,29 @@ nav {
     margin-top: 60px;
 }
 
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
 .profile-picture {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
     object-fit: cover;
     border: 5px solid var(--white);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    margin-bottom: 2rem;
     animation: fadeInUp 1s ease;
+    flex-shrink: 0;
 }
 
 .hero-content h1 {
@@ -104,7 +118,7 @@ nav {
 
 .subtitle {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     opacity: 0.9;
     animation: fadeInUp 1s ease 0.4s both;
 }
@@ -119,6 +133,7 @@ nav {
     font-weight: bold;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeInUp 1s ease 0.6s both;
+    margin-top: 1rem;
 }
 
 /* Sections */
@@ -295,9 +310,18 @@ footer {
         gap: 1rem;
     }
 
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
     .profile-picture {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
     }
 
     .hero-content h1 {
@@ -330,8 +354,8 @@ footer {
     }
 
     .profile-picture {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px;
     }
 
     .hero-content h1 {
