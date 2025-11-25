@@ -187,17 +187,18 @@ h2 {
 
 .project-card {
     background-color: var(--white);
-    padding: 2rem;
+    padding: 0;
     border-radius: 10px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .project-video {
     width: 100%;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    margin-bottom: 0;
+    display: block;
 }
 
 .project-card:hover {
@@ -209,25 +210,21 @@ h2 {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    padding: 0 2rem;
+    padding-top: 1.5rem;
 }
 
 .project-card p {
     margin-bottom: 1rem;
     color: #666;
+    padding: 0 2rem;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-}
-
-.tag {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 0 2rem 2rem 2rem;
 }
 
 /* Skills Section */
