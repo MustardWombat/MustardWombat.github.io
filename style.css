@@ -411,24 +411,16 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
 .experience-logo {
-    height: 40px;
+    height: 50px;
     width: auto;
-}
-
-.experience-date {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: var(--secondary-color);
-    color: var(--white);
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
+    max-width: 200px;
+    object-fit: contain;
 }
 
 .experience-bubble h3 {
@@ -645,7 +637,8 @@ footer {
     }
 
     .experience-logo {
-        height: 35px;
+        height: 40px;
+        max-width: 150px;
     }
 }
 
