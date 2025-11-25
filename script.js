@@ -52,6 +52,25 @@ document.querySelectorAll('.project-card, .skill-category').forEach(el => {
     observer.observe(el);
 });
 
+// Mobile menu toggle
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+}
+
 // Background slideshow for hero section
 const bgMedia = document.querySelectorAll('.bg-video, .bg-image');
 let currentBg = 0;
