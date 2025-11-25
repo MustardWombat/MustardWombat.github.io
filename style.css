@@ -203,6 +203,15 @@ h2 {
     object-fit: cover;
 }
 
+.project-image {
+    width: 100%;
+    max-height: 250px;
+    border-radius: 0;
+    margin-bottom: 0;
+    display: block;
+    object-fit: cover;
+}
+
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
