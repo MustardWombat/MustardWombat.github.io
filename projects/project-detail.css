@@ -1,0 +1,216 @@
+/* Project Detail Page Styles */
+
+.project-detail {
+    margin-top: 60px;
+}
+
+.project-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--grey-dark) 100%);
+    color: var(--white);
+    padding: 4rem 0 3rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--white);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.back-link:hover {
+    color: var(--secondary-color);
+}
+
+.project-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.project-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.project-content {
+    padding: 4rem 0;
+}
+
+.project-content > div > div {
+    margin-bottom: 4rem;
+}
+
+.project-media {
+    margin-bottom: 3rem;
+}
+
+.featured-video,
+.featured-image {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-overview,
+.project-details,
+.project-technical,
+.project-challenges,
+.project-results,
+.project-links {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-overview h2,
+.project-details h2,
+.project-technical h2,
+.project-challenges h2,
+.project-results h2,
+.project-links h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.project-overview p,
+.project-results p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+}
+
+.features-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.features-list li {
+    padding: 0.8rem 0;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.features-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.tech-item {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.tech-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.tech-item ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tech-item li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.tech-item li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.challenge-item {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.challenge-item p {
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+    color: #666;
+}
+
+.challenge-item p:first-of-type {
+    font-weight: 600;
+    color: var(--grey-dark);
+}
+
+.resource-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.resource-link {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.resource-link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .project-hero h1 {
+        font-size: 2rem;
+    }
+
+    .project-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-links {
+        flex-direction: column;
+    }
+
+    .resource-link {
+        text-align: center;
+    }
+}

@@ -265,6 +265,12 @@ h2 {
     margin-top: 3rem;
 }
 
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .project-card {
     background-color: var(--white);
     padding: 0;
@@ -272,6 +278,7 @@ h2 {
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .project-video {
@@ -329,7 +336,32 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    background-color: var(--light-bg);
+    color: var(--grey-dark);
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.view-more {
+    padding: 1rem 2rem;
+    padding-bottom: 2rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+}
+
+.project-card:hover .view-more {
+    gap: 1rem;
 }
 
 /* Skills Section */
