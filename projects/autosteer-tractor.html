@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Autosteer Tractor System - James Williams Portfolio">
+    <title>Autosteer Tractor System | James Williams</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-detail.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo logo-full"><span class="highlight-w">W</span>e<span class="highlight-w">W</span>ant<span class="highlight-w">W</span>illiams</div>
+            <div class="logo logo-short"><span class="highlight-w">WWW</span></div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h1>Autosteer Tractor System</h1>
+                <p class="project-subtitle">Autonomous GPS-guided steering for precision agriculture</p>
+                <div class="project-tags">
+                    <span class="tag">Arduino</span>
+                    <span class="tag">GPS</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Mechatronics</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container">
+                <div class="project-media">
+                    <video class="featured-video" controls autoplay muted loop>
+                        <source src="../Images/autosteer_Tractor.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>The Autosteer Tractor System is an autonomous steering solution designed to enhance precision in agricultural operations. Using GPS technology and sensor fusion, this system enables tractors to navigate fields with centimeter-level accuracy, reducing operator fatigue and improving operational efficiency.</p>
+                </div>
+
+                <div class="project-details">
+                    <h2>Key Features</h2>
+                    <ul class="features-list">
+                        <li>RTK-GPS integration for centimeter-level positioning accuracy</li>
+                        <li>Real-time sensor fusion combining GPS, IMU, and wheel encoders</li>
+                        <li>PID control system for smooth steering corrections</li>
+                        <li>Path planning and following algorithms</li>
+                        <li>User-friendly interface for field boundary setup</li>
+                        <li>Safety features including manual override and obstacle detection</li>
+                    </ul>
+                </div>
+
+                <div class="project-technical">
+                    <h2>Technical Details</h2>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <h3>Hardware</h3>
+                            <ul>
+                                <li>Arduino Mega microcontroller</li>
+                                <li>RTK-GPS receiver</li>
+                                <li>IMU sensor module</li>
+                                <li>Motor controller for steering actuation</li>
+                                <li>Display module for operator feedback</li>
+                            </ul>
+                        </div>
+                        <div class="tech-item">
+                            <h3>Software</h3>
+                            <ul>
+                                <li>C++ embedded programming</li>
+                                <li>Kalman filtering for sensor fusion</li>
+                                <li>PID control algorithms</li>
+                                <li>Custom path planning logic</li>
+                                <li>Serial communication protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-challenges">
+                    <h2>Challenges & Solutions</h2>
+                    <div class="challenge-item">
+                        <h3>GPS Signal Reliability</h3>
+                        <p>Challenge: GPS signals can be unreliable in certain conditions, leading to position drift.</p>
+                        <p>Solution: Implemented sensor fusion combining GPS with IMU data using Kalman filtering to maintain accurate positioning even during temporary GPS dropouts.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>Steering Response Time</h3>
+                        <p>Challenge: Achieving smooth steering corrections without oscillation or overshoot.</p>
+                        <p>Solution: Tuned PID controller parameters and implemented adaptive gain scheduling based on vehicle speed for optimal performance across different operating conditions.</p>
+                    </div>
+                </div>
+
+                <div class="project-results">
+                    <h2>Results & Impact</h2>
+                    <p>The system successfully demonstrated autonomous field navigation with positioning accuracy within ±2cm. Field testing showed a 15% reduction in input costs through precise application of fertilizers and seeds, and a 20% increase in operator productivity by reducing fatigue during long operations.</p>
+                </div>
+
+                <div class="project-links">
+                    <h2>Project Resources</h2>
+                    <div class="resource-links">
+                        <a href="#" class="resource-link">GitHub Repository</a>
+                        <a href="#" class="resource-link">Technical Documentation</a>
+                        <a href="#" class="resource-link">Demo Video</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 James Williams. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
