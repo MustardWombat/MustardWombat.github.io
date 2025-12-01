@@ -271,6 +271,13 @@ h2 {
     display: block;
 }
 
+.project-card-link:hover,
+.project-card-link:visited,
+.project-card-link:active {
+    text-decoration: none;
+    color: inherit;
+}
+
 .project-card {
     background-color: var(--white);
     padding: 0;

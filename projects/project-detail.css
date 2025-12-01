@@ -44,16 +44,23 @@
 
 .project-media {
     margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
 }
 
 .featured-video,
 .featured-image {
     width: 100%;
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
     display: block;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featured-video {
+    height: auto;
+    aspect-ratio: 16 / 9;
 }
 
 .project-overview,
@@ -200,6 +207,11 @@
 
     .project-subtitle {
         font-size: 1.1rem;
+    }
+
+    .featured-video,
+    .featured-image {
+        max-width: 100%;
     }
 
     .tech-grid {
