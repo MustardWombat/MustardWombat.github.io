@@ -86,7 +86,8 @@
                             <h3>Hardware</h3>
                             <ul>
                                 <li>Arduino Mega microcontroller</li>
-                                <li>RTK-GPS receiver</li>
+                                <li>RTK-GPS receiver with base station</li>
+                                <li>Radio module for base-to-rover communication</li>
                                 <li>IMU sensor module</li>
                                 <li>Motor controller for steering actuation</li>
                                 <li>Display module for operator feedback</li>
@@ -96,6 +97,7 @@
                             <h3>Software</h3>
                             <ul>
                                 <li>C++ embedded programming</li>
+                                <li>RTK correction data processing</li>
                                 <li>Kalman filtering for sensor fusion</li>
                                 <li>PID control algorithms</li>
                                 <li>Custom path planning logic</li>
@@ -108,11 +110,11 @@
                 <div class="project-challenges">
                     <h2>Challenges & Solutions</h2>
                     <div class="challenge-item">
-                        <h3>GPS Signal Reliability</h3>
-                        <p><strong>Situation:</strong> Agricultural fields often have inconsistent GPS coverage due to terrain variations, tree canopy, and atmospheric conditions, leading to position drift and navigation errors.</p>
-                        <p><strong>Task:</strong> Maintain accurate tractor positioning and steering even during temporary GPS signal loss or degradation.</p>
-                        <p><strong>Action:</strong> Implemented sensor fusion combining GPS data with IMU (Inertial Measurement Unit) readings using Kalman filtering algorithms. This approach allowed the system to estimate position based on inertial data when GPS was unreliable.</p>
-                        <p><strong>Result:</strong> Achieved continuous navigation with position accuracy within ±2cm, even during GPS dropouts lasting up to 30 seconds, ensuring uninterrupted field operations.</p>
+                        <h3>GPS Signal Reliability & Internet Dependency</h3>
+                        <p><strong>Situation:</strong> Agricultural fields often have inconsistent GPS coverage and unreliable internet connectivity, leading to choppy corrections and position drift that compromised navigation accuracy.</p>
+                        <p><strong>Task:</strong> Maintain centimeter-level positioning accuracy without relying on unstable internet connections for RTK correction data.</p>
+                        <p><strong>Action:</strong> Installed a dedicated RTK base station on-site and integrated a radio module communication system between the base station and tractor rover. This created a local RTK network that eliminated internet dependency and provided consistent correction signals using direct radio transmission.</p>
+                        <p><strong>Result:</strong> Achieved seamless RTK integration with continuous ±2cm positioning accuracy, eliminating correction dropouts and enabling reliable autonomous operation regardless of internet availability.</p>
                     </div>
                     <div class="challenge-item">
                         <h3>Steering Response Time</h3>
