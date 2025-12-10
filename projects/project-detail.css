@@ -216,6 +216,17 @@
     margin-bottom: 1rem;
 }
 
+.gallery-video {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    aspect-ratio: 16 / 9;
+}
+
 .gallery-caption {
     font-size: 1rem;
     line-height: 1.7;
