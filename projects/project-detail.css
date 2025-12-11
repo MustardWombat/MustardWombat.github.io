@@ -51,7 +51,7 @@
 .featured-video,
 .featured-image {
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     display: block;
     border-radius: 10px;
@@ -208,7 +208,7 @@
 
 .gallery-image {
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     display: block;
     border-radius: 10px;
@@ -218,7 +218,7 @@
 
 .gallery-video {
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     display: block;
     border-radius: 10px;
