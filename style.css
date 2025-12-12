@@ -86,6 +86,10 @@ nav {
     color: var(--secondary-color);
 }
 
+.nav-links a[href="resume.pdf"] {
+    color: var(--secondary-color);
+}
+
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
