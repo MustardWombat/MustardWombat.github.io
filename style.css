@@ -217,7 +217,7 @@ nav {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     animation: fadeInUp 1s ease 0.6s both;
     margin-top: 1rem;
 }
