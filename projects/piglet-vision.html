@@ -55,7 +55,7 @@
                 <div class="project-gallery">
                     <h2>System Tracking Demo</h2>
                     <div class="gallery-item">
-                        <img src="../Images/pigs.gif" alt="Real-time piglet tracking demonstration" class="gallery-video">
+                        <img src="../Images/Pigs.gif" alt="Real-time piglet tracking demonstration" class="gallery-video">
                         <p class="gallery-caption">Real-time tracking demonstration showing the computer vision system identifying and monitoring individual piglets in the farrowing pen. The system successfully maintains tracking even with overlapping subjects and varying lighting conditions.</p>
                     </div>
                 </div>
@@ -140,30 +140,5 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script>
-        // Video error handling and debugging
-        const video = document.getElementById('pigTrackingVideo');
-        if (video) {
-            video.addEventListener('error', function(e) {
-                console.error('Video error occurred');
-                console.error('Error code:', video.error ? video.error.code : 'unknown');
-                console.error('Error message:', video.error ? video.error.message : 'unknown');
-                console.error('Video src:', video.currentSrc);
-            });
-
-            video.addEventListener('loadeddata', function() {
-                console.log('Video loaded successfully');
-                video.play().catch(e => console.error('Play failed:', e));
-            });
-
-            video.addEventListener('loadstart', function() {
-                console.log('Video load started');
-            });
-
-            video.addEventListener('canplay', function() {
-                console.log('Video can play');
-            });
-        }
-    </script>
 </body>
 </html>
