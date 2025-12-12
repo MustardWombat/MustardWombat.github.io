@@ -54,6 +54,12 @@
                 <div class="project-overview">
                     <h2>Project Overview</h2>
                     <p>The Autosteer Tractor System is an autonomous steering solution designed to enhance precision in agricultural operations. Using GPS technology and sensor fusion, this system enables tractors to navigate fields with centimeter-level accuracy, reducing operator fatigue and improving operational efficiency.</p>
+                    
+                    <p>Precision agriculture technology has traditionally been accessible only to large-scale farming operations due to prohibitive costs—commercial autosteer systems can exceed $10,000. This project demonstrates that high-precision GPS guidance can be built for under $2,200 using open-source software and readily available components, making advanced agricultural technology accessible to small and mid-size farmers.</p>
+                    
+                    <p>By leveraging the open-source AgOpenGPS platform and transparent hardware design, this system prioritizes <strong>repairability and user empowerment</strong>. Farmers can understand, modify, and repair their own equipment rather than relying on proprietary systems with restrictive licensing. This approach aligns with the right-to-repair movement in agriculture, giving farmers full control over their technology investments while reducing long-term operational costs.</p>
+                    
+                    <p>The environmental and economic benefits are significant: precision steering reduces overlap in field operations, minimizing fuel consumption, fertilizer waste, and chemical runoff while increasing crop yields through optimized planting patterns and consistent row spacing.</p>
                 </div>
 
                 <div class="project-gallery">
@@ -82,38 +88,41 @@
                     <h2>Technical Details</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
+                            <h3>Mechanical</h3>
+                            <ul>
+                                <li>Steering motor integration with hydraulic system</li>
+                                <li>Wheel Angle Sensor (WAS) mounting and calibration</li>
+                                <li>Custom printed circuit board enclosure with auto-steer controller</li>
+                                <li>Weatherproof electronics housing</li>
+                                <li>GPS antenna mounting for optimal satellite visibility</li>
+                                <li>RTK base station tripod setup</li>
+                                <li>12V power system integration</li>
+                                <li>Cable routing and protection</li>
+                            </ul>
+                        </div>
+                        <div class="tech-item">
                             <h3>Hardware</h3>
                             <ul>
-                                <li>Arduino Mega microcontroller</li>
-                                <li>RTK-GPS receiver with base station</li>
-                                <li>Radio module for base-to-rover communication</li>
-                                <li>IMU sensor module</li>
-                                <li>Motor controller for steering actuation</li>
-                                <li>Display module for operator feedback</li>
-                                <li>SD card module for data logging</li>
+                                <li>Steering motor with driver ($250)</li>
+                                <li>Wheel Angle Sensor (WAS) ($101)</li>
+                                <li>Multi-band GNSS receiver ($600)</li>
+                                <li>RTK base station ($500)</li>
+                                <li>Auto-steer controller (printed circuit board)</li>
+                                <li>Tablet for AgOpenGPS interface ($700)</li>
+                                <li>12V power supply system</li>
+                                <li>RF communication module for RTK corrections</li>
                             </ul>
                         </div>
                         <div class="tech-item">
                             <h3>Software</h3>
                             <ul>
-                                <li>C# programming</li>
-                                <li>Modified open-source AgOpenGPS codebase</li>
-                                <li>XTE data logging and analysis tools</li>
-                                <li>RTK correction data processing</li>
-                                <li>PID control algorithms</li>
-                                <li>Custom path planning logic</li>
-                                <li>Serial communication protocols</li>
-                            </ul>
-                        </div>
-                        <div class="tech-item">
-                            <h3>Mechanical</h3>
-                            <ul>
-                                <li>Custom-modeled electronics board container</li>
-                                <li>Tractor steering mechanism integration</li>
-                                <li>Hydraulic system interfacing</li>
-                                <li>Weatherproof enclosure design</li>
-                                <li>Cable management and routing</li>
-                                <li>Mounting bracket fabrication</li>
+                                <li>AgOpenGPS open-source software</li>
+                                <li>Custom modifications for XTE data logging</li>
+                                <li>RTK correction processing algorithms</li>
+                                <li>Tablet-based control interface</li>
+                                <li>Field mapping and path planning tools</li>
+                                <li>Real-time GPS position tracking</li>
+                                <li>Steering control algorithms</li>
                             </ul>
                         </div>
                     </div>
@@ -122,39 +131,47 @@
                 <div class="project-challenges">
                     <h2>Challenges & Solutions</h2>
                     <div class="challenge-item">
-                        <h3>GPS Signal Reliability & Internet Dependency</h3>
-                        <p><strong>Situation:</strong> Agricultural fields often have inconsistent GPS coverage and unreliable internet connectivity, leading to choppy corrections and position drift that compromised navigation accuracy.</p>
-                        <p><strong>Task:</strong> Maintain centimeter-level positioning accuracy without relying on unstable internet connections for RTK correction data.</p>
-                        <p><strong>Action:</strong> Installed a dedicated RTK base station on-site and integrated a radio module communication system between the base station and tractor rover. This created a local RTK network that eliminated internet dependency and provided consistent correction signals using direct radio transmission.</p>
-                        <p><strong>Result:</strong> Achieved seamless RTK integration with continuous ±2cm positioning accuracy, eliminating correction dropouts and enabling reliable autonomous operation regardless of internet availability.</p>
-                    </div>
-                    <div class="challenge-item">
-                        <h3>Steering Response Time</h3>
-                        <p><strong>Situation:</strong> Initial PID controller implementation caused steering oscillations and overshoot, particularly at higher speeds, resulting in inefficient path following.</p>
-                        <p><strong>Task:</strong> Develop a steering control system that provides smooth corrections across varying vehicle speeds and terrain conditions without oscillation.</p>
-                        <p><strong>Action:</strong> Tuned PID controller parameters through extensive field testing and implemented adaptive gain scheduling that automatically adjusts control parameters based on real-time vehicle speed and cross-track error measurements.</p>
-                        <p><strong>Result:</strong> Reduced steering oscillations by 85% and improved path-following accuracy, enabling the tractor to maintain straight lines with minimal deviation while reducing operator fatigue by 20% during long field operations.</p>
+                        <h3>Internet Reliability & RTK Corrections</h3>
+                        <p><strong>Challenge:</strong> Agricultural fields often lack reliable internet connectivity, making it difficult to receive real-time RTK correction data from internet-based services. This resulted in inconsistent GPS accuracy and unreliable autonomous operation.</p>
+                        <p><strong>Solution:</strong> Implemented a local RTK base station with radio modules for direct base-to-rover communication. This created a robust, offline RTK system that doesn't depend on internet connectivity. The radio modules provide reliable correction data transmission within the field, ensuring consistent centimeter-level accuracy regardless of cellular coverage.</p>
+                        <p><strong>Impact:</strong> Achieved reliable autonomous steering with consistent ±2cm accuracy in all field conditions, eliminating dependency on internet infrastructure and making the system truly field-deployable.</p>
                     </div>
                 </div>
 
                 <div class="project-results">
                     <h2>Results & Impact</h2>
-                    <p>The system successfully demonstrated autonomous field navigation with positioning accuracy within ±2cm. Field testing showed a 15% reduction in input costs through precise application of fertilizers and seeds, and a 20% increase in operator productivity by reducing fatigue during long operations.</p>
-                    <p>This project was presented at the <strong>Great Lakes Expo 2025</strong>, where it was showcased to agricultural industry professionals, farmers, and technology enthusiasts, demonstrating the practical applications of precision agriculture technology.</p>
+                    <p>Extensive field testing was conducted to validate the system's performance, with data collection across multiple runs to measure cross-track error (XTE) - the lateral offset from the intended guidance line.</p>
+                    
+                    <div class="gallery-item">
+                        <img src="../Images/Combined_All_Runs.png" alt="GPS path tracking visualization showing 5 runs" class="gallery-image">
+                        <p class="gallery-caption">GPS path visualization showing tight clustering around the A-B guidance line across 5 consecutive runs, demonstrating excellent repeatability and path-following accuracy.</p>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="../Images/Combined_XTE_Histogram.png" alt="Cross-track error distribution histogram" class="gallery-image">
+                        <p class="gallery-caption">Cross-track error distribution revealing a normal distribution centered near zero, indicating reliable and predictable performance.</p>
+                    </div>
+                    
+                    <h3>Performance Metrics</h3>
+                    <p>Analysis of 5 consecutive runs (183 data points) demonstrated:</p>
+                    <ul class="features-list">
+                        <li><strong>Mean Cross-Track Error:</strong> -1.0cm (systematic offset)</li>
+                        <li><strong>Standard Deviation:</strong> 1.5cm (consistency measure)</li>
+                        <li><strong>Mean Absolute Error:</strong> 1.4cm (typical deviation from path)</li>
+                        <li><strong>Maximum Error:</strong> 5.1cm (worst-case deviation)</li>
+                        <li><strong>95th Percentile Error:</strong> 3.3cm (95% of points within this range)</li>
+                    </ul>
+                    
+                    <p><em>Note: Cross-track error represents the combined effect of both steering accuracy and RTK-GPS positioning error. Without ground truth reference, these error sources cannot be separated.</em></p>
                 </div>
 
                 <div class="project-presentation">
                     <h2>Great Lakes Expo 2025</h2>
-                    <p>I had the opportunity to present this autosteer tractor system at the Great Lakes Expo 2025, one of the premier agricultural trade shows in the region. The presentation demonstrated the system's capabilities to industry professionals and sparked valuable discussions about the future of precision agriculture and autonomous farming technologies.</p>
-                </div>
-
-                <div class="project-links">
-                    <h2>Project Resources</h2>
-                    <div class="resource-links">
-                        <a href="#" class="resource-link">GitHub Repository</a>
-                        <a href="#" class="resource-link">Technical Documentation</a>
-                        <a href="#" class="resource-link">Demo Video</a>
-                    </div>
+                    <p>This autosteer tractor system was presented at the <a href="https://www.glexpo.com/" target="_blank" rel="noopener noreferrer">Great Lakes Expo 2025</a>, one of the premier agricultural trade shows in the Great Lakes region. The expo brings together farmers, agricultural professionals, and technology innovators to showcase the latest advancements in farming equipment and precision agriculture.</p>
+                    
+                    <p>The presentation focused on demonstrating how open-source technology and affordable components can make precision agriculture accessible to small and mid-size farming operations. Attendees showed significant interest in the system's cost-effectiveness, transparency, and repairability—key factors that differentiate this approach from commercial proprietary solutions.</p>
+                    
+                    <p>The opportunity to present at Great Lakes Expo provided valuable feedback from real-world farmers and industry professionals, validating the practical applicability of the system and highlighting the growing demand for affordable, farmer-controlled agricultural technology.</p>
                 </div>
             </div>
         </section>
