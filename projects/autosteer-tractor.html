@@ -127,6 +127,9 @@
                                 <li>Real-time GPS position tracking</li>
                                 <li>Steering control algorithms</li>
                             </ul>
+                            <div class="tech-stack-logos" id="autosteer-tech-logos">
+                                <!-- Icons will be loaded dynamically -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -198,6 +201,18 @@
         </div>
     </footer>
 
+    <script src="../js/projects-data.js"></script>
+    <script>
+        // Load technology icons for this project
+        const projectData = getProjectData('autosteer-tractor');
+        if (projectData && projectData.skills.software) {
+            const logosContainer = document.getElementById('autosteer-tech-logos');
+            logosContainer.innerHTML = projectData.skills.software
+                .filter(skill => skill.icon)
+                .map(skill => `<img src="${skill.icon}" alt="${skill.name}" title="${skill.name}" class="tech-logo">`)
+                .join('');
+        }
+    </script>
     <script src="../script.js"></script>
 </body>
 </html>

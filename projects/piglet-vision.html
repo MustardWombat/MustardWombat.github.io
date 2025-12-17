@@ -97,6 +97,9 @@
                                 <li>Real-time inference optimization</li>
                                 <li>Continuous model improvement pipeline</li>
                             </ul>
+                            <div class="tech-stack-logos" id="piglet-tech-logos">
+                                <!-- Icons will be loaded dynamically -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,6 +157,18 @@
         </div>
     </footer>
 
+    <script src="../js/projects-data.js"></script>
+    <script>
+        // Load technology icons for this project
+        const projectData = getProjectData('piglet-vision');
+        if (projectData && projectData.skills.software) {
+            const logosContainer = document.getElementById('piglet-tech-logos');
+            logosContainer.innerHTML = projectData.skills.software
+                .filter(skill => skill.icon)
+                .map(skill => `<img src="${skill.icon}" alt="${skill.name}" title="${skill.name}" class="tech-logo">`)
+                .join('');
+        }
+    </script>
     <script src="../script.js"></script>
 </body>
 </html>
