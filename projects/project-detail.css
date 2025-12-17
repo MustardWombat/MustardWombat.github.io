@@ -145,6 +145,9 @@
     padding: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .tech-item li::before {
@@ -153,6 +156,13 @@
     left: 0;
     color: var(--secondary-color);
     font-weight: bold;
+}
+
+.skill-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .tech-stack-logos {
