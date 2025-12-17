@@ -85,3 +85,57 @@ function rotateBackground() {
 if (bgMedia.length > 0) {
     setInterval(rotateBackground, 8000);
 }
+
+// Populate skills section dynamically from projects data
+function populateSkills() {
+    const skillsContainer = document.getElementById('skills-container');
+    if (!skillsContainer) return;
+
+    const allSkills = getAllSkills();
+
+    // Mechanical skills
+    const mechanicalDiv = document.createElement('div');
+    mechanicalDiv.className = 'skill-category';
+    mechanicalDiv.innerHTML = `
+        <h3>🔧 Mechanical</h3>
+        <ul>
+            ${allSkills.mechanical.map(skill => `<li>${skill}</li>`).join('')}
+        </ul>
+    `;
+    skillsContainer.appendChild(mechanicalDiv);
+
+    // Hardware skills
+    const hardwareDiv = document.createElement('div');
+    hardwareDiv.className = 'skill-category';
+    hardwareDiv.innerHTML = `
+        <h3>⚡ Hardware</h3>
+        <ul>
+            ${allSkills.hardware.map(skill => `<li>${skill}</li>`).join('')}
+        </ul>
+    `;
+    skillsContainer.appendChild(hardwareDiv);
+
+    // Software skills with icons
+    const softwareDiv = document.createElement('div');
+    softwareDiv.className = 'skill-category';
+    softwareDiv.innerHTML = `
+        <h3>💻 Software</h3>
+        <ul>
+            ${allSkills.software.map(skill => `<li>${skill.name}</li>`).join('')}
+        </ul>
+        <div class="tech-stack-logos">
+            ${allSkills.software
+                .filter(skill => skill.icon)
+                .map(skill => `<img src="${skill.icon}" alt="${skill.name}" title="${skill.name}" class="tech-logo">`)
+                .join('')}
+        </div>
+    `;
+    skillsContainer.appendChild(softwareDiv);
+}
+
+// Call populateSkills when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', populateSkills);
+} else {
+    populateSkills();
+}
