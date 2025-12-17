@@ -7,16 +7,16 @@ const projectsData = {
         tags: ['Arduino', 'GPS', 'C#', 'Mechatronics'],
         skills: {
             mechanical: [
-                'CAD Design (SolidWorks)',
-                'Hydraulic Systems',
-                'Sensor Integration',
-                '3D Printing & Prototyping'
+                { name: 'CAD Design (SolidWorks)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
+                { name: 'Hydraulic Systems', icon: null },
+                { name: 'Sensor Integration', icon: null },
+                { name: '3D Printing & Prototyping', icon: null }
             ],
             hardware: [
-                'Arduino',
-                'GPS Systems',
-                'Circuit Design & PCB Layout',
-                'Sensor Integration'
+                { name: 'Arduino', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/arduino/arduino-original.svg' },
+                { name: 'GPS Systems', icon: null },
+                { name: 'Circuit Design & PCB Layout', icon: null },
+                { name: 'Sensor Integration', icon: null }
             ],
             software: [
                 { name: 'C#', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg' },
@@ -33,13 +33,13 @@ const projectsData = {
         tags: ['Computer Vision', 'Python', 'Machine Learning', 'IoT'],
         skills: {
             mechanical: [
-                'Camera Mounting Systems',
-                'Environmental Enclosures'
+                { name: 'Camera Mounting Systems', icon: null },
+                { name: 'Environmental Enclosures', icon: null }
             ],
             hardware: [
-                'Camera Systems',
-                'Thermal Imaging Sensors',
-                'IoT Development'
+                { name: 'Camera Systems', icon: null },
+                { name: 'Thermal Imaging Sensors', icon: null },
+                { name: 'IoT Development', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
@@ -58,16 +58,16 @@ const projectsData = {
         tags: ['Robotics', 'ROS', 'Python', 'Autonomous Navigation'],
         skills: {
             mechanical: [
-                'CAD Design (SolidWorks, Fusion 360)',
-                'Mechanical System Design',
-                '3D Printing & Prototyping',
-                'Manufacturing Processes'
+                { name: 'CAD Design (SolidWorks, Fusion 360)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
+                { name: 'Mechanical System Design', icon: null },
+                { name: '3D Printing & Prototyping', icon: null },
+                { name: 'Manufacturing Processes', icon: null }
             ],
             hardware: [
-                'GPS Systems',
-                'Sensor Integration',
-                'Arduino & Microcontrollers',
-                'Circuit Design & PCB Layout'
+                { name: 'GPS Systems', icon: null },
+                { name: 'Sensor Integration', icon: null },
+                { name: 'Arduino & Microcontrollers', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/arduino/arduino-original.svg' },
+                { name: 'Circuit Design & PCB Layout', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
@@ -84,17 +84,25 @@ const projectsData = {
 // Function to get all unique skills across all projects
 function getAllSkills() {
     const allSkills = {
-        mechanical: new Set(),
-        hardware: new Set(),
-        software: new Map() // Use Map to store {name: icon} pairs
+        mechanical: new Map(),
+        hardware: new Map(),
+        software: new Map()
     };
 
     Object.values(projectsData).forEach(project => {
-        // Add mechanical skills
-        project.skills.mechanical?.forEach(skill => allSkills.mechanical.add(skill));
+        // Add mechanical skills with icons
+        project.skills.mechanical?.forEach(skill => {
+            if (!allSkills.mechanical.has(skill.name)) {
+                allSkills.mechanical.set(skill.name, skill.icon);
+            }
+        });
         
-        // Add hardware skills
-        project.skills.hardware?.forEach(skill => allSkills.hardware.add(skill));
+        // Add hardware skills with icons
+        project.skills.hardware?.forEach(skill => {
+            if (!allSkills.hardware.has(skill.name)) {
+                allSkills.hardware.set(skill.name, skill.icon);
+            }
+        });
         
         // Add software skills with icons
         project.skills.software?.forEach(skill => {
@@ -105,8 +113,8 @@ function getAllSkills() {
     });
 
     return {
-        mechanical: Array.from(allSkills.mechanical).sort(),
-        hardware: Array.from(allSkills.hardware).sort(),
+        mechanical: Array.from(allSkills.mechanical, ([name, icon]) => ({ name, icon })),
+        hardware: Array.from(allSkills.hardware, ([name, icon]) => ({ name, icon })),
         software: Array.from(allSkills.software, ([name, icon]) => ({ name, icon }))
     };
 }

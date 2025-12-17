@@ -93,25 +93,41 @@ function populateSkills() {
 
     const allSkills = getAllSkills();
 
-    // Mechanical skills
+    // Mechanical skills with icons
     const mechanicalDiv = document.createElement('div');
     mechanicalDiv.className = 'skill-category';
     mechanicalDiv.innerHTML = `
         <h3>🔧 Mechanical</h3>
         <ul>
-            ${allSkills.mechanical.map(skill => `<li>${skill}</li>`).join('')}
+            ${allSkills.mechanical.map(skill => `<li>${skill.name}</li>`).join('')}
         </ul>
+        ${allSkills.mechanical.some(skill => skill.icon) ? `
+        <div class="tech-stack-logos">
+            ${allSkills.mechanical
+                .filter(skill => skill.icon)
+                .map(skill => `<img src="${skill.icon}" alt="${skill.name}" title="${skill.name}" class="tech-logo">`)
+                .join('')}
+        </div>
+        ` : ''}
     `;
     skillsContainer.appendChild(mechanicalDiv);
 
-    // Hardware skills
+    // Hardware skills with icons
     const hardwareDiv = document.createElement('div');
     hardwareDiv.className = 'skill-category';
     hardwareDiv.innerHTML = `
         <h3>⚡ Hardware</h3>
         <ul>
-            ${allSkills.hardware.map(skill => `<li>${skill}</li>`).join('')}
+            ${allSkills.hardware.map(skill => `<li>${skill.name}</li>`).join('')}
         </ul>
+        ${allSkills.hardware.some(skill => skill.icon) ? `
+        <div class="tech-stack-logos">
+            ${allSkills.hardware
+                .filter(skill => skill.icon)
+                .map(skill => `<img src="${skill.icon}" alt="${skill.name}" title="${skill.name}" class="tech-logo">`)
+                .join('')}
+        </div>
+        ` : ''}
     `;
     skillsContainer.appendChild(hardwareDiv);
 
