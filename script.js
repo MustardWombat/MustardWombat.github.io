@@ -1,3 +1,57 @@
+// Load header and footer components
+async function loadComponents() {
+    // Determine base URL based on current path
+    const isProjectPage = window.location.pathname.includes('/projects/');
+    const baseUrl = isProjectPage ? '../' : '';
+    
+    try {
+        // Load header
+        const headerResponse = await fetch(`${baseUrl}components/header.html`);
+        const headerHTML = await headerResponse.text();
+        const headerElement = document.querySelector('header');
+        if (headerElement) {
+            headerElement.innerHTML = headerHTML.replace(/{{baseUrl}}/g, baseUrl);
+        }
+        
+        // Load footer
+        const footerResponse = await fetch(`${baseUrl}components/footer.html`);
+        const footerHTML = await footerResponse.text();
+        const footerElement = document.querySelector('footer');
+        if (footerElement) {
+            footerElement.innerHTML = footerHTML;
+        }
+        
+        // Reinitialize mobile menu after header loads
+        initializeMobileMenu();
+    } catch (error) {
+        console.error('Error loading components:', error);
+    }
+}
+
+// Initialize mobile menu functionality
+function initializeMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+}
+
+// Load components when DOM is ready
+document.addEventListener('DOMContentLoaded', loadComponents);
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
