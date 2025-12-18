@@ -75,6 +75,52 @@
                     </div>
                 </div>
 
+                <div class="project-architecture">
+                    <h2>System Architecture</h2>
+                    <p>The autosteer system integrates multiple hardware and software components to achieve precise autonomous steering:</p>
+                    
+                    <div class="architecture-diagram">
+                        <div class="arch-component arch-input">
+                            <h4>📡 Positioning & Sensing</h4>
+                            <ul>
+                                <li><strong>u-blox ZED-F9P GNSS Receiver</strong><br>Dual-band RTK positioning (±2cm accuracy)</li>
+                                <li><strong>RTK Base Station</strong><br>Transmits correction data via radio</li>
+                                <li><strong>IMU (Inertial Measurement Unit)</strong><br>Measures pitch, roll, heading</li>
+                                <li><strong>Wheel Angle Sensor (WAS)</strong><br>Current steering position feedback</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="arch-component arch-control">
+                            <h4>💻 Processing & Control</h4>
+                            <ul>
+                                <li><strong>Tablet (AgOpenGPS Software)</strong><br>Path planning, user interface, GPS processing</li>
+                                <li><strong>Auto-steer Controller (PCB)</strong><br>PID control loop, motor driver interface</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="arch-component arch-output">
+                            <h4>⚙️ Actuation</h4>
+                            <ul>
+                                <li><strong>Steering Motor</strong><br>Interfaces with hydraulic steering system</li>
+                                <li><strong>Tractor Hydraulics</strong><br>Physical steering mechanism</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="architecture-flow">
+                        <h4>Data Flow</h4>
+                        <ol>
+                            <li><strong>Position Acquisition:</strong> ZED-F9P receives GPS signals and RTK corrections from base station</li>
+                            <li><strong>Sensor Integration:</strong> IMU provides orientation data; WAS reports current steering angle</li>
+                            <li><strong>Path Calculation:</strong> AgOpenGPS calculates cross-track error (XTE) from desired path</li>
+                            <li><strong>Control Output:</strong> Auto-steer controller runs PID algorithm to determine steering correction</li>
+                            <li><strong>Actuation:</strong> Motor adjusts steering position; WAS closes feedback loop</li>
+                        </ol>
+                    </div>
+                    
+                    <p><em>Note: This is a high-level system overview. Detailed component specifications and wiring diagrams will be added as documentation is compiled.</em></p>
+                </div>
+
                 <div class="project-details">
                     <h2>Key Features</h2>
                     <ul class="features-list">
