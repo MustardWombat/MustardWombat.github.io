@@ -50,7 +50,7 @@ const projectsData = {
         }
     },
     'agri-robotics-club': {
-        title: 'Autonomous Agricultural Robot',
+        title: "Autonomous Agricultural Robot '26",
         subtitle: 'Ground robot for precision farming and crop monitoring',
         description: 'Development of an autonomous ground robot designed for precision agriculture tasks including crop monitoring, weed detection, and targeted intervention in agricultural fields.',
         image: 'Images/PARC.jpg',
