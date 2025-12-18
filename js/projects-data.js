@@ -50,11 +50,11 @@ const projectsData = {
         }
     },
     'agri-robotics-club': {
-        title: 'Precision Agricultural Robotics Club',
-        subtitle: 'Autonomous robot for precision farming tasks',
-        description: 'Contributing to the development of an autonomous robot for precision farming applications, focusing on sustainable agriculture and innovative field automation solutions.',
+        title: 'Autonomous Agricultural Robot',
+        subtitle: 'Ground robot for precision farming and crop monitoring',
+        description: 'Development of an autonomous ground robot designed for precision agriculture tasks including crop monitoring, weed detection, and targeted intervention in agricultural fields.',
         image: 'Images/PARC.jpg',
-        tags: ['Robotics', 'ROS', 'Python', 'Autonomous Navigation'],
+        tags: ['Robotics', 'ROS', 'Autonomous Navigation', 'Computer Vision'],
         skills: {
             mechanical: [
                 { name: 'CAD Design (SolidWorks, Fusion 360)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
@@ -64,16 +64,15 @@ const projectsData = {
             ],
             hardware: [
                 { name: 'GPS Systems', icon: null },
-                { name: 'Sensor Integration', icon: null },
-                { name: 'Arduino & Microcontrollers', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/arduino/arduino-original.svg' },
-                { name: 'Circuit Design & PCB Layout', icon: null }
+                { name: 'LiDAR & Camera Systems', icon: null },
+                { name: 'Motor Controllers', icon: null },
+                { name: 'Sensor Integration', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'C++', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg' },
-                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
                 { name: 'ROS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
-                { name: 'YOLOv8', icon: 'https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg' },
+                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
                 { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' }
             ]
         }
