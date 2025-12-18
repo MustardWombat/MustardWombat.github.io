@@ -26,11 +26,11 @@ const projectsData = {
         }
     },
     'piglet-vision': {
-        title: 'Piglet Mortality Reduction Vision System',
-        subtitle: 'AI-powered monitoring for early detection of piglet distress',
-        description: 'A computer vision system designed to monitor piglet behavior and detect early signs of distress, helping farmers prevent mortality through real-time alerts and tracking.',
+        title: 'Pig Posture Detection System',
+        subtitle: 'YOLOv11-based model for automated pig behavior analysis',
+        description: 'A computer vision system using YOLOv11 to detect and classify pig postures, enabling automated monitoring of pig behavior and health status in farming operations.',
         image: 'Images/Pigs.gif',
-        tags: ['Computer Vision', 'Python', 'Machine Learning', 'IoT'],
+        tags: ['Computer Vision', 'Python', 'YOLOv11', 'Deep Learning'],
         skills: {
             mechanical: [
                 { name: 'Camera Mounting Systems', icon: null },
@@ -38,15 +38,14 @@ const projectsData = {
             ],
             hardware: [
                 { name: 'Camera Systems', icon: null },
-                { name: 'Thermal Imaging Sensors', icon: null },
+                { name: 'Edge Computing Devices', icon: null },
                 { name: 'IoT Development', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
-                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
-                { name: 'YOLOv8', icon: 'https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg' },
-                { name: 'TensorFlow', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg' },
-                { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' }
+                { name: 'YOLOv11', icon: 'https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg' },
+                { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' },
+                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' }
             ]
         }
     },
