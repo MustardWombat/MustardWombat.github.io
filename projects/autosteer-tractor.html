@@ -56,11 +56,13 @@
 
                 <div class="project-overview">
                     <h2>Project Overview</h2>
-                    <p>The Autosteer Tractor System is an autonomous steering solution designed to enhance precision in agricultural operations. Using GPS technology and sensor fusion, this system enables tractors to navigate fields with centimeter-level accuracy, reducing operator fatigue and improving operational efficiency.</p>
+                    <p>The Autosteer Tractor System is an autonomous steering solution designed to enhance precision in agricultural operations. Using RTK-GPS technology with centimeter-level accuracy, this system enables tractors to navigate fields along predetermined paths, reducing operator fatigue and improving operational efficiency.</p>
                     
                     <p>Precision agriculture technology has traditionally been accessible only to large-scale farming operations due to prohibitive costs—commercial autosteer systems can exceed $10,000. This project demonstrates that high-precision GPS guidance can be built for under $2,200 using open-source software and readily available components, making advanced agricultural technology accessible to small and mid-size farmers.</p>
                     
                     <p>By leveraging the open-source AgOpenGPS platform and transparent hardware design, this system prioritizes <strong>repairability and user empowerment</strong>. Farmers can understand, modify, and repair their own equipment rather than relying on proprietary systems with restrictive licensing. This approach aligns with the right-to-repair movement in agriculture, giving farmers full control over their technology investments while reducing long-term operational costs.</p>
+                    
+                    <p>The system uses a multi-band GNSS receiver that receives correction data from a local RTK base station via radio modules, achieving ±2cm positioning accuracy. An Inertial Measurement Unit (IMU) measures the tractor's pitch, roll, and heading to compensate for terrain variations. A Wheel Angle Sensor (WAS) provides real-time feedback on the steering position, enabling the PID controller to make precise adjustments. These components work together through the AgOpenGPS software to maintain accurate path following even on sloped or uneven terrain.</p>
                     
                     <p>The environmental and economic benefits are significant: precision steering reduces overlap in field operations, minimizing fuel consumption, fertilizer waste, and chemical runoff while increasing crop yields through optimized planting patterns and consistent row spacing.</p>
                 </div>
@@ -76,12 +78,13 @@
                 <div class="project-details">
                     <h2>Key Features</h2>
                     <ul class="features-list">
-                        <li>RTK-GPS integration for centimeter-level positioning accuracy</li>
-                        <li>Real-time sensor fusion combining GPS, IMU, and wheel encoders</li>
+                        <li>RTK-GPS integration for centimeter-level positioning accuracy (±2cm)</li>
+                        <li>IMU (Inertial Measurement Unit) for pitch, roll, and heading compensation on slopes</li>
+                        <li>Wheel Angle Sensor (WAS) for real-time steering position feedback</li>
                         <li>PID control system for smooth steering corrections</li>
                         <li>Modified open-source software to record XTE (cross-track error) values for configuration optimization</li>
                         <li>Data collection and analysis pipeline for performance tuning</li>
-                        <li>Path planning and following algorithms</li>
+                        <li>Path planning and AB-line following algorithms</li>
                         <li>User-friendly interface for field boundary setup</li>
                         <li>Safety features including manual override and obstacle detection</li>
                     </ul>
@@ -108,7 +111,7 @@
                             <ul>
                                 <li>Steering motor with driver ($250)</li>
                                 <li>Wheel Angle Sensor (WAS) ($101)</li>
-                                <li>Multi-band GNSS receiver ($600)</li>
+                                <li>u-blox ZED-F9P dual-band RTK GNSS receiver with survey-grade multiband antenna ($600)</li>
                                 <li>RTK base station ($500)</li>
                                 <li>Auto-steer controller (printed circuit board)</li>
                                 <li>Tablet for AgOpenGPS interface ($700)</li>

@@ -2,7 +2,7 @@ const projectsData = {
     'autosteer-tractor': {
         title: 'Autosteer Tractor System',
         subtitle: 'Autonomous GPS-guided steering for precision agriculture',
-        description: 'An autonomous steering system for agricultural tractors using GPS and sensor fusion to enable precise navigation and field operations.',
+        description: 'An autonomous steering system for agricultural tractors using RTK-GPS, IMU, and wheel angle sensing to enable precise navigation and field operations with centimeter-level accuracy.',
         image: 'Images/autosteer_Tractor.gif',
         tags: ['Arduino', 'GPS', 'C#', 'Mechatronics'],
         skills: {
