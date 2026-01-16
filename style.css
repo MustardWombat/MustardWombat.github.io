@@ -407,25 +407,45 @@ h2 {
     background: var(--secondary-color);
     z-index: 3;
     position: absolute;
-    left: 44px;
-    box-shadow: 0 0 0 0 var(--secondary-color);
+    width: 40px;
+    height: 40px;
+    background: none;
+    z-index: 4;
+    position: absolute;
+    left: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: auto;
+    top: 184px;
+.timeline-dot::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 20px solid var(--secondary-color);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-radius: 2px;
+    box-shadow: 0 0 0 0 var(--secondary-color);
+    position: absolute;
+    left: 0;
+    top: 8px;
 }
-.timeline-dot.top-glow {
+    box-shadow: 0 0 8px 2px var(--accent-color), 0 0 16px 4px var(--secondary-color);
     top: 32px;
+}
+.timeline-dot.top-glow::after {
     box-shadow: 0 0 32px 12px var(--accent-color), 0 0 64px 24px var(--secondary-color);
     animation: topDotGlow 2s infinite alternate;
 }
-.timeline-dot.mid-glow {
+    0% { box-shadow: 0 0 32px 12px var(--accent-color), 0 0 64px 24px var(--secondary-color); }
     top: 184px;
+}
+.timeline-dot.mid-glow::after {
     box-shadow: 0 0 8px 2px var(--accent-color), 0 0 16px 4px var(--secondary-color);
     animation: midDotGlow 2s infinite alternate;
 }
-@keyframes topDotGlow {
-    0% { box-shadow: 0 0 32px 12px var(--accent-color), 0 0 64px 24px var(--secondary-color); }
-    100% { box-shadow: 0 0 48px 24px var(--accent-color), 0 0 96px 36px var(--secondary-color); }
-}
-@keyframes midDotGlow {
     0% { box-shadow: 0 0 8px 2px var(--accent-color), 0 0 16px 4px var(--secondary-color); }
     100% { box-shadow: 0 0 12px 4px var(--accent-color), 0 0 24px 8px var(--secondary-color); }
 }
