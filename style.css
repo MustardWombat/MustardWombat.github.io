@@ -385,6 +385,9 @@ h2 {
     margin: 4rem auto 0 auto;
     max-width: 700px;
     padding-left: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    background: var(--white);
 }
 .timeline-line {
     position: absolute;
@@ -419,10 +422,10 @@ h2 {
     z-index: 1;
 }
 .timeline-content {
-    background: var(--white);
+    background: transparent;
     border-radius: 10px;
-    box-shadow: var(--shadow);
-    padding: 2rem;
+    box-shadow: none;
+    padding: 0;
     margin-left: 40px;
     flex: 1;
 }
