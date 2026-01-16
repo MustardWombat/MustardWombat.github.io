@@ -351,6 +351,26 @@ h2 {
     font-weight: bold;
 }
 
+/* Coming Soon Project Styles */
+.project-card.coming-soon {
+    position: relative;
+    opacity: 0.8;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Skills Section */
 .skills-grid {
     display: grid;

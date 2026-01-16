@@ -76,6 +76,57 @@ const projectsData = {
                 { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' }
             ]
         }
+    },
+    'street-lateral-position': {
+        title: 'Street Lateral Position Visual System',
+        subtitle: 'Computer vision system for real-time street lane detection and vehicle positioning',
+        description: 'Coming soon: A computer vision project utilizing advanced image processing and machine learning algorithms to detect street lanes, analyze vehicle lateral position, and provide visual feedback for autonomous driving applications. This system will integrate with existing navigation systems to enhance road safety and autonomous vehicle capabilities.',
+        image: 'Images/coming-soon.jpg',
+        tags: ['Computer Vision', 'Python', 'OpenCV', 'Machine Learning'],
+        skills: {
+            mechanical: [
+                { name: 'Camera Calibration Systems', icon: null },
+                { name: 'Vehicle Integration', icon: null }
+            ],
+            hardware: [
+                { name: 'Camera Systems', icon: null },
+                { name: 'Edge Computing Devices', icon: null },
+                { name: 'Sensor Fusion', icon: null }
+            ],
+            software: [
+                { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
+                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
+                { name: 'TensorFlow', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg' },
+                { name: 'NumPy', icon: null }
+            ]
+        }
+    },
+    'autonomous-farming-tool': {
+        title: 'Autonomous Farming Tool',
+        subtitle: 'Multi-purpose autonomous robotic tool for precision agriculture operations',
+        description: 'Coming soon: A versatile autonomous tool designed for various farming tasks including soil sampling, precision planting, targeted pesticide application, and crop monitoring. This robotic system will combine GPS navigation, computer vision, and AI-driven decision making to optimize agricultural productivity while minimizing environmental impact.',
+        image: 'Images/coming-soon.jpg',
+        tags: ['Robotics', 'Autonomous Systems', 'Precision Agriculture', 'AI'],
+        skills: {
+            mechanical: [
+                { name: 'CAD Design (SolidWorks)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
+                { name: 'Robotic Arm Design', icon: null },
+                { name: '3D Printing & Prototyping', icon: null },
+                { name: 'Agricultural Tool Integration', icon: null }
+            ],
+            hardware: [
+                { name: 'GPS Systems', icon: null },
+                { name: 'Servo Motors & Actuators', icon: null },
+                { name: 'Sensor Integration', icon: null },
+                { name: 'Power Management Systems', icon: null }
+            ],
+            software: [
+                { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
+                { name: 'ROS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
+                { name: 'Computer Vision', icon: null },
+                { name: 'Machine Learning', icon: null }
+            ]
+        }
     }
 };
 
