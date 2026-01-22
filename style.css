@@ -1,3 +1,57 @@
+#about {
+    position: relative;
+    background: none;
+    overflow: hidden;
+}
+
+#about::after {
+    content: "";
+    position: absolute;
+    right: -160px;
+    bottom: -240px;
+    width: 700px;
+    height: 700px;
+    background: url('Images/piglet_transparent.png') no-repeat right bottom;
+    background-size: contain;
+    opacity: 1;
+    pointer-events: none;
+    z-index: -3;
+    margin: 0;
+    padding: 0;
+}
+/* Education Section Spartan Logo Background */
+.education-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+#education {
+    position: relative;
+    background: none;
+}
+
+#education::after {
+    content: "";
+    position: absolute;
+    left: -160px;
+    bottom: -120px;
+    width: 700px;
+    height: 700px;
+    background: url('Images/MSU.png') no-repeat left bottom;
+    background-size: contain;
+    opacity: 1;
+    pointer-events: none;
+    z-index: -2;
+    margin: 0;
+    padding: 0;
+}
+
+.education-bg > * {
+    position: relative;
+    z-index: 1;
+}
 /* Reset and Base Styles */
 * {
     margin: 0;
