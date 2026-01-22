@@ -732,6 +732,8 @@ h2 {
 /* Contact Section */
 #contact {
     text-align: center;
+    background: url('Images/BG.png') no-repeat center center;
+    background-size: cover;
 }
 
 .contact-intro {
