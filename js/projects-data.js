@@ -105,7 +105,7 @@ const projectsData = {
         title: 'Autonomous Farming Tool',
         subtitle: 'Multi-purpose autonomous robotic tool for precision agriculture operations',
         description: 'Coming soon: A versatile autonomous tool designed for various farming tasks including soil sampling, precision planting, targeted pesticide application, and crop monitoring. This robotic system will combine GPS navigation, computer vision, and AI-driven decision making to optimize agricultural productivity while minimizing environmental impact.',
-        image: 'Images/coming-soon.jpg',
+        image: 'Images/tooling.jpg',
         tags: ['Robotics', 'Autonomous Systems', 'Precision Agriculture', 'AI'],
         skills: {
             mechanical: [
