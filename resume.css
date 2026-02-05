@@ -1,0 +1,419 @@
+/* Resume Generator Page Styles */
+
+.resume-page {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: var(--light-bg);
+}
+
+.resume-controls {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 2rem 20px;
+    text-align: center;
+}
+
+.resume-controls h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.resume-controls > p {
+    color: var(--grey-medium);
+    margin-bottom: 1.5rem;
+}
+
+.focus-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.focus-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    background: var(--white);
+    color: var(--primary-color);
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.focus-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.focus-btn.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.detail-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: var(--grey-medium);
+}
+
+.detail-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--grey-medium);
+    background: var(--white);
+    color: var(--grey-medium);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.detail-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.detail-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--white);
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+    background: var(--secondary-color);
+}
+
+/* Resume Container */
+.resume-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 20px 3rem;
+}
+
+.resume {
+    background: var(--white);
+    padding: 0.75in;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    line-height: 1.3;
+    color: #000;
+}
+
+/* Force bullet points to show in resume */
+.resume ul {
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+    margin-left: 1.5rem !important;
+}
+
+.resume li {
+    display: list-item !important;
+    list-style-type: disc !important;
+}
+
+/* Resume Header */
+.resume-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.resume-header h1 {
+    font-size: 18pt;
+    font-weight: normal;
+    font-style: italic;
+    color: #000;
+    margin-bottom: 0.25rem;
+}
+
+.resume-contact-line {
+    font-size: 10pt;
+    color: #000;
+    margin: 0;
+}
+
+/* Resume Sections */
+.resume-section {
+    margin-bottom: 0.75rem;
+}
+
+.resume-section h2 {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0;
+}
+
+/* Resume Items (Education, Experience) */
+.resume-item {
+    margin-bottom: 0.6rem;
+}
+
+.resume-item-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.resume-item-line strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.resume-item-line .location {
+    font-size: 10pt;
+    color: #000;
+}
+
+.resume-item-italic {
+    font-style: italic;
+    font-size: 10pt;
+    margin: 0.1rem 0;
+}
+
+.resume-item-italic .date {
+    float: right;
+}
+
+/* Research sub-projects under experience */
+.resume-subproject {
+    margin-top: 0.3rem;
+    margin-left: 0;
+}
+
+.resume-subproject-title {
+    font-size: 10pt;
+    margin-bottom: 0.1rem;
+}
+
+.resume-subproject ul {
+    margin: 0.1rem 0 0.3rem 1.5rem;
+    padding: 0;
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+}
+
+.resume-subproject li {
+    font-size: 10pt;
+    margin-bottom: 0.15rem;
+    padding-left: 0.2rem;
+    display: list-item !important;
+}
+
+.resume-coursework {
+    font-size: 10pt;
+    margin-top: 0.2rem;
+}
+
+/* Resume Skills List */
+.resume-skills-list {
+    padding-left: 0;
+}
+
+.resume-skills-list ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style-type: disc !important;
+    list-style-position: outside !important;
+}
+
+.resume-skills-list li {
+    font-size: 10pt;
+    margin-bottom: 0.15rem;
+    padding-left: 0.2rem;
+    display: list-item !important;
+}
+
+.resume-skills-list li strong {
+    font-weight: bold;
+}
+
+/* Resume bullet points */
+.resume-item ul,
+.resume-project ul {
+    margin: 0.2rem 0 0 1.5rem;
+    padding: 0;
+    list-style-type: disc;
+    list-style-position: outside;
+}
+
+.resume-item li,
+.resume-project li {
+    font-size: 10pt;
+    margin-bottom: 0.15rem;
+    padding-left: 0.2rem;
+    text-align: left;    display: list-item !important;}
+
+/* Resume Projects */
+.resume-project {
+    margin-bottom: 0.6rem;
+}
+
+.resume-project-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.resume-project-line strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.resume-project-line .location {
+    font-size: 10pt;
+}
+
+.resume-project-date {
+    font-style: italic;
+    font-size: 10pt;
+    margin: 0.1rem 0 0.2rem 0;
+}
+
+/* Hide empty elements */
+.resume-subproject:empty,
+.resume-project:empty,
+.resume-item:empty,
+.resume-section:empty,
+ul:empty {
+    display: none;
+}
+
+.resume-subproject ul:empty,
+.resume-project ul:empty {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.resume-project-date:empty,
+.resume-project-line .location:empty,
+.resume-coursework:empty {
+    display: none;
+}
+
+/* Ensure no trailing whitespace */
+.resume-section:last-child {
+    margin-bottom: 0;
+}
+
+.resume-project:last-child,
+.resume-item:last-child,
+.resume-subproject:last-child {
+    margin-bottom: 0;
+}
+
+.resume-project ul:last-child,
+.resume-subproject ul:last-child,
+.resume-item ul:last-child {
+    margin-bottom: 0;
+}
+
+/* Page break prevention for PDF export */
+/* Keep each bullet point intact - don't split mid-bullet */
+.resume li {
+    display: block;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.resume ul {
+    page-break-inside: auto;
+    break-inside: auto;
+}
+
+.resume-section {
+    page-break-inside: auto;
+    break-inside: auto;
+}
+
+.resume-item,
+.resume-project,
+.resume-subproject {
+    page-break-inside: auto;
+    break-inside: auto;
+}
+
+/* Keep section headers with first content */
+.resume-section h2 {
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+/* Print / PDF Styles */
+@media print {
+    .resume-page {
+        padding-top: 0;
+        background: white;
+    }
+    
+    .resume-controls {
+        display: none;
+    }
+    
+    .resume-container {
+        padding: 0;
+        max-width: none;
+    }
+    
+    .resume {
+        box-shadow: none;
+        padding: 0.5in;
+    }
+    
+    .resume-item,
+    .resume-project,
+    .resume-subproject {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .resume {
+        padding: 1rem;
+        font-size: 10pt;
+    }
+    
+    .resume-header h1 {
+        font-size: 16pt;
+    }
+    
+    .resume-contact-line {
+        font-size: 9pt;
+    }
+}

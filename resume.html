@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="James Williams - Tailored Resume Generator">
+    <title>Resume Generator | James Williams</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resume.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-link">
+                <div class="logo logo-full"><span class="highlight-w">W</span>e<span class="highlight-w">W</span>ant<span class="highlight-w">W</span>illiams</div>
+                <div class="logo logo-short"><span class="highlight-w">WWW</span></div>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="resume-page">
+        <div class="resume-controls">
+            <h1>Tailored Resume Generator</h1>
+            <p>Select a focus area to generate a customized resume highlighting relevant projects and skills.</p>
+            
+            <div class="focus-selector">
+                <button class="focus-btn active" data-focus="all">All Skills</button>
+                <button class="focus-btn" data-focus="robotics">Robotics</button>
+                <button class="focus-btn" data-focus="computer-vision">Computer Vision</button>
+                <button class="focus-btn" data-focus="software">Software</button>
+                <button class="focus-btn" data-focus="mechatronics">Mechatronics</button>
+            </div>
+
+            <div class="detail-selector">
+                <span class="detail-label">Detail Level:</span>
+                <button class="detail-btn active" data-detail="technical">Technical (2-page)</button>
+                <button class="detail-btn" data-detail="compact">Compact (1-page)</button>
+            </div>
+
+            <button id="download-pdf" class="download-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                Download PDF
+            </button>
+        </div>
+
+        <div id="resume-container" class="resume-container">
+            <div id="resume" class="resume">
+                <!-- Header -->
+                <div class="resume-header">
+                    <h1 id="resume-name">James Williams</h1>
+                    <p class="resume-contact-line" id="resume-contact-line">
+                        Detroit, Michigan | will4379@msu.edu | (734) 394-8207 | WeWantWilliams.com | github.com/MustardWombat
+                    </p>
+                </div>
+
+                <!-- Education -->
+                <div class="resume-section">
+                    <h2>EDUCATION</h2>
+                    <div id="resume-education">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="resume-section">
+                    <h2>SKILLS</h2>
+                    <div id="resume-skills" class="resume-skills-list">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="resume-section">
+                    <h2>EXPERIENCE</h2>
+                    <div id="resume-experience">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="resume-section">
+                    <h2>PROJECTS</h2>
+                    <div id="resume-projects">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/resume-data.js"></script>
+    <script src="js/projects-data.js"></script>
+    <script src="js/resume-generator.js"></script>
+</body>
+</html>

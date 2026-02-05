@@ -5,6 +5,12 @@ const projectsData = {
         description: 'An autonomous steering system for agricultural tractors using RTK-GPS, IMU, and wheel angle sensing to enable precise navigation and field operations with centimeter-level accuracy.',
         image: 'Images/autosteer_Tractor.gif',
         tags: ['Arduino', 'GPS', 'C#', 'Mechatronics'],
+        focusAreas: ['robotics', 'mechatronics'],
+        resumeBullets: [
+            'Designed and implemented autonomous steering system achieving ±2cm accuracy using RTK-GPS',
+            'Integrated IMU and wheel angle sensors with Arduino for real-time navigation control',
+            'Developed C# interface for path planning and field operation management'
+        ],
         skills: {
             mechanical: [
                 { name: 'CAD Design (SolidWorks)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
@@ -31,6 +37,12 @@ const projectsData = {
         description: 'A computer vision system using YOLOv11 to detect and classify pig postures, enabling automated monitoring of pig behavior and health status in farming operations.',
         image: 'Images/Pigs.gif',
         tags: ['Computer Vision', 'Python', 'YOLOv11', 'Deep Learning'],
+        focusAreas: ['computer-vision', 'software'],
+        resumeBullets: [
+            'Trained YOLOv11 model to detect and classify pig postures for automated health monitoring',
+            'Built data pipeline for processing video feeds and generating behavioral analytics',
+            'Achieved real-time inference for continuous monitoring in farming operations'
+        ],
         skills: {
             mechanical: [
                 { name: 'Camera Mounting Systems', icon: null },
@@ -55,6 +67,12 @@ const projectsData = {
         description: 'Development of an autonomous ground robot designed for precision agriculture tasks including crop monitoring, weed detection, and targeted intervention in agricultural fields.',
         image: 'Images/PARC.jpg',
         tags: ['Robotics', 'ROS', 'Autonomous Navigation', 'Computer Vision'],
+        focusAreas: ['robotics', 'computer-vision', 'software'],
+        resumeBullets: [
+            'Contributing to autonomous ground robot development for PARC competition',
+            'Implementing ROS-based navigation and sensor integration systems',
+            'Developing computer vision algorithms for crop monitoring and weed detection'
+        ],
         skills: {
             mechanical: [
                 { name: 'CAD Design (SolidWorks, Fusion 360)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
@@ -83,6 +101,9 @@ const projectsData = {
         description: 'Coming soon: A computer vision project utilizing advanced image processing and machine learning algorithms to detect street lanes, analyze vehicle lateral position, and provide visual feedback for autonomous driving applications. This system will integrate with existing navigation systems to enhance road safety and autonomous vehicle capabilities.',
         image: 'Images/coming-soon.jpg',
         tags: ['Computer Vision', 'Python', 'OpenCV', 'Machine Learning'],
+        focusAreas: ['computer-vision', 'software'],
+        comingSoon: true,
+        resumeBullets: [],
         skills: {
             mechanical: [
                 { name: 'Camera Calibration Systems', icon: null },
@@ -107,6 +128,9 @@ const projectsData = {
         description: 'Coming soon: A versatile autonomous tool designed for various farming tasks including soil sampling, precision planting, targeted pesticide application, and crop monitoring. This robotic system will combine GPS navigation, computer vision, and AI-driven decision making to optimize agricultural productivity while minimizing environmental impact.',
         image: 'Images/tooling.jpg',
         tags: ['Robotics', 'Autonomous Systems', 'Precision Agriculture', 'AI'],
+        focusAreas: ['robotics', 'mechatronics'],
+        comingSoon: true,
+        resumeBullets: [],
         skills: {
             mechanical: [
                 { name: 'CAD Design (SolidWorks)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
