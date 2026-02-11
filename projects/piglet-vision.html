@@ -38,11 +38,12 @@
             <div class="container">
                 <a href="../index.html#projects" class="back-link">← Back to Projects</a>
                 <h1>Pig Posture Detection System</h1>
-                <p class="project-subtitle">YOLOv11-based model for automated pig behavior analysis</p>
+                <h1>Piglet Keypoint Detection System</h1>
+                <p class="project-subtitle">MMPOSE-based model for anatomical keypoint detection in piglets</p>
                 <div class="project-tags">
                     <span class="tag">Computer Vision</span>
                     <span class="tag">Python</span>
-                    <span class="tag">YOLOv11</span>
+                    <span class="tag">MMPOSE</span>
                     <span class="tag">Deep Learning</span>
                 </div>
             </div>
@@ -52,31 +53,28 @@
             <div class="container">
                 <div class="project-overview">
                     <h2>Project Overview</h2>
-                    <p>The Pig Posture Detection System leverages YOLOv11, the latest version of the YOLO object detection architecture, to automatically detect and classify pig postures in real-time. This computer vision solution enables farmers and researchers to monitor pig behavior patterns, assess animal welfare, and identify potential health issues through automated posture analysis.</p>
-                    
-                    <p>Pig posture is a critical indicator of health, comfort, and well-being. Different postures—such as standing, lying, sitting, and eating—provide valuable insights into the animal's physical condition and environmental comfort. Traditional manual observation is time-consuming and impractical for large-scale operations. This automated system provides continuous, objective monitoring without human intervention.</p>
-                    
-                    <p>Built using the state-of-the-art YOLOv11 architecture, the model achieves real-time inference speeds while maintaining high detection accuracy across various lighting conditions, pig breeds, and farm environments. The system can be deployed on edge computing devices for on-site processing or integrated with cloud infrastructure for large-scale farm monitoring.</p>
+                    <p>The Piglet Keypoint Detection System utilizes MMPOSE, a state-of-the-art pose estimation framework, to detect anatomical keypoints on piglets in images and video. The model identifies seven keypoints: snout, head, left ear, right ear, shoulder, back, and tail. This technical solution enables robust keypoint localization across diverse lighting conditions and piglet poses.</p>
+                    <p>Custom datasets were curated and annotated to ensure accurate keypoint detection. The system is designed for high performance and cross-platform compatibility, with ONNX model export and configurable camera stream input.</p>
                 </div>
 
                 <div class="project-gallery">
-                    <h2>System Detection Demo</h2>
+                    <h2>Keypoint Detection Demo</h2>
                     <div class="gallery-item">
-                        <img src="../Images/Pigs.gif" alt="Real-time pig posture detection demonstration" class="gallery-video">
-                        <p class="gallery-caption">Real-time posture detection demonstration showing the YOLOv11 model identifying and classifying pig postures. The system successfully detects multiple pigs simultaneously and maintains tracking across frames.</p>
+                        <img src="../Images/Pigs.gif" alt="Piglet keypoint detection demonstration" class="gallery-video">
+                        <p class="gallery-caption">Demonstration showing MMPOSE-based model detecting anatomical keypoints (snout, head, ears, shoulder, back, tail) on piglets in diverse conditions.</p>
                     </div>
                 </div>
 
                 <div class="project-details">
                     <h2>Key Features</h2>
                     <ul class="features-list">
-                        <li>YOLOv11-based real-time posture detection and classification</li>
-                        <li>Multi-posture recognition: standing, lying, sitting, eating, drinking</li>
-                        <li>High-speed inference optimized for edge deployment</li>
-                        <li>Robust performance across varying lighting conditions</li>
-                        <li>Multi-pig tracking and identification in group housing</li>
-                        <li>Data logging and behavioral pattern analysis</li>
-                        <li>Integration-ready API for farm management systems</li>
+                        <li>MMPOSE-based anatomical keypoint detection</li>
+                        <li>Seven keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
+                        <li>Robust performance across diverse lighting and piglet poses</li>
+                        <li>Custom-annotated dataset for piglet morphology</li>
+                        <li>ONNX model export for cross-platform inference</li>
+                        <li>Configurable camera stream input</li>
+                        <li>Data management workflow with version-controlled image datasets</li>
                     </ul>
                 </div>
 
@@ -86,17 +84,16 @@
                         <div class="tech-item">
                             <h3>Model Architecture</h3>
                             <ul>
-                                <li>YOLOv11 detection framework</li>
-                                <li>Custom-trained on pig posture dataset</li>
-                                <li>Transfer learning from pre-trained weights</li>
-                                <li>Optimized anchor boxes for pig morphology</li>
-                                <li>Real-time inference at 30+ FPS</li>
+                                <li>MMPOSE pose estimation framework</li>
+                                <li>Custom-trained on piglet keypoint dataset</li>
+                                <li>Seven anatomical keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
+                                <li>ONNX export for cross-platform inference</li>
                             </ul>
                         </div>
                         <div class="tech-item">
                             <h3>Training & Data</h3>
                             <ul>
-                                <li>Custom-annotated pig posture dataset</li>
+                                <li>Custom-annotated piglet keypoint dataset</li>
                                 <li>Data augmentation techniques for robustness</li>
                                 <li>PyTorch training pipeline</li>
                                 <li>Hyperparameter optimization</li>
@@ -112,39 +109,24 @@
                 <div class="project-challenges">
                     <h2>Challenges & Solutions</h2>
                     <div class="challenge-item">
-                        <h3>Posture Ambiguity & Occlusion</h3>
-                        <p><strong>Challenge:</strong> Pigs in group housing often overlap, creating partial occlusions. Additionally, certain postures (like transitioning from standing to lying) can be ambiguous and difficult to classify accurately.</p>
-                        <p><strong>Solution:</strong> Implemented data augmentation strategies that specifically address occlusion scenarios during training. Used YOLOv11's improved feature extraction capabilities to capture subtle posture differences. Added temporal smoothing to handle transition states by analyzing multiple consecutive frames rather than single-frame classification.</p>
-                        <p><strong>Impact:</strong> Achieved 91% classification accuracy on the test set, with robust performance even during high-occlusion scenarios. The temporal smoothing reduced false classifications during posture transitions by 35%.</p>
+                        <h3>Occlusion & Keypoint Visibility</h3>
+                        <p><strong>Challenge:</strong> Piglets in group settings often overlap, causing partial occlusions and making some keypoints difficult to annotate or detect.</p>
+                        <p><strong>Solution:</strong> Applied targeted data augmentation strategies to simulate occlusion scenarios and improve model robustness. Used MMPOSE's advanced feature extraction to enhance keypoint localization even under partial visibility.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>Real-Time Performance on Edge Devices</h3>
-                        <p><strong>Challenge:</strong> Farm environments require on-site processing without relying on cloud connectivity, but edge devices have limited computational resources. Balancing detection accuracy with inference speed on edge hardware was critical.</p>
-                        <p><strong>Solution:</strong> Utilized YOLOv11's efficiency improvements and applied model quantization techniques to reduce computational requirements. Optimized the model for NVIDIA Jetson and similar edge devices using TensorRT acceleration. Implemented smart frame skipping that maintains detection quality while reducing processing load.</p>
-                        <p><strong>Impact:</strong> Achieved real-time inference (30 FPS) on NVIDIA Jetson Nano with minimal accuracy loss (less than 2% degradation). The optimized model uses 40% less memory and power compared to the baseline, enabling continuous 24/7 operation.</p>
+                        <h3>Lighting & Pose Diversity</h3>
+                        <p><strong>Challenge:</strong> Diverse lighting conditions and piglet poses introduce variability in image appearance and keypoint locations.</p>
+                        <p><strong>Solution:</strong> Curated dataset with images from multiple lighting environments and piglet poses. Used augmentation (rotation, brightness, flip) to improve generalization.</p>
                     </div>
                 </div>
 
                 <div class="project-results">
-                    <h2>Results & Impact</h2>
-                    <p>The YOLOv11-based pig posture detection system demonstrates strong performance across key metrics:</p>
-                    
-                    <ul class="features-list">
-                        <li><strong>Detection Accuracy:</strong> 91% mAP (mean Average Precision) on test dataset</li>
-                        <li><strong>Inference Speed:</strong> 30+ FPS on NVIDIA Jetson Nano</li>
-                        <li><strong>Posture Classification:</strong> 89% accuracy across 5 posture categories</li>
-                        <li><strong>Multi-pig Tracking:</strong> Successfully tracks up to 20 pigs simultaneously</li>
-                    </ul>
-                    
-                    <p>The system provides valuable insights into pig behavior patterns, enabling farmers to identify health issues earlier, optimize housing conditions, and improve overall animal welfare. Automated posture monitoring reduces labor costs while providing more comprehensive and objective data compared to manual observation methods.</p>
-                    
-                    <p>This project demonstrates the practical application of cutting-edge computer vision technology in agricultural settings, bridging the gap between academic research and real-world farming operations.</p>
+                    <!-- Results & Impact section removed as requested: no application or metrics -->
                 </div>
 
                 <div class="project-links">
                     <h2>Project Resources</h2>
                     <div class="resource-links">
-                        <a href="#" class="resource-link">GitHub Repository</a>
                         <a href="#" class="resource-link">Model Documentation</a>
                         <a href="#" class="resource-link">Dataset Information</a>
                     </div>

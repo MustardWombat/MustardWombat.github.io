@@ -92,29 +92,25 @@ const resumeData = {
                     }
                 },
                 {
-                    title: "Piglet Mortality Reduction Vision System",
+                    title: "Piglet Mortality Reduction Keypoint Model",
                     bullets: {
                         compact: [
-                            "Built YOLOv8-based real-time pig posture classification system detecting 5 behavioral states using 1,000+ annotated images across diverse lighting conditions",
-                            "Trained models on MSU's HPCC cluster achieving 87% mAP@0.5; deployed production inference on NVIDIA Jetson at 45 FPS to operational swine farm cameras",
-                            "Implemented automatic alert system for prolonged lateral lying events indicating crushing risk; identified domain shift limitations for cross-farm deployment"
+                            "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail from annotated images",
+                            "Curated and annotated dataset with diverse lighting conditions and piglet poses for robust keypoint detection",
+                            "Exported ONNX model for cross-platform inference and integrated configuration for camera stream input"
                         ],
                         all: [
-                            "Developed YOLOv8-based real-time pig posture classification system detecting 5 behavioral states (standing, sitting, sternal lying, lateral lying, nursing) to identify at-risk piglets in farrowing crates",
-                            "Curated and annotated 1,000+ training images across diverse lighting conditions (natural daylight, artificial barn lighting, IR night vision) using CVAT with strict inter-annotator agreement protocols",
-                            "Trained models on MSU's High Performance Computing Cluster (HPCC) using SLURM job scheduling, experimenting with YOLOv8n/s/m variants and hyperparameter optimization (learning rate, augmentation, mosaic)",
-                            "Achieved 87% mAP@0.5 on held-out test set with inference speed of 45 FPS on edge deployment hardware (NVIDIA Jetson), enabling real-time posture monitoring",
-                            "Deployed production inference pipeline to operational swine farm cameras, implementing automatic alert system for prolonged lateral lying events indicating potential crushing risk",
-                            "Identified domain shift limitations during cross-farm deployment due to camera angle and lighting variations, informing future multi-site training data collection strategy"
+                            "Developed MMPOSE-based keypoint detection model for piglets, identifying seven anatomical keypoints: snout, head, left ear, right ear, shoulder, back, and tail",
+                            "Curated and annotated dataset with diverse lighting conditions (daylight, barn lighting, IR night vision) and piglet poses for robust keypoint detection",
+                            "Implemented SLURM batch scripts for distributed training on HPCC GPU nodes (NVIDIA A100), managing job queuing, resource allocation, and checkpoint saving",
+                            "Built inference deployment package using ONNX model export for cross-platform compatibility, with configuration files for camera stream URLs and detection thresholds",
+                            "Created data management workflow using Git LFS for version-controlled image datasets with automated annotation validation scripts"
                         ],
                         "computer-vision": [
-                            "Developed YOLOv8-based real-time pig posture classification system detecting 5 behavioral states (standing, sitting, sternal lying, lateral lying, nursing) to identify at-risk piglets in farrowing crates",
-                            "Curated and annotated 1,000+ training images across diverse lighting conditions (natural daylight, artificial barn lighting, IR night vision) using CVAT with strict inter-annotator agreement protocols",
-                            "Trained models on MSU's High Performance Computing Cluster (HPCC) using SLURM job scheduling, experimenting with YOLOv8n/s/m variants and hyperparameter optimization (learning rate, augmentation, mosaic)",
-                            "Achieved 87% mAP@0.5 on held-out test set with inference speed of 45 FPS on edge deployment hardware (NVIDIA Jetson), enabling real-time posture monitoring",
+                            "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail",
+                            "Curated and annotated dataset with diverse lighting conditions and piglet poses for robust keypoint detection",
                             "Implemented data augmentation pipeline including random rotation, brightness jitter, horizontal flip, and mosaic augmentation to improve model robustness",
-                            "Deployed production inference pipeline to operational swine farm cameras, implementing automatic alert system for prolonged lateral lying events indicating potential crushing risk",
-                            "Identified domain shift limitations during cross-farm deployment due to camera angle and lighting variations, informing future multi-site training data collection strategy"
+                            "Exported ONNX model for cross-platform inference and integrated configuration for camera stream input"
                         ],
                         software: [
                             "Developed Python training pipeline with automated data augmentation, train/val/test splitting, and experiment tracking using Weights & Biases for hyperparameter comparison",
