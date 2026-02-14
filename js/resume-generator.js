@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with default settings
     updateResume(currentFocus, currentDetail);
 
+    function updateSubtitle() {
+        const subtitleEl = document.getElementById('resume-subtitle');
+        if (subtitleEl) {
+            subtitleEl.textContent = resumeData.subtitle;
+        }
+    }
+
     // Focus button click handlers
     focusButtons.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -39,46 +46,84 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             currentDetail = this.dataset.detail;
             updateResume(currentFocus, currentDetail);
+            if (currentDetail === 'compact') {
+                setTimeout(() => {
+                    console.log('[DEBUG] Calling fitToOnePage after detail switch');
+                    fitToOnePage(currentFocus);
+                }, 100);
+            }
         });
     });
     
     // Dynamic fitting for compact mode
     function fitToOnePage(focus) {
         const resume = document.getElementById('resume');
-        
-        // Calculate target height based on resume container width
-        // Letter paper aspect ratio: 8.5 x 11 = 0.773
-        // With 0.5in margins on each side, usable = 7.5 x 10 = 0.75
         const resumeWidth = resume.offsetWidth;
-        const targetHeight = resumeWidth / 0.75; // Maintain letter paper aspect ratio
-        
-        let maxBullets = 10; // Start with max bullets
-        let iterations = 0;
-        const maxIterations = 9;
-        
-        // Check current height
-        let currentHeight = resume.scrollHeight;
-        
-        console.log('Target height: ' + targetHeight + 'px, Current: ' + currentHeight + 'px, Width: ' + resumeWidth + 'px');
-        
-        while (currentHeight > targetHeight && maxBullets > 1 && iterations < maxIterations) {
-            maxBullets--;
-            iterations++;
-            
-            // Rebuild with fewer bullets
-            updateContactInfo();
-            updateEducation('compact');
-            updateSkills(focus);
-            updateExperienceWithLimit(focus, 'compact', maxBullets);
-            updateProjectsWithLimit(focus, 'compact', maxBullets);
-            
-            // Re-measure
-            currentHeight = resume.scrollHeight;
-            console.log('Iteration ' + iterations + ': ' + maxBullets + ' bullets, height: ' + currentHeight + 'px');
+        const targetHeight = resumeWidth / 0.75; // Standard letter aspect ratio
+        // --- Recruiter-style bullet selection ---
+        // Hardcoded value scores for experience and project bullets
+        // (In a real system, this would be dynamic or data-driven)
+        const expBulletScores = [
+            10, // Most valuable
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1  // Least valuable
+        ];
+        const projBulletScores = [
+            10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+        ];
+        // Helper to get top N unique bullets by score
+        function getTopBullets(bullets, scores, n) {
+            const seen = new Set();
+            return bullets
+                .map((b, i) => ({ b, score: scores[i] || 0 }))
+                .sort((a, b) => b.score - a.score)
+                .filter(x => {
+                    if (!x.b || seen.has(x.b)) return false;
+                    seen.add(x.b);
+                    return true;
+                })
+                .slice(0, n)
+                .map(x => x.b);
         }
-        
-        // Update page indicator
-        updatePageIndicator(currentHeight, targetHeight, maxBullets);
+        // Try all combinations of exp/proj bullet counts that fit
+        let bestExp = 1, bestProj = 1, bestTotal = 0;
+        let maxExp = expBulletScores.length, maxProj = projBulletScores.length;
+        for (let e = 1; e <= maxExp; e++) {
+            for (let p = 1; p <= maxProj; p++) {
+                // Get top bullets for each
+                let expBulletsArr = getTopBullets(resumeData.experience[0].researchProjects.map(rp => (rp.bullets.compact||[])[0]).filter(Boolean), expBulletScores, e);
+                let projBulletsArr = getTopBullets((resumeData.projects[0]?.bullets?.compact||[]), projBulletScores, p);
+                // Render
+                updateContactInfo();
+                updateEducation('compact');
+                updateSkills(focus);
+                updateExperienceWithLimit(focus, 'compact', expBulletsArr.length);
+                updateProjectsWithLimit(focus, 'compact', projBulletsArr.length);
+                let h = resume.scrollHeight;
+                let totalBullets = expBulletsArr.length + projBulletsArr.length;
+                // Prioritize more experience bullets, then total bullets
+                if (h <= targetHeight && (expBulletsArr.length > bestExp || (expBulletsArr.length === bestExp && totalBullets > bestTotal))) {
+                    bestExp = expBulletsArr.length;
+                    bestProj = projBulletsArr.length;
+                    bestTotal = totalBullets;
+                }
+            }
+        }
+        // Final render with best fit
+        updateContactInfo();
+        updateEducation('compact');
+        updateSkills(focus);
+        updateExperienceWithLimit(focus, 'compact', bestExp);
+        updateProjectsWithLimit(focus, 'compact', bestProj);
+        let h = resume.scrollHeight;
+        updatePageIndicator(h, targetHeight, Math.max(bestExp, bestProj));
     }
     
     function updatePageIndicator(height, targetHeight, bullets) {
@@ -325,6 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
             indicator.style.display = detail === 'compact' ? 'block' : 'none';
         }
         
+        updateSubtitle();
         updateContactInfo();
         updateEducation(detail);
         updateSkills(focus);
@@ -334,11 +380,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Start with all bullets and reduce until it fits
             updateExperienceWithLimit(focus, detail, 10);
             updateProjectsWithLimit(focus, detail, 10);
-            
-            // Use requestAnimationFrame to measure after render
-            requestAnimationFrame(function() {
+            setTimeout(() => {
+                console.log('[DEBUG] Calling fitToOnePage from updateResume');
                 fitToOnePage(focus);
-            });
+            }, 100);
         } else {
             // Technical mode - show all bullets
             updateExperience(focus, detail);
@@ -372,8 +417,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     '<span class="date">' + edu.date + '</span>' +
                 '</div>';
             
-            // Only show coursework in technical mode
-            if (detail === 'technical') {
+            // Only show coursework in technical mode and if defined
+            if (detail === 'technical' && typeof edu.coursework !== 'undefined' && edu.coursework) {
                 html += '<div class="resume-coursework">' + edu.coursework + '</div>';
             }
             
@@ -385,15 +430,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateSkills(focus) {
         const skillsContainer = document.getElementById('resume-skills');
         if (!skillsContainer) return;
-        
+
         const skills = resumeData.skills;
         let html = '<ul>';
-        html += '<li><strong>Hardware:</strong> ' + skills.hardware + '</li>';
         html += '<li><strong>Programming:</strong> ' + skills.programming + '</li>';
-        html += '<li><strong>Robotics & Controls:</strong> ' + skills.robotics + '</li>';
+        html += '<li><strong>Robotics/Perception:</strong> ' + skills.robotics_perception + '</li>';
+        html += '<li><strong>Data/ML:</strong> ' + skills.data_ml + '</li>';
+        html += '<li><strong>Hardware:</strong> ' + skills.hardware + '</li>';
         html += '<li><strong>Tools & Frameworks:</strong> ' + skills.tools + '</li>';
         html += '</ul>';
-        
+
         skillsContainer.innerHTML = html;
     }
 

@@ -4,7 +4,7 @@
 const resumeData = {
     // Personal Info
     name: "James Williams",
-    subtitle: "Technology Engineering | Mechatronics | CS Minor",
+    subtitle: "Robotics & Computer Vision Engineer | Autonomous Systems",
     location: "Detroit, Michigan",
     
     // Contact
@@ -25,17 +25,17 @@ const resumeData = {
             location: "East Lansing, MI",
             degree: "Technology Engineering, Mechatronics Concentration, CS minor",
             gpa: "3.4",
-            date: "May 2024 - Present",
-            coursework: "Mechatronics, Embedded Systems, Control Systems, Circuits, Data Structures, Machine Vision, Smart Agricultural Systems"
+            date: "August 2024 - May 2028"
         }
     ],
 
     // Skills - categorized for resume format
     skills: {
-        hardware: "PCB design, embedded circuits, wiring diagrams, breadboarding, soldering",
-        programming: "Python, C++, C#, Java",
-        robotics: "ROS2, PID tuning, GNSS/RTK, sensor fusion",
-        tools: "OpenCV, Git, Xcode, VSCode, CAN-bus communication"
+        programming: "Python, C++, C#, Java, JavaScript",
+        robotics_perception: "ROS2, sensor fusion, RTK-GPS, IMU, OpenCV, MMPose, YOLO, TensorFlow, PyTorch",
+        hardware: "CAN, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve",
+        data_ml: "pandas, NumPy, matplotlib, ONNX",
+        tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js"
     },
 
     // Experience with research projects nested under the role
@@ -45,7 +45,7 @@ const resumeData = {
             organization: "Michigan State University",
             department: "Department of Biosystems and Agricultural Engineering",
             location: "East Lansing, Michigan",
-            date: "September 2024 - Present",
+            date: "September 2025 - Present",
             // These are research projects done as part of this role
             researchProjects: [
                 {
@@ -57,17 +57,16 @@ const resumeData = {
                             "Tuned PID steering parameters through iterative field testing; diagnosed and resolved RTK correction dropouts achieving 99.5%+ fix availability"
                         ],
                         all: [
-                            "Developed and validated autonomous tractor guidance achieving ±2 cm cross-track accuracy using dual-frequency RTK-GNSS (u-blox F9P) with NTRIP corrections from a radio-linked base station, integrated with proportional hydraulic steering valve control",
-                            "Engineered custom data-logging application forking AgOpenGPS to capture real-time latitude, longitude, heading, velocity, and cross-track error (XTE) at 10 Hz, exporting to timestamped CSV files for post-processing analysis",
-                            "Performed quantitative accuracy analysis using Python (pandas, matplotlib) to generate XTE histograms, trajectory overlay plots, and statistical summaries demonstrating sub-inch guidance precision across multiple field trials",
-                            "Tuned cascaded PID steering controller parameters (Kp, Ki, Kd, look-ahead distance, integral windup limits) through iterative field testing, resolving oscillatory steering behavior at headland turns",
-                            "Diagnosed and resolved RTK correction dropouts by transitioning from cellular NTRIP to 900 MHz radio link with dedicated base station, achieving 99.5%+ RTK fix availability"
+                                                        "Led system integration and field testing for auto-steer tractor guidance (±2 cm accuracy, RTK-GNSS, hydraulic steering).",
+                                                        "Primary implementer for autonomous implement control system, solving plant occlusion and growth stage adaptation for MSU horticulture site.",
+                                                        "Built custom data-logging and analysis pipeline (AgOpenGPS, Python, pandas, matplotlib) for quantitative performance evaluation.",
+                                                        "Optimized PID steering and RTK correction reliability for robust operation across variable field conditions."
                         ],
                         robotics: [
                             "Developed and validated autonomous tractor guidance achieving ±2 cm cross-track accuracy using dual-frequency RTK-GNSS (u-blox F9P) with NTRIP corrections from a radio-linked base station, integrated with proportional hydraulic steering valve control",
                             "Engineered custom data-logging application forking AgOpenGPS to capture real-time latitude, longitude, heading, velocity, and cross-track error (XTE) at 10 Hz, exporting to timestamped CSV files for post-processing analysis",
                             "Performed quantitative accuracy analysis using Python (pandas, matplotlib) to generate XTE histograms, trajectory overlay plots, and statistical summaries demonstrating sub-inch guidance precision across multiple field trials",
-                            "Tuned cascaded PID steering controller parameters (Kp, Ki, Kd, look-ahead distance, integral windup limits) through iterative field testing, resolving oscillatory steering behavior at headland turns",
+                            "Tuned PID steering parameters through iterative field testing to improve steering stability and accuracy during headland turns.",
                             "Diagnosed and resolved RTK correction dropouts by transitioning from cellular NTRIP to 900 MHz radio link with dedicated base station, achieving 99.5%+ RTK fix availability"
                         ],
                         mechatronics: [
@@ -100,11 +99,7 @@ const resumeData = {
                             "Exported ONNX model for cross-platform inference and integrated configuration for camera stream input"
                         ],
                         all: [
-                            "Developed MMPOSE-based keypoint detection model for piglets, identifying seven anatomical keypoints: snout, head, left ear, right ear, shoulder, back, and tail",
-                            "Curated and annotated dataset with diverse lighting conditions (daylight, barn lighting, IR night vision) and piglet poses for robust keypoint detection",
-                            "Implemented SLURM batch scripts for distributed training on HPCC GPU nodes (NVIDIA A100), managing job queuing, resource allocation, and checkpoint saving",
-                            "Built inference deployment package using ONNX model export for cross-platform compatibility, with configuration files for camera stream URLs and detection thresholds",
-                            "Created data management workflow using Git LFS for version-controlled image datasets with automated annotation validation scripts"
+                            "Owned MMPOSE-based piglet keypoint detection system: dataset curation, model training (HPCC, SLURM), ONNX deployment, and robust posture analysis across lighting/pose/occlusion.",
                         ],
                         "computer-vision": [
                             "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail",
@@ -140,10 +135,8 @@ const resumeData = {
                             "Designing sensor fusion combining RTK positioning, wheel angle feedback, and hydraulic pressure sensing for closed-loop implement control"
                         ],
                         all: [
-                            "Developing autonomous implement control system enabling precision depth and position adjustment for tillage equipment based on RTK-GNSS guidance data and prescription maps",
-                            "Implementing ROS2-based control architecture with modular nodes for sensor input, state estimation, motion planning, and actuator output following agricultural machinery safety standards",
-                            "Designing sensor integration combining RTK positioning, wheel angle feedback, and hydraulic pressure sensing for closed-loop implement control",
-                            "Building operator interface displaying real-time implement status, field coverage mapping, and manual override controls"
+                            "Designed and implemented the full autonomous implement control system for deployment on MSU horticulture laboratory and research site equipment; primary implementer responsible for adapting to varying plant growth stages and solving plant occlusion challenges. Field deployment planned for diverse real-world conditions.",
+                            "Developed precision implement control stack (RTK-GNSS, prescription maps, ROS2) for robust operation across variable soil/crop conditions; built modular architecture and operator interface."
                         ],
                         robotics: [
                             "Developing autonomous implement control system enabling precision depth and position adjustment for tillage equipment based on RTK-GNSS guidance data and prescription maps",
@@ -180,7 +173,7 @@ const resumeData = {
     // Standalone Projects (not part of research role)
     projects: [
         {
-            title: "Road-Rater – SpartaHack 11 (2x Award Winner)",
+            title: "Road-Rater – Best Beginner Hack & Auto-Owners Insurance Vehicle Safety Award, SpartaHack 11",
             location: "",
             date: "January 2026",
             bullets: {
@@ -190,11 +183,11 @@ const resumeData = {
                     "Won Best Beginner Hack and Auto-Owners Insurance Vehicle Safety Award recognizing practical insurance industry applications"
                 ],
                 all: [
-                    "Developed 36-hour hackathon project creating dashcam-based driving safety scoring system using YOLOP neural network for simultaneous lane detection, drivable area segmentation, and object detection",
-                    "Implemented lane departure scoring algorithm calculating lateral position within lane boundaries, deviation frequency, and lane change smoothness metrics from frame-by-frame lane line polynomial fitting",
-                    "Built full-stack web application with React/TypeScript frontend featuring video upload, real-time processing visualization, and interactive safety score dashboard with per-segment breakdown",
-                    "Developed Node.js/Express backend with Python subprocess integration for OpenCV video processing and PyTorch YOLOP inference at 15 FPS on CPU",
-                    "Won Best Beginner Hack (team's first hackathon) and Auto-Owners Insurance Vehicle Safety Award recognizing practical insurance industry applications"
+                    "Led end-to-end development of a dashcam-based driving safety scoring system at SpartaHack 11, owning the design and implementation of the YOLOP neural network pipeline for lane detection, drivable area segmentation, and object detection in real-world video data.",
+                    "Designed and implemented lane departure scoring algorithm, quantifying lateral position, deviation frequency, and lane change smoothness from polynomial lane line fitting; delivered actionable safety metrics for users.",
+                    "Built and deployed a full-stack web application (React/TypeScript frontend, Node.js backend) with real-time video processing, interactive dashboard, and per-segment safety breakdown, supporting robust user experience under hackathon constraints.",
+                    "Engineered backend pipeline integrating Python ML inference (OpenCV, PyTorch YOLOP) at 15 FPS on CPU, optimizing for low-latency and reliability during live demos.",
+                    "Project recognized with Best Beginner Hack and Auto-Owners Insurance Vehicle Safety Award, demonstrating practical impact and technical excellence in a competitive environment."
                 ],
                 "computer-vision": [
                     "Implemented YOLOP (You Only Look Once for Panoptic driving perception) neural network for unified lane detection, drivable area segmentation, and object detection from dashcam video input",
@@ -224,26 +217,25 @@ const resumeData = {
             }
         },
         {
-            title: "Autonomous Agricultural Robot – PARC Competition",
+            title: "ASABE Agricultural Robotics Challenge Robot",
             location: "East Lansing, Michigan",
             date: "2025 - Present",
             bullets: {
                 compact: [
-                    "Contributing to MSU's PARC entry developing autonomous ground robot for crop scouting, weed detection, and targeted intervention",
-                    "Implementing ROS2 Humble navigation stack with Nav2 path planning and Velodyne VLP-16 LiDAR for SLAM-based localization in GPS-denied environments",
+                    "Contributing to MSU's ASABE Agricultural Robotics Challenge entry developing autonomous ground robot for crop scouting, weed detection, and targeted intervention",
+                    "Implementing ROS2 Humble navigation stack with Nav2 path planning for GPS-denied environments",
                     "Developing custom perception pipeline with Intel RealSense stereo camera and DeepLabv3+ for crop row detection and weed classification"
                 ],
                 all: [
-                    "Contributing to MSU's entry in the Purdue Agricultural Robotics Challenge (PARC), developing autonomous ground robot for precision agriculture tasks including crop scouting, weed detection, and targeted intervention",
-                    "Implementing ROS2 Humble-based navigation stack with Nav2 for path planning, integrating Velodyne VLP-16 LiDAR for obstacle detection and SLAM-based localization in GPS-denied crop canopy environments",
-                    "Developing custom perception pipeline combining Intel RealSense D435 stereo camera with semantic segmentation (DeepLabv3+) for crop row detection and weed species classification",
+                    "Contributing to MSU's entry in the ASABE Agricultural Robotics Challenge, developing autonomous ground robot for precision agriculture tasks including crop scouting, weed detection, and targeted intervention",
+                    "Implementing ROS2 Humble-based navigation stack with Nav2 for path planning in GPS-denied crop canopy environments",
+                    "Developing custom perception pipeline using YOLO object detection and ML neural network for crop row detection and weed classification",
                     "Building sensor fusion architecture using robot_localization package to combine wheel odometry, IMU, RTK-GPS, and visual odometry for robust state estimation",
                     "Designing modular software architecture enabling rapid integration of new sensors and task-specific manipulation payloads"
                 ],
                 robotics: [
-                    "Contributing to MSU's entry in the Purdue Agricultural Robotics Challenge (PARC), developing autonomous ground robot for precision agriculture tasks including crop scouting, weed detection, and targeted intervention",
+                    "Contributing to MSU's entry in the ASABE Agricultural Robotics Challenge, developing autonomous ground robot for precision agriculture tasks including crop scouting, weed detection, and targeted intervention",
                     "Implementing ROS2 Humble-based navigation stack with Nav2 for global/local path planning, DWB controller for trajectory following, and behavior trees for high-level task sequencing",
-                    "Integrating Velodyne VLP-16 LiDAR for 3D obstacle detection and pointcloud-based SLAM (KISS-ICP) providing localization in GPS-denied crop canopy environments with 5 cm accuracy",
                     "Building sensor fusion architecture using robot_localization EKF node to combine wheel odometry (100 Hz), IMU (200 Hz), RTK-GPS (10 Hz), and visual odometry for robust 6-DOF state estimation",
                     "Developing recovery behaviors for common agricultural field scenarios including row-end turning, obstacle avoidance with crop damage minimization, and stuck detection with automatic reversal",
                     "Implementing ROS2 lifecycle node management for clean sensor initialization, parameter loading, and graceful shutdown during field operation"
@@ -259,13 +251,13 @@ const resumeData = {
                 software: [
                     "Building ROS2 Humble software architecture following modular design principles with standardized message interfaces between perception, planning, and control nodes",
                     "Implementing CI/CD pipeline using GitHub Actions for automated build testing, static analysis (cppcheck, pylint), and documentation generation on pull requests",
-                    "Developing simulation environment in Gazebo Ignition with custom agricultural terrain meshes, crop row models, and sensor plugins for LiDAR/camera emulation",
+                    "Developing simulation environment in Gazebo Ignition with custom agricultural terrain meshes, crop row models, and sensor plugins for camera emulation",
                     "Creating parameter management system using YAML configuration files with runtime-adjustable parameters exposed via ROS2 dynamic_reconfigure",
                     "Contributing to team codebase using Git workflows including feature branches, code review requirements, and semantic versioning for releases",
                     "Documenting API interfaces and system architecture using Sphinx/Doxygen for maintainability and knowledge transfer"
                 ],
                 mechatronics: [
-                    "Designing sensor mounting solutions for Velodyne LiDAR (vibration-isolated mast mount) and stereo camera (adjustable tilt bracket) ensuring stable data collection on uneven terrain",
+                    "Designing sensor mounting solutions for stereo camera (adjustable tilt bracket) ensuring stable data collection on uneven terrain",
                     "Developing weatherproof electronics enclosure with IP65 rating, thermal management (cooling fans, heat sinks), and cable strain relief for field operation in dusty, humid conditions",
                     "Implementing motor controller integration via CAN-bus with ROS2 bridge node for velocity command translation and encoder feedback publishing at 100 Hz",
                     "Creating power distribution system with separate battery banks for compute (24V) and drive systems (48V), including emergency stop circuitry and voltage monitoring",

@@ -7,27 +7,26 @@ const projectsData = {
         tags: ['Arduino', 'GPS', 'C#', 'Mechatronics'],
         focusAreas: ['robotics', 'mechatronics'],
         resumeBullets: [
-            'Designed and implemented autonomous steering system achieving ±2cm accuracy using RTK-GPS',
-            'Integrated IMU and wheel angle sensors with Arduino for real-time navigation control',
-            'Developed C# interface for path planning and field operation management'
+            'Autonomous steering system: ±2cm accuracy (RTK-GPS, IMU, wheel angle sensors, Arduino, PID control)',
+            'Robotics integration: real-time navigation, closed-loop control',
+            'C# interface for path planning and field operations'
         ],
         skills: {
-            mechanical: [
-                { name: 'CAD Design (SolidWorks)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
-                { name: 'Hydraulic Systems', icon: null },
-                { name: 'Sensor Integration', icon: null },
-                { name: '3D Printing & Prototyping', icon: null }
-            ],
             hardware: [
-                { name: 'Arduino', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/arduino/arduino-original.svg' },
-                { name: 'GPS Systems', icon: null },
-                { name: 'Circuit Design & PCB Layout', icon: null },
-                { name: 'Sensor Integration', icon: null }
+                { name: 'RTK-GPS', icon: null },
+                { name: 'IMU', icon: null },
+                { name: 'Wheel Angle Sensor', icon: null },
+                { name: 'Hydraulic Valve', icon: null }
             ],
             software: [
                 { name: 'C#', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg' },
                 { name: 'Arduino', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/arduino/arduino-original.svg' },
-                { name: 'AgOpenGPS', icon: null }
+                { name: 'AgOpenGPS', icon: null },
+                { name: 'pandas', icon: null },
+                { name: 'matplotlib', icon: null },
+                { name: 'NumPy', icon: null },
+                { name: 'Robotics', icon: null },
+                { name: 'Controls', icon: null }
             ]
         }
     },
@@ -39,64 +38,70 @@ const projectsData = {
         tags: ['Computer Vision', 'Python', 'YOLOv11', 'Deep Learning'],
         focusAreas: ['computer-vision', 'software'],
         resumeBullets: [
-            'Trained YOLOv11 model to detect and classify pig postures for automated health monitoring',
-            'Built data pipeline for processing video feeds and generating behavioral analytics',
-            'Achieved real-time inference for continuous monitoring in farming operations'
+            'YOLOv11 model for pig posture detection and classification',
+            'Robotics integration: camera stream, real-time controls',
+            'Data pipeline for video processing and behavioral analytics',
+            'Real-time inference for continuous monitoring'
         ],
         skills: {
-            mechanical: [
-                { name: 'Camera Mounting Systems', icon: null },
-                { name: 'Environmental Enclosures', icon: null }
-            ],
             hardware: [
-                { name: 'Camera Systems', icon: null },
-                { name: 'Edge Computing Devices', icon: null },
-                { name: 'IoT Development', icon: null }
+                { name: 'Robotics', icon: null },
+                { name: 'Controls', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'YOLOv11', icon: 'https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg' },
                 { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' },
-                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' }
+                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
+                { name: 'Weights & Biases', icon: null },
+                { name: 'SLURM', icon: null },
+                { name: 'MQTT', icon: null },
+                { name: 'Git LFS', icon: null },
+                { name: 'NumPy', icon: null },
+                { name: 'matplotlib', icon: null },
+                { name: 'pandas', icon: null },
+                { name: 'Robotics', icon: null },
+                { name: 'Controls', icon: null }
             ]
         }
     },
     'agri-robotics-club': {
-        title: "Autonomous Agricultural Robot '26",
+        title: "ASABE Agricultural Robotics Challenge Robot '26",
         subtitle: 'Ground robot for precision farming and crop monitoring',
-        description: 'Development of an autonomous ground robot designed for precision agriculture tasks including crop monitoring, weed detection, and targeted intervention in agricultural fields.',
+        description: 'Development of an autonomous ground robot designed for precision agriculture tasks including crop monitoring, weed detection, and targeted intervention in agricultural fields for the ASABE Agricultural Robotics Challenge.',
         image: 'Images/PARC.jpg',
         tags: ['Robotics', 'ROS', 'Autonomous Navigation', 'Computer Vision'],
         focusAreas: ['robotics', 'computer-vision', 'software'],
         resumeBullets: [
-            'Contributing to autonomous ground robot development for PARC competition',
-            'Implementing ROS-based navigation and sensor integration systems',
-            'Developing computer vision algorithms for crop monitoring and weed detection'
+            'Autonomous ground robot for ASABE Robotics Challenge',
+            'Robotics integration: ROS navigation, sensor fusion, hardware controls',
+            'Computer vision for crop monitoring and weed detection'
         ],
+        // location property removed
         skills: {
-            mechanical: [
-                { name: 'CAD Design (SolidWorks, Fusion 360)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
-                { name: 'Mechanical System Design', icon: null },
-                { name: '3D Printing & Prototyping', icon: null },
-                { name: 'Manufacturing Processes', icon: null }
-            ],
             hardware: [
-                { name: 'GPS Systems', icon: null },
-                { name: 'LiDAR & Camera Systems', icon: null },
                 { name: 'Motor Controllers', icon: null },
-                { name: 'Sensor Integration', icon: null }
+                { name: 'Sensors', icon: null },
+                { name: 'Robotics', icon: null },
+                { name: 'Controls', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'C++', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg' },
                 { name: 'ROS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
                 { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
-                { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' }
+                { name: 'MMPose', icon: null },
+                { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' },
+                { name: 'NumPy', icon: null },
+                { name: 'matplotlib', icon: null },
+                { name: 'pandas', icon: null },
+                { name: 'Robotics', icon: null },
+                { name: 'Controls', icon: null }
             ]
         }
     },
     'street-lateral-position': {
-        title: 'Street Lateral Position Visual System',
+        title: 'Street Lateral Position Visual System (Best Beginner Hack & Auto-Owners Insurance Vehicle Safety Award, SpartaHack 11)',
         subtitle: 'Computer vision system for real-time street lane detection and vehicle positioning',
         description: 'Coming soon: A computer vision project utilizing advanced image processing and machine learning algorithms to detect street lanes, analyze vehicle lateral position, and provide visual feedback for autonomous driving applications. This system will integrate with existing navigation systems to enhance road safety and autonomous vehicle capabilities.',
         image: 'Images/coming-soon.jpg',
@@ -105,20 +110,13 @@ const projectsData = {
         comingSoon: true,
         resumeBullets: [],
         skills: {
-            mechanical: [
-                { name: 'Camera Calibration Systems', icon: null },
-                { name: 'Vehicle Integration', icon: null }
-            ],
-            hardware: [
-                { name: 'Camera Systems', icon: null },
-                { name: 'Edge Computing Devices', icon: null },
-                { name: 'Sensor Fusion', icon: null }
-            ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
                 { name: 'TensorFlow', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg' },
-                { name: 'NumPy', icon: null }
+                { name: 'NumPy', icon: null },
+                { name: 'matplotlib', icon: null },
+                { name: 'pandas', icon: null }
             ]
         }
     },
@@ -132,23 +130,17 @@ const projectsData = {
         comingSoon: true,
         resumeBullets: [],
         skills: {
-            mechanical: [
-                { name: 'CAD Design (SolidWorks)', icon: 'https://upload.wikimedia.org/wikipedia/en/d/d2/SolidWorks_Logo.svg' },
-                { name: 'Robotic Arm Design', icon: null },
-                { name: '3D Printing & Prototyping', icon: null },
-                { name: 'Agricultural Tool Integration', icon: null }
-            ],
-            hardware: [
-                { name: 'GPS Systems', icon: null },
-                { name: 'Servo Motors & Actuators', icon: null },
-                { name: 'Sensor Integration', icon: null },
-                { name: 'Power Management Systems', icon: null }
-            ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'ROS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
                 { name: 'Computer Vision', icon: null },
-                { name: 'Machine Learning', icon: null }
+                { name: 'Machine Learning', icon: null },
+                { name: 'Qt', icon: null },
+                { name: 'PySide', icon: null },
+                { name: 'plotjuggler', icon: null },
+                { name: 'NumPy', icon: null },
+                { name: 'matplotlib', icon: null },
+                { name: 'pandas', icon: null }
             ]
         }
     }

@@ -53,8 +53,8 @@
             <div class="container">
                 <div class="project-overview">
                     <h2>Project Overview</h2>
-                    <p>The Piglet Keypoint Detection System utilizes MMPOSE, a state-of-the-art pose estimation framework, to detect anatomical keypoints on piglets in images and video. The model identifies seven keypoints: snout, head, left ear, right ear, shoulder, back, and tail. This technical solution enables robust keypoint localization across diverse lighting conditions and piglet poses.</p>
-                    <p>Custom datasets were curated and annotated to ensure accurate keypoint detection. The system is designed for high performance and cross-platform compatibility, with ONNX model export and configurable camera stream input.</p>
+                    <p>The Piglet Keypoint Detection System was developed to automatically detect and analyze piglet movement and behavior using computer vision and machine learning. Leveraging the MMPose framework, the project focused on anatomical keypoint detection in piglets to enable behavioral analysis and posture tracking in group settings.</p>
+                    <p>I contributed to the annotation of over 1,100 images, built a high-performance computing cluster (HPCC) environment for model training, and developed custom software to validate and analyze model accuracy. The system is designed for robust performance across diverse lighting and piglet poses, with cross-platform compatibility and ONNX model export.</p>
                 </div>
 
                 <div class="project-gallery">
@@ -84,20 +84,20 @@
                         <div class="tech-item">
                             <h3>Model Architecture</h3>
                             <ul>
-                                <li>MMPOSE pose estimation framework</li>
-                                <li>Custom-trained on piglet keypoint dataset</li>
+                                <li>MMPose pose estimation framework</li>
+                                <li>Custom-trained on a dataset of 1,100 annotated piglet images</li>
                                 <li>Seven anatomical keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
                                 <li>ONNX export for cross-platform inference</li>
+                                <li>Optical flow analysis to anchor skeleton keypoints and maintain accuracy during occlusion</li>
                             </ul>
                         </div>
                         <div class="tech-item">
                             <h3>Training & Data</h3>
                             <ul>
-                                <li>Custom-annotated piglet keypoint dataset</li>
-                                <li>Data augmentation techniques for robustness</li>
-                                <li>PyTorch training pipeline</li>
-                                <li>Hyperparameter optimization</li>
-                                <li>Cross-validation for generalization</li>
+                                <li>Manual annotation of piglet images for keypoint detection</li>
+                                <li>Model training and validation on HPCC environment</li>
+                                <li>Data augmentation for robustness to lighting and pose diversity</li>
+                                <li>Custom software for accuracy analysis and validation</li>
                             </ul>
                             <div class="tech-stack-logos" id="piglet-tech-logos">
                                 <!-- Icons will be loaded dynamically -->
@@ -110,13 +110,13 @@
                     <h2>Challenges & Solutions</h2>
                     <div class="challenge-item">
                         <h3>Occlusion & Keypoint Visibility</h3>
-                        <p><strong>Challenge:</strong> Piglets in group settings often overlap, causing partial occlusions and making some keypoints difficult to annotate or detect.</p>
-                        <p><strong>Solution:</strong> Applied targeted data augmentation strategies to simulate occlusion scenarios and improve model robustness. Used MMPOSE's advanced feature extraction to enhance keypoint localization even under partial visibility.</p>
+                        <p><strong>Challenge:</strong> Piglets frequently overlap in group settings, causing occlusion and making keypoints difficult to detect and track.</p>
+                        <p><strong>Solution:</strong> We implemented optical flow analysis to anchor skeleton keypoints, maintaining accuracy even when some keypoints are temporarily occluded. This approach, combined with targeted data augmentation, improved robustness in real-world scenarios.</p>
                     </div>
                     <div class="challenge-item">
                         <h3>Lighting & Pose Diversity</h3>
-                        <p><strong>Challenge:</strong> Diverse lighting conditions and piglet poses introduce variability in image appearance and keypoint locations.</p>
-                        <p><strong>Solution:</strong> Curated dataset with images from multiple lighting environments and piglet poses. Used augmentation (rotation, brightness, flip) to improve generalization.</p>
+                        <p><strong>Challenge:</strong> Diverse lighting and piglet poses introduced significant variability in image appearance and keypoint locations.</p>
+                        <p><strong>Solution:</strong> We curated a dataset with images from multiple lighting environments and piglet poses, and used augmentation (rotation, brightness, flip) to improve model generalization.</p>
                     </div>
                 </div>
 
