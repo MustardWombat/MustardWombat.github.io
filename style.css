@@ -1,3 +1,105 @@
+/* Row for award photos, side by side if space allows */
+.award-photo-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 0.2em;
+}
+.award-photo-row .award-photo {
+    flex: 1 1 0;
+    max-width: 210px;
+}
+@media (max-width: 600px) {
+    .award-photo-row {
+        flex-direction: column;
+        gap: 0.4rem;
+        align-items: center;
+    }
+    .award-photo-row .award-photo {
+        max-width: 95vw;
+    }
+}
+/* Improved hamburger style for award media (photo + video) */
+
+/* Always hamburger (column) style for award media */
+.award-media-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.award-media-flex .award-photo,
+.award-media-flex .award-video {
+    width: 100%;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 0.2rem 0 0.1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.award-media-flex .award-photo {
+    text-align: center;
+}
+.award-media-flex .award-photo img {
+    width: 100%;
+    max-width: 400px;
+    height: 240px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+.award-media-flex .award-video {
+    text-align: center;
+}
+.award-media-flex .award-video iframe {
+    width: 100%;
+    max-width: 400px;
+    height: 240px;
+    border-radius: 8px;
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+    display: block;
+}
+/* Responsive hamburger style for award media (photo + video) */
+.award-media-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 1em;
+}
+.award-media-flex .award-photo,
+.award-media-flex .award-video {
+    flex: 1 1 320px;
+    min-width: 220px;
+    max-width: 400px;
+}
+@media (max-width: 800px) {
+    .award-media-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .award-media-flex .award-photo,
+    .award-media-flex .award-video {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
 #about {
     position: relative;
     background: none;
