@@ -127,16 +127,17 @@ const resumeData = {
                     }
                 },
                 {
-                    title: "Autonomous Farming Tool Development",
+                    title: "Auto-Steering Cultivator Development",
                     bullets: {
                         compact: [
-                            "Developing autonomous implement control system for precision depth and position adjustment based on RTK-GNSS guidance and prescription maps",
-                            "Implementing ROS2-based control architecture with modular nodes for sensor input, state estimation, and actuator output",
-                            "Designing sensor fusion combining RTK positioning, wheel angle feedback, and hydraulic pressure sensing for closed-loop implement control"
+                            "Integrated a full-stack autonomous steering system for an agricultural cultivator using Jetson Nano, stereo camera vision, Python, ROS2 nodes, and a servo motor for actuation.",
+                            "Developed a vision-based lane guidance pipeline: stereo camera and Jetson Nano for real-time image processing, ROS2 nodes for control logic, and servo motor for precise steering.",
+                            "Implemented system-level integration of perception (vision-based XTE calculation), control (PID loop), and actuation (PWM to servo) for robust center line following.",
+                            "Coordinated hardware and software interfaces across power, compute, sensing, and mechanical subsystems to deliver a cohesive autonomous platform."
                         ],
                         all: [
-                            "Designed and implemented the full autonomous implement control system for deployment on MSU horticulture laboratory and research site equipment; primary implementer responsible for adapting to varying plant growth stages and solving plant occlusion challenges. Field deployment planned for diverse real-world conditions.",
-                            "Developed precision implement control stack (RTK-GNSS, prescription maps, ROS2) for robust operation across variable soil/crop conditions; built modular architecture and operator interface."
+                            "Designed and implemented a fully integrated, vision-based autonomous steering system for an agricultural cultivator; responsible for system architecture, perception-to-actuation pipeline, and deployment at MSU horticulture research site.",
+                            "Developed modular ROS2-based control stack for robust operation across variable field conditions, leveraging stereo camera vision and real-time image processing for lane guidance."
                         ],
                         robotics: [
                             "Developing autonomous implement control system enabling precision depth and position adjustment for tillage equipment based on RTK-GNSS guidance data and prescription maps",

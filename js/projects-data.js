@@ -121,14 +121,19 @@ const projectsData = {
         }
     },
     'autonomous-farming-tool': {
-        title: 'Autonomous Farming Tool',
-        subtitle: 'Multi-purpose autonomous robotic tool for precision agriculture operations',
-        description: 'Coming soon: A versatile autonomous tool designed for various farming tasks including soil sampling, precision planting, targeted pesticide application, and crop monitoring. This robotic system will combine GPS navigation, computer vision, and AI-driven decision making to optimize agricultural productivity while minimizing environmental impact.',
+        title: 'Auto-Steering Cultivator',
+        subtitle: 'Feedback-loop driven autonomous cultivator for precision agriculture',
+        description: 'A feedback-loop driven autonomous cultivator system for precision agriculture, including soil sampling, planting, and targeted crop treatment. Closed-loop control enables robust center line following and real-time correction. Frame extraction, dataset improvement, and PID servo control are integrated for optimal performance.',
         image: 'Images/tooling.jpg',
-        tags: ['Robotics', 'Autonomous Systems', 'Precision Agriculture', 'AI'],
+        tags: ['Robotics', 'Cultivator', 'Precision Agriculture', 'AI', 'Feedback Loop'],
         focusAreas: ['robotics', 'mechatronics'],
         comingSoon: true,
-        resumeBullets: [],
+        resumeBullets: [
+            "Integrated a full-stack autonomous steering system for an agricultural cultivator using Jetson Nano, stereo camera vision, Python, ROS2 nodes, and a servo motor for actuation.",
+            "Developed a vision-based lane guidance pipeline: stereo camera and Jetson Nano for real-time image processing, ROS2 nodes for control logic, and servo motor for precise steering.",
+            "Implemented system-level integration of perception (vision-based XTE calculation), control (PID loop), and actuation (PWM to servo) for robust center line following.",
+            "Coordinated hardware and software interfaces across power, compute, sensing, and mechanical subsystems to deliver a cohesive autonomous platform."
+        ],
         skills: {
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
