@@ -31,17 +31,21 @@ const projectsData = {
         }
     },
     'piglet-vision': {
-        title: 'Pig Posture Detection System',
-        subtitle: 'YOLOv11-based model for automated pig behavior analysis',
-        description: 'A computer vision system using YOLOv11 to detect and classify pig postures, enabling automated monitoring of pig behavior and health status in farming operations.',
+        title: 'Piglet Keypoint Detection System',
+        subtitle: 'MMPose-based model for anatomical keypoint detection in piglets',
+        description: 'A computer vision system using MMPose (OpenMMLab) to detect and analyze anatomical keypoints in piglets, enabling behavioral analysis and posture tracking. Includes a full training pipeline on HPCC using PyTorch, SLURM, and conda environments.',
         image: 'Images/Pigs.gif',
-        tags: ['Computer Vision', 'Python', 'YOLOv11', 'Deep Learning'],
+        tags: ['Computer Vision', 'Python', 'MMPose', 'PyTorch', 'OpenMMLab', 'Deep Learning', 'Conda', 'SLURM'],
         focusAreas: ['computer-vision', 'software'],
+        keywords: ['keypoint detection', 'pose estimation', 'Roboflow', 'COCO format', 'HPCC', 'GPU shell', 'ONNX export', 'data augmentation', 'optical flow', 'custom dataset', 'training pipeline', 'model validation', 'SLURM', 'conda environment', 'OpenMMLab', 'PyTorch', 'MMPose'],
         resumeBullets: [
-            'YOLOv11 model for pig posture detection and classification',
-            'Robotics integration: camera stream, real-time controls',
-            'Data pipeline for video processing and behavioral analytics',
-            'Real-time inference for continuous monitoring'
+            'MMPose-based model for anatomical keypoint detection in piglets (OpenMMLab, PyTorch)',
+            'Custom dataset annotation: 1,100+ piglet images, Roboflow COCO format integration',
+            'Automated training pipeline on HPCC using SLURM and conda environments',
+            'ONNX export for cross-platform inference',
+            'Optical flow analysis for robust keypoint tracking during occlusion',
+            'Data augmentation for lighting and pose diversity',
+            'Custom software for model validation and accuracy analysis'
         ],
         skills: {
             hardware: [
@@ -50,18 +54,15 @@ const projectsData = {
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
-                { name: 'YOLOv11', icon: 'https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg' },
+                { name: 'MMPose', icon: null },
                 { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' },
+                { name: 'OpenMMLab', icon: null },
                 { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
-                { name: 'Weights & Biases', icon: null },
                 { name: 'SLURM', icon: null },
-                { name: 'MQTT', icon: null },
-                { name: 'Git LFS', icon: null },
+                { name: 'Conda', icon: null },
                 { name: 'NumPy', icon: null },
                 { name: 'matplotlib', icon: null },
-                { name: 'pandas', icon: null },
-                { name: 'Robotics', icon: null },
-                { name: 'Controls', icon: null }
+                { name: 'pandas', icon: null }
             ]
         }
     },

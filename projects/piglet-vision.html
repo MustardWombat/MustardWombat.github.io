@@ -43,8 +43,12 @@
                 <div class="project-tags">
                     <span class="tag">Computer Vision</span>
                     <span class="tag">Python</span>
-                    <span class="tag">MMPOSE</span>
+                    <span class="tag">MMPose</span>
                     <span class="tag">Deep Learning</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">OpenMMLab</span>
+                    <span class="tag">Conda</span>
+                    <span class="tag">SLURM</span>
                 </div>
             </div>
         </section>
@@ -53,8 +57,14 @@
             <div class="container">
                 <div class="project-overview">
                     <h2>Project Overview</h2>
-                    <p>The Piglet Keypoint Detection System was developed to automatically detect and analyze piglet movement and behavior using computer vision and machine learning. Leveraging the MMPose framework, the project focused on anatomical keypoint detection in piglets to enable behavioral analysis and posture tracking in group settings.</p>
-                    <p>I contributed to the annotation of over 1,100 images, built a high-performance computing cluster (HPCC) environment for model training, and developed custom software to validate and analyze model accuracy. The system is designed for robust performance across diverse lighting and piglet poses, with cross-platform compatibility and ONNX model export.</p>
+                    <p>The Piglet Keypoint Detection System leverages the <strong>MMPose</strong> framework for anatomical keypoint detection in piglets, enabling behavioral analysis and posture tracking. The project includes a full training pipeline on a high-performance computing cluster (HPCC) using <strong>PyTorch</strong> and <strong>OpenMMLab</strong> tools.</p>
+                    <ul>
+                        <li>Annotated over 1,100 piglet images for custom dataset</li>
+                        <li>Automated data download from Roboflow (COCO format) using API key</li>
+                        <li>GPU shell setup and conda environment management for reproducible training</li>
+                        <li>Training and validation scripts for pose estimation</li>
+                        <li>ONNX export for cross-platform inference</li>
+                    </ul>
                 </div>
 
                 <div class="project-gallery">
@@ -68,10 +78,11 @@
                 <div class="project-details">
                     <h2>Key Features</h2>
                     <ul class="features-list">
-                        <li>MMPOSE-based anatomical keypoint detection</li>
+                        <li>MMPose-based anatomical keypoint detection</li>
                         <li>Seven keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
-                        <li>Robust performance across diverse lighting and piglet poses</li>
-                        <li>Custom-annotated dataset for piglet morphology</li>
+                        <li>Custom dataset annotation and Roboflow integration</li>
+                        <li>Training pipeline using PyTorch and OpenMMLab</li>
+                        <li>SLURM-based GPU shell for scalable training</li>
                         <li>ONNX model export for cross-platform inference</li>
                         <li>Configurable camera stream input</li>
                         <li>Data management workflow with version-controlled image datasets</li>
@@ -84,7 +95,7 @@
                         <div class="tech-item">
                             <h3>Model Architecture</h3>
                             <ul>
-                                <li>MMPose pose estimation framework</li>
+                                <li>MMPose pose estimation framework (OpenMMLab)</li>
                                 <li>Custom-trained on a dataset of 1,100 annotated piglet images</li>
                                 <li>Seven anatomical keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
                                 <li>ONNX export for cross-platform inference</li>
@@ -95,7 +106,10 @@
                             <h3>Training & Data</h3>
                             <ul>
                                 <li>Manual annotation of piglet images for keypoint detection</li>
-                                <li>Model training and validation on HPCC environment</li>
+                                <li>Automated dataset download from Roboflow (COCO format)</li>
+                                <li>GPU shell setup and conda environment management</li>
+                                <li>Model training and validation on HPCC using SLURM</li>
+                                <li>Training command: <code>python tools/train.py configs/bottomup_pig_pose_7kpts.py</code></li>
                                 <li>Data augmentation for robustness to lighting and pose diversity</li>
                                 <li>Custom software for accuracy analysis and validation</li>
                             </ul>
@@ -127,6 +141,8 @@
                 <div class="project-links">
                     <h2>Project Resources</h2>
                     <div class="resource-links">
+                        <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline" target="_blank" class="resource-link">GitHub Repository</a>
+                        <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline?tab=readme-ov-file#training-your-model" target="_blank" class="resource-link">Training Instructions</a>
                         <a href="#" class="resource-link">Model Documentation</a>
                         <a href="#" class="resource-link">Dataset Information</a>
                     </div>
