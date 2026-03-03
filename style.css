@@ -730,8 +730,8 @@ h2 {
 
 /* Experience Section */
 .experience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-top: 3rem;
     max-width: 800px;
