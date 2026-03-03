@@ -37,12 +37,11 @@ const projectsData = {
         image: 'Images/Pigs.gif',
         tags: ['Computer Vision', 'Python', 'MMPose', 'PyTorch', 'OpenMMLab', 'Deep Learning', 'Conda', 'SLURM'],
         focusAreas: ['computer-vision', 'software'],
-        keywords: ['keypoint detection', 'pose estimation', 'Roboflow', 'COCO format', 'HPCC', 'GPU shell', 'ONNX export', 'data augmentation', 'optical flow', 'custom dataset', 'training pipeline', 'model validation', 'SLURM', 'conda environment', 'OpenMMLab', 'PyTorch', 'MMPose'],
+        keywords: ['keypoint detection', 'pose estimation', 'Roboflow', 'COCO format', 'HPCC', 'GPU shell', 'data augmentation', 'optical flow', 'custom dataset', 'training pipeline', 'model validation', 'SLURM', 'conda environment', 'OpenMMLab', 'PyTorch', 'MMPose'],
         resumeBullets: [
             'MMPose-based model for anatomical keypoint detection in piglets (OpenMMLab, PyTorch)',
             'Custom dataset annotation: 1,100+ piglet images, Roboflow COCO format integration',
             'Automated training pipeline on HPCC using SLURM and conda environments',
-            'ONNX export for cross-platform inference',
             'Optical flow analysis for robust keypoint tracking during occlusion',
             'Data augmentation for lighting and pose diversity',
             'Custom software for model validation and accuracy analysis'

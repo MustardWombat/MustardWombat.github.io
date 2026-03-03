@@ -34,7 +34,7 @@ const resumeData = {
         programming: "Python, C++, C#, Java, JavaScript",
         robotics_perception: "ROS2, sensor fusion, RTK-GPS, IMU, OpenCV, MMPose, YOLO, TensorFlow, PyTorch",
         hardware: "CAN, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve",
-        data_ml: "pandas, NumPy, matplotlib, ONNX",
+        data_ml: "pandas, NumPy, matplotlib",
         tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js"
     },
 
@@ -99,19 +99,19 @@ const resumeData = {
                             "Built a reproducible pipeline to download all necessary dependencies and configure a full system for HPCC (High Performance Computing Cluster) training and inference runs",
                         ],
                         all: [
-                            "Owned MMPOSE-based piglet keypoint detection system: dataset curation, model training (HPCC, SLURM), ONNX deployment, and robust posture analysis across lighting/pose/occlusion.",
+                            "Owned MMPOSE-based piglet keypoint detection system: dataset curation, model training (HPCC, SLURM), and robust posture analysis across lighting/pose/occlusion.",
                         ],
                         "computer-vision": [
                             "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail",
                             "Curated and annotated dataset with diverse lighting conditions and piglet poses for robust keypoint detection",
                             "Implemented data augmentation pipeline including random rotation, brightness jitter, horizontal flip, and mosaic augmentation to improve model robustness",
-                            "Exported ONNX model for cross-platform inference and integrated configuration for camera stream input"
+                            "Integrated configuration for camera stream input"
                         ],
                         software: [
                             "Developed Python training pipeline with automated data augmentation, train/val/test splitting, and experiment tracking using Weights & Biases for hyperparameter comparison",
                             "Implemented SLURM batch scripts for distributed training on HPCC GPU nodes (NVIDIA A100), managing job queuing, resource allocation, and checkpoint saving",
-                            "Built inference deployment package using ONNX model export for cross-platform compatibility, with configuration files for camera stream URLs and detection thresholds",
-                            "Created data management workflow using Git LFS for version-controlled image datasets with automated annotation validation scripts",
+                            "Built inference deployment package with configuration files for camera stream URLs and detection thresholds",
+                            "Created automated annotation validation scripts",
                             "Developed alert notification system using MQTT messaging protocol for real-time posture event streaming to farm management dashboard"
                         ],
                         robotics: [
