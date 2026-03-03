@@ -116,8 +116,6 @@
     background: url('Images/piglet_transparent.png') no-repeat right bottom;
     background-size: contain;
     opacity: 1;
-    pointer-events: none;
-    z-index: -3;
     margin: 0;
     padding: 0;
 }
