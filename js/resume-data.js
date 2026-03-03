@@ -97,7 +97,6 @@ const resumeData = {
                             "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail from annotated images",
                             "Curated and annotated dataset with diverse lighting conditions and piglet poses for robust keypoint detection",
                             "Built a reproducible pipeline to download all necessary dependencies and configure a full system for HPCC (High Performance Computing Cluster) training and inference runs",
-                            "Exported ONNX model for cross-platform inference and integrated configuration for camera stream input"
                         ],
                         all: [
                             "Owned MMPOSE-based piglet keypoint detection system: dataset curation, model training (HPCC, SLURM), ONNX deployment, and robust posture analysis across lighting/pose/occlusion.",
