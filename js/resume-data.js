@@ -31,11 +31,11 @@ const resumeData = {
 
     // Skills - categorized for resume format
     skills: {
-        programming: "Python, C++, C#, Java, JavaScript",
-        robotics_perception: "ROS2, sensor fusion, RTK-GPS, IMU, OpenCV, MMPose, YOLO, TensorFlow, PyTorch",
-        hardware: "CAN, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve",
-        data_ml: "pandas, NumPy, matplotlib",
-        tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js"
+        programming: "Python (PyTorch, OpenMMLab, MMPose), C++, C#, Java, JavaScript",
+        robotics_perception: "Computer vision (MMPose, OpenCV), sensor fusion, RTK-GPS, IMU, pose estimation, deep learning, PyTorch",
+        hardware: "NVIDIA Jetson, PoE, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve",
+        data_ml: "pandas, NumPy, matplotlib, data augmentation, experiment tracking (Weights & Biases)",
+        tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js, Roboflow"
     },
 
     // Experience with research projects nested under the role
@@ -91,38 +91,35 @@ const resumeData = {
                     }
                 },
                 {
-                    title: "Piglet Mortality Reduction Keypoint Model",
+                    title: "Piglet Keypoint Detection System (MMPose, PyTorch, HPCC)",
                     bullets: {
                         compact: [
-                            "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail from annotated images",
-                            "Curated and annotated dataset with diverse lighting conditions and piglet poses for robust keypoint detection",
-                            "Built a reproducible pipeline to download all necessary dependencies and configure a full system for HPCC (High Performance Computing Cluster) training and inference runs",
+                            "Developed and deployed MMPose-based keypoint detection for piglets (snout, head, ears, shoulder, back, tail) using custom-annotated dataset and PyTorch training pipeline on HPCC GPU cluster",
+                            "Engineered robust data augmentation and validation pipeline for high-accuracy posture analysis across diverse lighting and occlusion scenarios",
+                            "Automated reproducible environment setup and SLURM job management for scalable model training and experiment tracking",
                         ],
                         all: [
-                            "Owned MMPOSE-based piglet keypoint detection system: dataset curation, model training (HPCC, SLURM), and robust posture analysis across lighting/pose/occlusion.",
+                            "Led development of piglet keypoint detection system: dataset curation, annotation, PyTorch/MMPose training, HPCC/SLURM automation, and posture analysis for farm monitoring and research.",
                         ],
                         "computer-vision": [
-                            "Developed MMPOSE-based keypoint detection model for piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail",
-                            "Curated and annotated dataset with diverse lighting conditions and piglet poses for robust keypoint detection",
-                            "Implemented data augmentation pipeline including random rotation, brightness jitter, horizontal flip, and mosaic augmentation to improve model robustness",
-                            "Integrated configuration for camera stream input"
+                            "Built MMPose-based anatomical keypoint detection model for piglets, leveraging OpenMMLab and PyTorch for pose estimation and behavioral analysis",
+                            "Curated and annotated dataset with diverse lighting and piglet poses for robust model generalization",
+                            "Implemented advanced data augmentation (rotation, brightness, flip, mosaic) and automated validation scripts",
+                            "Integrated real-time camera stream configuration for farm deployment"
                         ],
                         software: [
-                            "Developed Python training pipeline with automated data augmentation, train/val/test splitting, and experiment tracking using Weights & Biases for hyperparameter comparison",
-                            "Implemented SLURM batch scripts for distributed training on HPCC GPU nodes (NVIDIA A100), managing job queuing, resource allocation, and checkpoint saving",
-                            "Built inference deployment package with configuration files for camera stream URLs and detection thresholds",
-                            "Created automated annotation validation scripts",
-                            "Developed alert notification system using MQTT messaging protocol for real-time posture event streaming to farm management dashboard"
+                            "Developed Python training pipeline with automated data augmentation, train/val/test splitting, and experiment tracking (Weights & Biases)",
+                            "Automated SLURM batch scripts for distributed training on HPCC GPU nodes (NVIDIA A100), including job queuing, resource allocation, and checkpoint management",
+                            "Built deployment package with configuration files for camera stream URLs and detection thresholds",
+                            "Created annotation validation and alert notification system using MQTT for real-time posture event streaming to farm dashboard"
                         ],
                         robotics: [
                             "Integrated computer vision inference pipeline with farm monitoring infrastructure for autonomous real-time behavioral alerts",
-                            "Deployed edge computing solution on NVIDIA Jetson for low-latency inference without cloud connectivity requirements",
-                            "Implemented sensor fusion approach combining visual posture detection with environmental sensors (temperature, humidity) for comprehensive monitoring"
+                            "Deployed edge computing solution on NVIDIA Jetson for low-latency inference and farm integration",
+                            "Implemented sensor fusion combining visual posture detection with environmental sensors (temperature, humidity) for comprehensive monitoring"
                         ],
                         mechatronics: [
-                            "Designed camera mounting solutions for farrowing crate installation with adjustable angle brackets and weatherproof enclosures rated for high-humidity barn environments",
-                            "Integrated edge computing hardware (NVIDIA Jetson) with Power over Ethernet (PoE) infrastructure for simplified single-cable deployment",
-                            "Developed thermal management solution for Jetson enclosure maintaining safe operating temperatures in 90°F+ barn conditions"
+                            "Designed camera mounting and edge hardware solutions for barn deployment, including PoE and thermal management for high-humidity environments"
                         ]
                     }
                 },
