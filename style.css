@@ -249,6 +249,7 @@ nav {
 
 .nav-links a:hover {
     color: var(--secondary-color);
+    cursor: pointer;
 }
 
 .nav-links a[href="Images/resume.pdf"] {
