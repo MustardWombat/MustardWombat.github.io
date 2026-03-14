@@ -118,6 +118,7 @@
     opacity: 1;
     margin: 0;
     padding: 0;
+    z-index: -1;
 }
 /* Education Section Spartan Logo Background */
 .education-bg {

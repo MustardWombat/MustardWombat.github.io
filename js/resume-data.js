@@ -94,24 +94,25 @@ const resumeData = {
                     title: "Piglet Keypoint Detection System (MMPose, PyTorch, HPCC)",
                     bullets: {
                         compact: [
-                            "Developed and deployed MMPose-based keypoint detection for piglets (snout, head, ears, shoulder, back, tail) using custom-annotated dataset and PyTorch training pipeline on HPCC GPU cluster",
-                            "Engineered robust data augmentation and validation pipeline for high-accuracy posture analysis across diverse lighting and occlusion scenarios",
-                            "Automated reproducible environment setup and SLURM job management for scalable model training and experiment tracking",
+                            "Developed HPC-based ML pipeline using PyTorch and OpenMMLab MMPose to train 7-keypoint piglet pose estimation model on MSU HPCC GPU cluster",
+                            "Built scripts to automate dataset transfer from Roboflow API, convert to COCO format, and organize for model training with 1,100+ annotated images",
+                            "Implemented SLURM-based GPU training workflows with Conda environment management for reproducible MMPose/OpenMMLab deployments",
                         ],
                         all: [
-                            "Led development of piglet keypoint detection system: dataset curation, annotation, PyTorch/MMPose training, HPCC/SLURM automation, and posture analysis for farm monitoring and research.",
+                            "Led development of piglet keypoint detection system: Roboflow API integration, COCO format conversion, PyTorch/MMPose training, HPCC/SLURM automation, and visualization tools for livestock behavior analysis.",
                         ],
                         "computer-vision": [
-                            "Built MMPose-based anatomical keypoint detection model for piglets, leveraging OpenMMLab and PyTorch for pose estimation and behavioral analysis",
-                            "Curated and annotated dataset with diverse lighting and piglet poses for robust model generalization",
-                            "Implemented advanced data augmentation (rotation, brightness, flip, mosaic) and automated validation scripts",
-                            "Integrated real-time camera stream configuration for farm deployment"
+                            "Built MMPose-based anatomical keypoint detection model for piglets (snout, head, ears, shoulder, back, tail) using OpenMMLab framework with PyTorch backend",
+                            "Created visualization tools for pose predictions with confidence-based color coding for keypoint and skeleton overlay",
+                            "Implemented optical flow analysis to anchor skeleton keypoints during occlusion for robust tracking in group settings",
+                            "Curated and annotated 1,100+ images with diverse lighting and piglet poses; applied data augmentation (rotation, brightness, flip) for model generalization"
                         ],
                         software: [
-                            "Developed Python training pipeline with automated data augmentation, train/val/test splitting, and experiment tracking (Weights & Biases)",
-                            "Automated SLURM batch scripts for distributed training on HPCC GPU nodes (NVIDIA A100), including job queuing, resource allocation, and checkpoint management",
-                            "Built deployment package with configuration files for camera stream URLs and detection thresholds",
-                            "Created annotation validation and alert notification system using MQTT for real-time posture event streaming to farm dashboard"
+                            "Built automated dataset pipeline using Roboflow API for data download and COCO format conversion with organized directory structure",
+                            "Developed Bash scripts for automated environment setup and dependency installation (MMPose, MMEngine, MMCV, PyTorch) on shared GPU clusters",
+                            "Automated SLURM batch scripts (sbatch, srun) for GPU training on HPCC nodes, including job queuing, resource allocation, and checkpoint management",
+                            "Created Conda environment management workflow for reproducible deployments across HPC systems",
+                            "Implemented custom Python scripts for keypoint visualization with confidence-based color coding and skeleton overlay"
                         ],
                         robotics: [
                             "Integrated computer vision inference pipeline with farm monitoring infrastructure for autonomous real-time behavioral alerts",

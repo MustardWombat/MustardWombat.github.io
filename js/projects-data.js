@@ -33,35 +33,39 @@ const projectsData = {
     'piglet-vision': {
         title: 'Piglet Keypoint Detection System',
         subtitle: 'MMPose-based model for anatomical keypoint detection in piglets',
-        description: 'A computer vision system using MMPose (OpenMMLab) to detect and analyze anatomical keypoints in piglets, enabling behavioral analysis and posture tracking. Includes a full training pipeline on HPCC using PyTorch, SLURM, and conda environments.',
+        description: 'Developed a machine learning pipeline for 7-keypoint pose estimation of piglets using the OpenMMLab MMPose framework on the MSU High Performance Computing Cluster (HPCC). Built automated workflows for dataset transfer, model training, and pose visualization for livestock behavior analysis.',
         image: 'Images/Pigs.gif',
-        tags: ['Computer Vision', 'Python', 'MMPose', 'PyTorch', 'OpenMMLab', 'Deep Learning', 'Conda', 'SLURM'],
+        tags: ['Computer Vision', 'Python', 'MMPose', 'PyTorch', 'OpenMMLab', 'Deep Learning', 'Conda', 'SLURM', 'HPC'],
         focusAreas: ['computer-vision', 'software'],
-        keywords: ['keypoint detection', 'pose estimation', 'Roboflow', 'COCO format', 'HPCC', 'GPU shell', 'data augmentation', 'optical flow', 'custom dataset', 'training pipeline', 'model validation', 'SLURM', 'conda environment', 'OpenMMLab', 'PyTorch', 'MMPose'],
+        keywords: ['keypoint detection', 'pose estimation', 'Roboflow', 'COCO format', 'HPCC', 'GPU training', 'data augmentation', 'optical flow', 'custom dataset', 'training pipeline', 'model validation', 'SLURM', 'conda environment', 'OpenMMLab', 'PyTorch', 'MMPose', 'MMEngine', 'MMCV', 'HPC', 'CUDA', 'animal behavior analysis'],
         resumeBullets: [
-            'MMPose-based model for anatomical keypoint detection in piglets (OpenMMLab, PyTorch)',
-            'Custom dataset annotation: 1,100+ piglet images, Roboflow COCO format integration',
-            'Automated training pipeline on HPCC using SLURM and conda environments',
-            'Optical flow analysis for robust keypoint tracking during occlusion',
-            'Data augmentation for lighting and pose diversity',
-            'Custom software for model validation and accuracy analysis'
+            'Developed HPC-based ML pipeline using PyTorch and OpenMMLab MMPose to train 7-keypoint piglet pose estimation model',
+            'Built scripts to automate dataset transfer from Roboflow, convert to COCO format, and organize for model training',
+            'Implemented SLURM-based GPU training workflows on MSU HPCC with Conda environment management',
+            'Created visualization tools for pose predictions with confidence-based color coding for keypoint overlay',
+            'Annotated 1,100+ piglet images; applied data augmentation for lighting and pose diversity',
+            'Automated environment setup and dependency installation for reproducible MMPose/OpenMMLab deployments'
         ],
         skills: {
             hardware: [
-                { name: 'Robotics', icon: null },
-                { name: 'Controls', icon: null }
+                { name: 'HPC/GPU Computing', icon: null },
+                { name: 'CUDA', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'MMPose', icon: null },
                 { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' },
                 { name: 'OpenMMLab', icon: null },
+                { name: 'MMEngine', icon: null },
+                { name: 'MMCV', icon: null },
                 { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
                 { name: 'SLURM', icon: null },
                 { name: 'Conda', icon: null },
+                { name: 'Bash', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg' },
+                { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' },
+                { name: 'Roboflow API', icon: null },
                 { name: 'NumPy', icon: null },
-                { name: 'matplotlib', icon: null },
-                { name: 'pandas', icon: null }
+                { name: 'matplotlib', icon: null }
             ]
         }
     },

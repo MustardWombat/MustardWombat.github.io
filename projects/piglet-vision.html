@@ -57,12 +57,13 @@
             <div class="container">
                 <div class="project-overview">
                     <h2>Project Overview</h2>
-                    <p>The Piglet Keypoint Detection System leverages the <strong>MMPose</strong> framework for anatomical keypoint detection in piglets, enabling behavioral analysis and posture tracking. The project includes a full training pipeline on a high-performance computing cluster (HPCC) using <strong>PyTorch</strong> and <strong>OpenMMLab</strong> tools.</p>
+                    <p>Developed a machine learning pipeline for <strong>7-keypoint pose estimation of piglets</strong> using the <strong>OpenMMLab MMPose</strong> framework on the Michigan State University High Performance Computing Cluster (HPCC). The system enables automated behavioral analysis and posture tracking for livestock monitoring research.</p>
                     <ul>
-                        <li>Annotated over 1,100 piglet images for custom dataset</li>
-                        <li>Automated data download from Roboflow (COCO format) using API key</li>
-                        <li>GPU shell setup and conda environment management for reproducible training</li>
-                        <li>Training and validation scripts for pose estimation</li>
+                        <li>Built scripts to automate dataset transfer from Roboflow, convert datasets to COCO format, and organize them for model training</li>
+                        <li>Implemented <strong>SLURM-based GPU training workflows</strong> to efficiently train pose estimation models on HPC infrastructure</li>
+                        <li>Created tools for visualizing pose predictions, overlaying detected keypoints and skeleton connections on images with confidence-based color coding</li>
+                        <li>Automated environment setup and dependency installation to simplify deployment of MMPose and OpenMMLab libraries on shared GPU clusters</li>
+                        <li>Annotated over 1,100 piglet images for custom dataset training</li>
                     </ul>
                 </div>
 
@@ -77,12 +78,14 @@
                 <div class="project-details">
                     <h2>Key Features</h2>
                     <ul class="features-list">
-                        <li>MMPose-based anatomical keypoint detection</li>
+                        <li><strong>MMPose-based anatomical keypoint detection</strong> using OpenMMLab framework</li>
                         <li>Seven keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
-                        <li>Custom dataset annotation and Roboflow integration</li>
-                        <li>Training pipeline using PyTorch and OpenMMLab</li>
-                        <li>SLURM-based GPU shell for scalable training</li>
-                        <li>Configurable camera stream input</li>
+                        <li><strong>Roboflow API integration</strong> for automated dataset download and management</li>
+                        <li>Training pipeline using <strong>PyTorch</strong> (deep learning backend) and <strong>MMEngine/MMCV</strong> (core OpenMMLab infrastructure)</li>
+                        <li><strong>SLURM job scheduling</strong> for GPU training (sbatch, srun) on MSU HPCC</li>
+                        <li><strong>COCO dataset format</strong> standardized annotation for training</li>
+                        <li>Custom Python scripts for keypoint and skeleton overlay visualization</li>
+                        <li><strong>Conda environment management</strong> for reproducible HPC deployments</li>
                     </ul>
                 </div>
 
@@ -99,15 +102,23 @@
                             </ul>
                         </div>
                         <div class="tech-item">
-                            <h3>Training & Data</h3>
+                            <h3>Training & Data Pipeline</h3>
                             <ul>
-                                <li>Manual annotation of piglet images for keypoint detection</li>
-                                <li>Automated dataset download from Roboflow (COCO format)</li>
-                                <li>GPU shell setup and conda environment management</li>
-                                <li>Model training and validation on HPCC using SLURM</li>
+                                <li>Manual annotation of piglet images using Roboflow labeling tools</li>
+                                <li>Automated dataset download via <strong>Roboflow API</strong> (COCO format)</li>
+                                <li><strong>Conda environment</strong> management for reproducible GPU environments</li>
+                                <li>Model training and validation on <strong>MSU HPCC cluster</strong> using SLURM</li>
                                 <li>Training command: <code>python tools/train.py configs/bottomup_pig_pose_7kpts.py</code></li>
-                                <li>Data augmentation for robustness to lighting and pose diversity</li>
-                                <li>Custom software for accuracy analysis and validation</li>
+                                <li>Data augmentation (rotation, brightness, flip) for lighting and pose diversity</li>
+                                <li>Custom visualization scripts with confidence-based color coding for keypoint overlay</li>
+                            </ul>
+                            <h4 style="margin-top: 1rem;">Technologies & Libraries</h4>
+                            <ul>
+                                <li><strong>ML/CV:</strong> MMPose, PyTorch, MMEngine, MMCV</li>
+                                <li><strong>Data:</strong> Roboflow API, COCO format</li>
+                                <li><strong>HPC:</strong> SLURM, CUDA GPU, MSU HPCC</li>
+                                <li><strong>Environment:</strong> Conda, pip</li>
+                                <li><strong>Development:</strong> Python, Bash scripting, Git/GitLab</li>
                             </ul>
                             <div class="tech-stack-logos" id="piglet-tech-logos">
                                 <!-- Icons will be loaded dynamically -->
@@ -119,6 +130,11 @@
                 <div class="project-challenges">
                     <h2>Challenges & Solutions</h2>
                     <div class="challenge-item">
+                        <h3>HPC Environment Setup</h3>
+                        <p><strong>Challenge:</strong> Installing MMPose and its dependencies (PyTorch, MMCV, MMEngine) on shared HPC clusters involves complex dependency management and system constraints.</p>
+                        <p><strong>Solution:</strong> Created automated shell scripts for environment setup with proper module loading, Conda environment isolation, and documented workflows for reproducible deployments. SSH key management considerations were addressed by recommending HTTPS with personal access tokens for simpler credential management on shared systems.</p>
+                    </div>
+                    <div class="challenge-item">
                         <h3>Occlusion & Keypoint Visibility</h3>
                         <p><strong>Challenge:</strong> Piglets frequently overlap in group settings, causing occlusion and making keypoints difficult to detect and track.</p>
                         <p><strong>Solution:</strong> We implemented optical flow analysis to anchor skeleton keypoints, maintaining accuracy even when some keypoints are temporarily occluded. This approach, combined with targeted data augmentation, improved robustness in real-world scenarios.</p>
@@ -127,6 +143,11 @@
                         <h3>Lighting & Pose Diversity</h3>
                         <p><strong>Challenge:</strong> Diverse lighting and piglet poses introduced significant variability in image appearance and keypoint locations.</p>
                         <p><strong>Solution:</strong> We curated a dataset with images from multiple lighting environments and piglet poses, and used augmentation (rotation, brightness, flip) to improve model generalization.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>Dataset & Repository Management</h3>
+                        <p><strong>Challenge:</strong> Managing large datasets and coordinating Git repositories on HPC systems introduced complexity with nested repos and branch synchronization.</p>
+                        <p><strong>Solution:</strong> Implemented proper Git workflows with clear branch management, avoided accidental submodule creation, and automated dataset ingestion through Roboflow API integration for streamlined data pipelines.</p>
                     </div>
                 </div>
 
