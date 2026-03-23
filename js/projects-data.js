@@ -104,26 +104,6 @@ const projectsData = {
             ]
         }
     },
-    'street-lateral-position': {
-        title: 'Street Lateral Position Visual System (Best Beginner Hack & Auto-Owners Insurance Vehicle Safety Award, SpartaHack 11)',
-        subtitle: 'Computer vision system for real-time street lane detection and vehicle positioning',
-        description: 'Coming soon: A computer vision project utilizing advanced image processing and machine learning algorithms to detect street lanes, analyze vehicle lateral position, and provide visual feedback for autonomous driving applications. This system will integrate with existing navigation systems to enhance road safety and autonomous vehicle capabilities.',
-        image: 'Images/coming-soon.jpg',
-        tags: ['Computer Vision', 'Python', 'OpenCV', 'Machine Learning'],
-        focusAreas: ['computer-vision', 'software'],
-        comingSoon: true,
-        resumeBullets: [],
-        skills: {
-            software: [
-                { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
-                { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
-                { name: 'TensorFlow', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg' },
-                { name: 'NumPy', icon: null },
-                { name: 'matplotlib', icon: null },
-                { name: 'pandas', icon: null }
-            ]
-        }
-    },
     'autonomous-farming-tool': {
         title: 'Auto-Steering Cultivator',
         subtitle: 'Feedback-loop driven autonomous cultivator for precision agriculture',
