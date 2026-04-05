@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASABE Agricultural Robotics Challenge Robot - James Williams Portfolio">
+    <title>ASABE Robot '26 | James Williams</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-detail.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo-link">
+                <div class="logo logo-full"><span class="highlight-w">W</span>e<span class="highlight-w">W</span>ant<span class="highlight-w">W</span>illiams</div>
+                <div class="logo logo-short"><span class="highlight-w">WWW</span></div>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../resume.html">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h1>ASABE Agricultural Robotics Challenge Robot '26</h1>
+                <p class="project-subtitle">Autonomous ground robot for precision crop scouting, weed detection, and field intervention</p>
+                <div class="project-tags">
+                    <span class="tag">ROS2</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Autonomous Navigation</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Sensor Fusion</span>
+                </div>
+                <div class="project-tags" style="margin-top: 0.5rem;">
+                    <span class="tag" style="background: #fef3c7; color: #92400e; border: 1px solid #fde68a;">🚧 In Progress — Jan 2026 – Present</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container">
+                <div class="project-media">
+                    <img src="../Images/robot.png" alt="ASABE Agricultural Robotics Challenge Robot" class="featured-image" style="max-height: 420px; object-fit: contain; background: #f8f9fa; border-radius: 8px;">
+                </div>
+
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>This is a year-long robotics engineering project building a fully autonomous ground robot for the <strong>ASABE Agricultural Robotics Challenge</strong>. The robot is designed to navigate agricultural fields autonomously, performing precision tasks including crop scouting, weed detection, and targeted field intervention.</p>
+
+                    <p>The platform runs on <strong>ROS2</strong>, integrating GPS, IMU, and camera sensors through a custom navigation stack. My focus is on the low-level controls and sensor integration — translating sensor data into reliable robot behavior in real outdoor environments where GPS can be noisy and terrain is uneven.</p>
+
+                    <p>This project is a step up in complexity from previous work: rather than adding autonomy to existing farm equipment, this is a purpose-built robot designed from the ground up for autonomous field operation.</p>
+                </div>
+
+                <div class="project-architecture">
+                    <h2>System Architecture</h2>
+
+                    <div class="architecture-diagram">
+                        <div class="arch-component arch-input">
+                            <h4>📡 Sensing</h4>
+                            <ul>
+                                <li><strong>RTK-GPS</strong><br>Centimeter-level outdoor positioning</li>
+                                <li><strong>IMU</strong><br>Orientation, heading, motion compensation</li>
+                                <li><strong>RGB Camera</strong><br>Crop row detection, weed identification</li>
+                                <li><strong>Wheel Encoders</strong><br>Odometry for dead-reckoning</li>
+                            </ul>
+                        </div>
+
+                        <div class="arch-component arch-control">
+                            <h4>💻 Compute &amp; Control</h4>
+                            <ul>
+                                <li><strong>ROS2 Navigation Stack</strong><br>Path planning, waypoint following</li>
+                                <li><strong>Sensor Fusion Node</strong><br>GPS + IMU + odometry EKF</li>
+                                <li><strong>Vision Pipeline</strong><br>OpenCV crop row and weed detection</li>
+                                <li><strong>Motor Controllers</strong><br>Closed-loop drive commands</li>
+                            </ul>
+                        </div>
+
+                        <div class="arch-component arch-output">
+                            <h4>⚙️ Actuation</h4>
+                            <ul>
+                                <li><strong>Differential Drive</strong><br>Independent left/right motor control</li>
+                                <li><strong>Intervention Mechanism</strong><br>Precision weed targeting actuator</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="architecture-flow">
+                        <h4>Control Flow</h4>
+                        <ol>
+                            <li><strong>Localization:</strong> EKF fuses RTK-GPS, IMU, and encoder odometry into a stable pose estimate</li>
+                            <li><strong>Perception:</strong> Camera pipeline detects crop rows and flags weed locations in real time</li>
+                            <li><strong>Planning:</strong> ROS2 nav stack generates paths through field waypoints, replanning around obstacles</li>
+                            <li><strong>Control:</strong> Velocity commands drive differential motors with closed-loop feedback</li>
+                            <li><strong>Intervention:</strong> On weed detection, robot halts and triggers targeted actuator</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="project-technical">
+                    <h2>Technical Details</h2>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <h3>⚡ Hardware</h3>
+                            <ul>
+                                <li>Differential-drive mobile base with motor controllers</li>
+                                <li>RTK-GPS for outdoor centimeter-level positioning</li>
+                                <li>IMU for orientation and heading</li>
+                                <li>Onboard compute (SBC running ROS2)</li>
+                                <li>RGB camera for vision pipeline</li>
+                                <li>Battery-powered field operation</li>
+                            </ul>
+                        </div>
+                        <div class="tech-item">
+                            <h3>💻 Software</h3>
+                            <ul>
+                                <li>ROS2 (Humble) — nodes, topics, transforms, launch files</li>
+                                <li>Extended Kalman Filter (EKF) sensor fusion via <code>robot_localization</code></li>
+                                <li>Nav2 navigation stack for autonomous path following</li>
+                                <li>OpenCV-based crop row detection and weed classification</li>
+                                <li>Custom ROS2 nodes in C++ (controls) and Python (vision)</li>
+                                <li>Git-based team development workflow</li>
+                            </ul>
+                            <div class="tech-stack-logos">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg" alt="ROS2" title="ROS2" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++" title="C++" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" title="Python" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg" alt="OpenCV" title="OpenCV" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git" title="Git" class="tech-logo">
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <h3>🔧 My Contributions</h3>
+                            <ul>
+                                <li>ROS2 node architecture and system integration</li>
+                                <li>Sensor fusion setup (GPS + IMU + odometry EKF)</li>
+                                <li>Motor controller interface and drive command pipeline</li>
+                                <li>Navigation stack configuration and tuning</li>
+                                <li>Vision pipeline integration with ROS2 topic system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-challenges">
+                    <h2>Challenges &amp; Solutions</h2>
+                    <div class="challenge-item">
+                        <h3>Reliable Localization in Outdoor Fields</h3>
+                        <p><strong>Challenge:</strong> GPS alone is noisy and discontinuous. IMU drifts over time. Odometry accumulates error on rough terrain. None are reliable individually for precise field navigation.</p>
+                        <p><strong>Solution:</strong> Implemented an Extended Kalman Filter via ROS2's <code>robot_localization</code> package to fuse all three sources. Each sensor's covariance is tuned to reflect real-world noise characteristics, giving the filter a reliable continuous pose estimate even when individual sensors degrade.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>ROS2 Team Coordination</h3>
+                        <p><strong>Challenge:</strong> Multiple team members developing nodes concurrently leads to interface mismatches and integration bugs — especially when hardware is shared and testing time is limited.</p>
+                        <p><strong>Solution:</strong> Established a shared message type convention and topic naming standard early in development. Used Git branches per subsystem with integration testing sessions to catch interface issues before they compound.</p>
+                    </div>
+                </div>
+
+                <div class="project-results">
+                    <h2>Status &amp; Next Steps</h2>
+                    <p>This project is actively in development targeting competition in <strong>Summer 2026</strong>. Current progress:</p>
+                    <ul class="features-list">
+                        <li>✅ ROS2 system architecture defined and base nodes running</li>
+                        <li>✅ Sensor fusion (EKF) operational with GPS + IMU</li>
+                        <li>✅ Motor controller integration and basic drive commands</li>
+                        <li>🔄 Nav2 navigation stack tuning for outdoor terrain</li>
+                        <li>🔄 Vision pipeline for crop row following in progress</li>
+                        <li>⬜ Full field autonomy integration and testing</li>
+                        <li>⬜ Weed detection and intervention module</li>
+                        <li>⬜ Competition field trial runs</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;"><em>More details and media will be added as the project progresses toward the competition.</em></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 James <span class="highlight-w">W</span>illiams. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/MustardWombat" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/james-williams-491329317/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

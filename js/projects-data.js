@@ -12,6 +12,9 @@ const projectsData = {
             'C# interface for path planning and field operations'
         ],
         skills: {
+            mechanical: [
+                { name: 'Fusion 360', icon: null }
+            ],
             hardware: [
                 { name: 'RTK-GPS', icon: null },
                 { name: 'IMU', icon: null },
@@ -24,9 +27,13 @@ const projectsData = {
                 { name: 'AgOpenGPS', icon: null },
                 { name: 'pandas', icon: null },
                 { name: 'matplotlib', icon: null },
-                { name: 'NumPy', icon: null },
-                { name: 'Robotics', icon: null },
-                { name: 'Controls', icon: null }
+                { name: 'NumPy', icon: null }
+            ],
+            robotics: [
+                { name: 'PID Control', icon: null },
+                { name: 'Closed-Loop Control', icon: null },
+                { name: 'Autonomous Navigation', icon: null },
+                { name: 'Hydraulic Actuation', icon: null }
             ]
         }
     },
@@ -85,43 +92,39 @@ const projectsData = {
         skills: {
             hardware: [
                 { name: 'Motor Controllers', icon: null },
-                { name: 'Sensors', icon: null },
-                { name: 'Robotics', icon: null },
-                { name: 'Controls', icon: null }
+                { name: 'Sensors', icon: null }
             ],
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
                 { name: 'C++', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg' },
-                { name: 'ROS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
                 { name: 'OpenCV', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg' },
                 { name: 'MMPose', icon: null },
                 { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' },
                 { name: 'NumPy', icon: null },
                 { name: 'matplotlib', icon: null },
-                { name: 'pandas', icon: null },
-                { name: 'Robotics', icon: null },
-                { name: 'Controls', icon: null }
+                { name: 'pandas', icon: null }
+            ],
+            robotics: [
+                { name: 'ROS2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
+                { name: 'Autonomous Navigation', icon: null },
+                { name: 'Sensor Fusion', icon: null },
+                { name: 'Path Planning', icon: null }
             ]
         }
     },
     'autonomous-farming-tool': {
         title: 'Auto-Steering Cultivator',
-        subtitle: 'Feedback-loop driven autonomous cultivator for precision agriculture',
-        description: 'A feedback-loop driven autonomous cultivator system for precision agriculture, including soil sampling, planting, and targeted crop treatment. Closed-loop control enables robust center line following and real-time correction. Frame extraction, dataset improvement, and PID servo control are integrated for optimal performance.',
-        image: 'Images/tooling.jpg',
-        tags: ['Robotics', 'Cultivator', 'Precision Agriculture', 'AI', 'Feedback Loop'],
+        subtitle: '',
+        description: '',
+        image: 'Images/CropRowFollow.png',
+        tags: ['Robotics', 'Cultivator', 'Precision Agriculture'],
         focusAreas: ['robotics', 'mechatronics'],
         comingSoon: true,
-        resumeBullets: [
-            "Integrated a full-stack autonomous steering system for an agricultural cultivator using Jetson Nano, stereo camera vision, Python, ROS2 nodes, and a servo motor for actuation.",
-            "Developed a vision-based lane guidance pipeline: stereo camera and Jetson Nano for real-time image processing, ROS2 nodes for control logic, and servo motor for precise steering.",
-            "Implemented system-level integration of perception (vision-based XTE calculation), control (PID loop), and actuation (PWM to servo) for robust center line following.",
-            "Coordinated hardware and software interfaces across power, compute, sensing, and mechanical subsystems to deliver a cohesive autonomous platform."
-        ],
+        resumeBullets: [],
+
         skills: {
             software: [
                 { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
-                { name: 'ROS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
                 { name: 'Computer Vision', icon: null },
                 { name: 'Machine Learning', icon: null },
                 { name: 'Qt', icon: null },
@@ -130,6 +133,12 @@ const projectsData = {
                 { name: 'NumPy', icon: null },
                 { name: 'matplotlib', icon: null },
                 { name: 'pandas', icon: null }
+            ],
+            robotics: [
+                { name: 'ROS2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
+                { name: 'Row Following', icon: null },
+                { name: 'Autonomous Navigation', icon: null },
+                { name: 'Sensor Fusion', icon: null }
             ]
         }
     }
@@ -140,7 +149,8 @@ function getAllSkills() {
     const allSkills = {
         mechanical: new Map(),
         hardware: new Map(),
-        software: new Map()
+        software: new Map(),
+        robotics: new Map()
     };
 
     Object.values(projectsData).forEach(project => {
@@ -164,12 +174,20 @@ function getAllSkills() {
                 allSkills.software.set(skill.name, skill.icon);
             }
         });
+
+        // Add robotics skills with icons
+        project.skills.robotics?.forEach(skill => {
+            if (!allSkills.robotics.has(skill.name)) {
+                allSkills.robotics.set(skill.name, skill.icon);
+            }
+        });
     });
 
     return {
         mechanical: Array.from(allSkills.mechanical, ([name, icon]) => ({ name, icon })),
         hardware: Array.from(allSkills.hardware, ([name, icon]) => ({ name, icon })),
-        software: Array.from(allSkills.software, ([name, icon]) => ({ name, icon }))
+        software: Array.from(allSkills.software, ([name, icon]) => ({ name, icon })),
+        robotics: Array.from(allSkills.robotics, ([name, icon]) => ({ name, icon }))
     };
 }
 

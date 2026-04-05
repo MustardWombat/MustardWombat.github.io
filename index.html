@@ -142,57 +142,148 @@
         <section id="projects">
             <div class="container">
                 <h2>Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card" onclick="window.location.href='projects/autosteer-tractor.html'">
-                        <img class="project-image" src="Images/autosteer_Tractor.gif" alt="Autosteer tractor system">
-                        <h3>Autosteer Tractor System</h3>
-                        <p>An autonomous steering system for agricultural tractors using RTK-GPS, IMU, and wheel angle sensing to enable precise navigation with ±2cm accuracy in field operations.</p>
-                        <div class="project-tags">
-                            <span class="tag">Arduino</span>
-                            <span class="tag">GPS</span>
-                            <span class="tag">C#</span>
-                            <span class="tag">Mechatronics</span>
+                <div class="roadmap-vertical">
+
+                    <!-- ASABE Robot - year-long project -->
+                    <div class="rm-item">
+                        <div class="rm-spine">
+                            <div class="rd-dot rd-planned"></div>
+                            <div class="rm-line rm-line-planned"></div>
                         </div>
-                        <div class="view-more">View Details →</div>
-                    </div>
-                    <div class="project-card" onclick="window.location.href='projects/piglet-vision.html'">
-                        <img class="project-image" src="Images/Pigs.gif" alt="Piglet keypoint detection system">
-                        <h3>Piglet Keypoint Detection System</h3>
-                        <p>MMPOSE-based model for anatomical keypoint detection in piglets, identifying snout, head, left ear, right ear, shoulder, back, and tail for robust pose estimation across diverse conditions.</p>
-                        <div class="project-tags">
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">MMPOSE</span>
-                            <span class="tag">Deep Learning</span>
+                        <div class="rm-content">
+                            <div class="rm-meta">
+                                <span class="rm-date">Jan 2026 – Present</span>
+                                <span class="rm-badge rm-planned">In Progress</span>
+                            </div>
+                            <div class="project-card coming-soon" onclick="window.location.href='projects/asabe-robot.html'">
+                                <div class="coming-soon-overlay">🤖 In Progress</div>
+                                <div class="rm-card-img">
+                                    <img class="project-image" src="Images/robot.png" alt="ASABE Agricultural Robotics Challenge Robot">
+                                </div>
+                                <div class="rm-card-body">
+                                    <h3>ASABE Agricultural Robotics Challenge Robot</h3>
+                                    <ul class="rm-bullets">
+                                        <li>Autonomous ground robot for crop scouting and weed detection</li>
+                                        <li>ROS2 navigation stack with sensor fusion and path planning</li>
+                                        <li>Computer vision pipeline for precision field intervention</li>
+                                    </ul>
+                                    <div class="project-tags">
+                                        <span class="tag">Robotics</span>
+                                        <span class="tag">ROS2</span>
+                                        <span class="tag">Autonomous Nav</span>
+                                        <span class="tag">Computer Vision</span>
+                                    </div>
+                                    <div class="view-more">View Details →</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="view-more">View Details →</div>
                     </div>
-                    <div class="project-card" onclick="window.location.href='projects/agri-robotics-club.html'">
-                        <img class="project-image" src="Images/PARC.jpg" alt="Autonomous Agricultural Robot">
-                        <h3>Autonomous Agricultural Robot '26</h3>
-                        <p>Development of an autonomous ground robot designed for precision agriculture tasks including crop monitoring, weed detection, and targeted intervention in agricultural fields.</p>
-                        <div class="project-tags">
-                            <span class="tag">Robotics</span>
-                            <span class="tag">ROS</span>
-                            <span class="tag">Autonomous Navigation</span>
-                            <span class="tag">Computer Vision</span>
+
+                    <!-- Item 1 (most recent first) -->
+                    <div class="rm-item">
+                        <div class="rm-spine">
+                            <div class="rd-dot rd-planned"></div>
+                            <div class="rm-line rm-line-planned"></div>
                         </div>
-                        <div class="view-more">View Details →</div>
-                    </div>
-                    <div class="project-card coming-soon" onclick="window.location.href='projects/autonomous-farming-tool.html'">
-                        <div class="coming-soon-overlay">🚜 Coming Soon</div>
-                        <img class="project-image" src="Images/tooling.jpg" alt="Auto-Steering Cultivator" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5Q0E0QUYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Db21pbmcgU29vbiI8L3RleHQ+Cjwvc3ZnPg=='">
-                        <h3>Auto-Steering Cultivator</h3>
-                        <p>A feedback-loop driven autonomous cultivator system for precision agriculture, including soil sampling, planting, and targeted crop treatment. Closed-loop control enables robust center line following and real-time correction.</p>
-                        <div class="project-tags">
-                            <span class="tag">Robotics</span>
-                            <span class="tag">Cultivator</span>
-                            <span class="tag">Precision Agriculture</span>
-                            <span class="tag">AI</span>
-                            <span class="tag">Feedback Loop</span>
+                        <div class="rm-content">
+                            <div class="rm-meta">
+                                <span class="rm-date">Spring 2026</span>
+                                <span class="rm-badge rm-planned">In Progress</span>
+                            </div>
+                            <div class="project-card coming-soon" onclick="window.location.href='projects/autonomous-farming-tool.html'">
+                                <div class="coming-soon-overlay">🚜 In Progress</div>
+                                <div class="rm-card-img">
+                                    <img class="project-image" src="Images/CropRowFollow.png" alt="Auto-Steering Cultivator">
+                                </div>
+                                <div class="rm-card-body">
+                                    <h3>Auto-Steering Cultivator</h3>
+                                    <ul class="rm-bullets">
+                                        <li>Autonomous row-following using camera-based crop detection</li>
+                                        <li>Targeted weed intervention with precision actuator control</li>
+                                        <li>ROS2 navigation stack with real-time sensor fusion</li>
+                                    </ul>
+                                    <div class="project-tags">
+                                        <span class="tag">Robotics</span>
+                                        <span class="tag">Cultivator</span>
+                                        <span class="tag">Precision Agriculture</span>
+                                    </div>
+                                    <div class="view-more">View Details →</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="view-more">View Details →</div>
                     </div>
+
+                    <!-- Item 2 -->
+                    <div class="rm-item">
+                        <div class="rm-spine">
+                            <div class="rd-dot rd-done">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div class="rm-line rm-line-done"></div>
+                        </div>
+                        <div class="rm-content">
+                            <div class="rm-meta">
+                                <span class="rm-date">Oct 2025</span>
+                                <span class="rm-badge rm-done">Complete</span>
+                            </div>
+                            <div class="project-card" onclick="window.location.href='projects/piglet-vision.html'">
+                                <div class="rm-card-img">
+                                    <img class="project-image" src="Images/Pigs.gif" alt="Piglet keypoint detection system">
+                                </div>
+                                <div class="rm-card-body">
+                                    <h3>Piglet Keypoint Detection</h3>
+                                    <ul class="rm-bullets">
+                                        <li>7-keypoint pose estimation model trained on MSU HPCC GPUs</li>
+                                        <li>Annotated 1,100+ piglet images with data augmentation pipeline</li>
+                                        <li>Automated SLURM workflows for reproducible MMPose training</li>
+                                    </ul>
+                                    <div class="project-tags">
+                                        <span class="tag">Computer Vision</span>
+                                        <span class="tag">Python</span>
+                                        <span class="tag">MMPose</span>
+                                        <span class="tag">Deep Learning</span>
+                                    </div>
+                                    <div class="view-more">View Details →</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="rm-item">
+                        <div class="rm-spine">
+                            <div class="rd-dot rd-done">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                        </div>
+                        <div class="rm-content">
+                            <div class="rm-meta">
+                                <span class="rm-date">Sep 2025</span>
+                                <span class="rm-badge rm-done">Complete</span>
+                            </div>
+                            <div class="project-card" onclick="window.location.href='projects/autosteer-tractor.html'">
+                                <div class="rm-card-img">
+                                    <img class="project-image" src="Images/autosteer_Tractor.gif" alt="Autosteer tractor system">
+                                </div>
+                                <div class="rm-card-body">
+                                    <h3>Autosteer Tractor System</h3>
+                                    <ul class="rm-bullets">
+                                        <li>RTK-GPS + IMU closed-loop steering with ±2cm cross-track accuracy</li>
+                                        <li>Arduino PID controller driving hydraulic valve actuators</li>
+                                        <li>C# interface for path planning and real-time field monitoring</li>
+                                    </ul>
+                                    <div class="project-tags">
+                                        <span class="tag">Arduino</span>
+                                        <span class="tag">GPS</span>
+                                        <span class="tag">C#</span>
+                                        <span class="tag">Mechatronics</span>
+                                    </div>
+                                    <div class="view-more">View Details →</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -204,20 +295,34 @@
                     <div class="experience-bubble">
                         <div class="experience-header">
                             <img src="Images/SmartSensingLab.png" alt="SmartSensingLab" class="experience-logo">
-                            <div class="experience-date">Spring 2026 <span class="present-glow">Present</span></div>
+                            <div class="experience-date">Sep 2025 – <span class="present-glow">Present</span> <span class="experience-duration">(7 months)</span></div>
                         </div>
-                        <h3>Research Assistant II</h3>
+                        <h3>Research Assistant</h3>
                         <h4><a href="https://www.egr.msu.edu/smarts/index.html" target="_blank" rel="noopener noreferrer" class="lab-link">Smart Sensing Lab</a></h4>
                         <!-- Experience highlights removed as requested -->
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="student-orgs">
+            <div class="container">
+                <h2>Student Organizations</h2>
+                <div class="experience-grid">
                     <div class="experience-bubble">
                         <div class="experience-header">
-                            <img src="Images/SmartSensingLab.png" alt="SmartSensingLab" class="experience-logo">
-                            <div class="experience-date">Fall 2025</div>
+                            <img src="Images/PARC.jpg" alt="ASABE Agricultural Robotics Challenge" class="experience-logo">
+                            <div class="experience-date">Jan 2026 – <span class="present-glow">Present</span> <span class="experience-duration">(3 months)</span></div>
                         </div>
-                        <h3>Research Assistant I</h3>
-                        <h4><a href="https://www.egr.msu.edu/smarts/index.html" target="_blank" rel="noopener noreferrer" class="lab-link">Smart Sensing Lab</a></h4>
-                        <!-- Experience highlights removed as requested -->
+                        <h3><a href="projects/agri-robotics-club.html" class="lab-link">Autonomous Agricultural Robot '26</a></h3>
+                        <h4>ASABE Agricultural Robotics Challenge</h4>
+                        <p>Building an autonomous ground robot for precision agriculture — crop scouting, weed detection, and targeted field intervention for the ASABE competition.</p>
+                        <div class="project-tags">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">ROS2</span>
+                            <span class="tag">Autonomous Nav</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
                     </div>
                 </div>
             </div>
