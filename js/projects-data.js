@@ -76,6 +76,40 @@ const projectsData = {
             ]
         }
     },
+    'annotation-workflow': {
+        title: 'HPCC MMPose Annotation Workflow',
+        subtitle: 'Ubuntu-based pipeline for keypoint annotation, dataset prep, and MMPose training on MSU HPCC',
+        description: 'Built a complete, reproducible software workflow for keypoint annotation and pose estimation model training using MMPose on the MSU HPCC. Covers environment setup, COCO dataset conversion, SLURM job submission, and inference visualization on Ubuntu.',
+        image: 'Images/mmpose.png',
+        tags: ['MMPose', 'Python', 'Ubuntu', 'HPCC', 'SLURM', 'Bash', 'OpenMMLab'],
+        focusAreas: ['computer-vision', 'software'],
+        resumeBullets: [
+            'Built end-to-end MMPose annotation and training pipeline on Ubuntu for MSU HPCC',
+            'Automated Conda environment setup with pinned OpenMMLab/PyTorch/CUDA version matrix for HPCC compatibility',
+            'Wrote COCO-format dataset converter supporting arbitrary custom keypoint schemas',
+            'Created templated SLURM batch scripts for GPU training jobs with inline documentation',
+            'Developed inference and keypoint visualization scripts with confidence-based color overlay'
+        ],
+        skills: {
+            hardware: [
+                { name: 'HPC/GPU Computing', icon: null },
+                { name: 'CUDA', icon: null }
+            ],
+            software: [
+                { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
+                { name: 'MMPose', icon: null },
+                { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg' },
+                { name: 'OpenMMLab', icon: null },
+                { name: 'MMEngine', icon: null },
+                { name: 'MMCV', icon: null },
+                { name: 'Ubuntu', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/ubuntu/ubuntu-original.svg' },
+                { name: 'SLURM', icon: null },
+                { name: 'Conda', icon: null },
+                { name: 'Bash', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg' },
+                { name: 'Git', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg' }
+            ]
+        }
+    },
     'agri-robotics-club': {
         title: "ASABE Agricultural Robotics Challenge Robot '26",
         subtitle: 'Ground robot for precision farming and crop monitoring',

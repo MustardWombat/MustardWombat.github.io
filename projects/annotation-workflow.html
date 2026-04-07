@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HPCC MMPose Annotation Workflow - James Williams Portfolio">
+    <title>HPCC MMPose Annotation Workflow | James Williams</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-detail.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html" class="logo-link">
+                <div class="logo logo-full"><span class="highlight-w">W</span>e<span class="highlight-w">W</span>ant<span class="highlight-w">W</span>illiams</div>
+                <div class="logo logo-short"><span class="highlight-w">WWW</span></div>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#experience">Experience</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../resume.html">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+                <h1>HPCC MMPose Annotation Workflow</h1>
+                <p class="project-subtitle">Ubuntu-based software pipeline for keypoint annotation, dataset preparation, and MMPose training on the MSU HPCC</p>
+                <div class="project-tags">
+                    <span class="tag">MMPose</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Ubuntu</span>
+                    <span class="tag">HPCC</span>
+                    <span class="tag">SLURM</span>
+                    <span class="tag">Bash</span>
+                    <span class="tag">OpenMMLab</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container">
+                <div class="project-media">
+                    <img src="../Images/mmpose.png" alt="MMPose Annotation Workflow" class="featured-image" style="max-height: 300px; object-fit: contain; background: #f8f9fa; border-radius: 8px;">
+                </div>
+
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>This project delivered a complete, reproducible software workflow for keypoint annotation and pose estimation model training using <strong>MMPose</strong> on the <strong>MSU High Performance Computing Cluster (HPCC)</strong>. Developed on Ubuntu, the pipeline covers every step from raw image annotation through SLURM-submitted GPU training jobs.</p>
+
+                    <p>The goal was to remove the manual friction from HPC-based deep learning work — environment setup on a shared cluster is notoriously brittle, dataset formats are inconsistent, and training jobs require careful SLURM configuration. This workflow automates and documents all of it, making the full pipeline reproducible for any future keypoint detection task in the lab.</p>
+
+                    <p>Built during lab research (Jan–Mar 2026), this directly underpins the piglet pose estimation work and is designed to be reused for future animal or object keypoint datasets.</p>
+                </div>
+
+                <div class="project-details">
+                    <h2>Pipeline Stages</h2>
+                    <ul class="features-list">
+                        <li><strong>Environment Setup:</strong> Automated Conda environment creation with pinned MMPose, MMEngine, MMCV, and PyTorch versions compatible with HPCC's CUDA modules</li>
+                        <li><strong>Image Annotation:</strong> Ubuntu-based annotation tooling for defining and labeling custom keypoint schemas on raw image datasets</li>
+                        <li><strong>Dataset Conversion:</strong> Scripts to convert annotated data into COCO-format JSON required by MMPose, including train/val split generation</li>
+                        <li><strong>Config Generation:</strong> Automated MMPose config file generation parameterized by dataset path, keypoint count, and model architecture</li>
+                        <li><strong>SLURM Job Submission:</strong> Templated SLURM batch scripts for GPU training jobs with configurable resource allocation (CPUs, GPUs, memory, walltime)</li>
+                        <li><strong>Training Monitoring:</strong> Log parsing and visualization scripts for tracking loss curves and validation metrics across epochs</li>
+                        <li><strong>Inference & Visualization:</strong> Post-training scripts for running inference on new images with confidence-based keypoint overlay rendering</li>
+                    </ul>
+                </div>
+
+                <div class="project-architecture">
+                    <h2>Workflow Architecture</h2>
+                    <div class="architecture-diagram">
+                        <div class="arch-component arch-input">
+                            <h4>📁 Data Preparation</h4>
+                            <ul>
+                                <li><strong>Raw Images</strong><br>Transferred from Roboflow or local storage</li>
+                                <li><strong>Annotation Tool</strong><br>Ubuntu GUI for keypoint labeling</li>
+                                <li><strong>COCO Converter</strong><br>Python script → COCO JSON format</li>
+                            </ul>
+                        </div>
+                        <div class="arch-component arch-control">
+                            <h4>⚙️ HPCC Training</h4>
+                            <ul>
+                                <li><strong>Conda Environment</strong><br>Pinned OpenMMLab stack on HPCC</li>
+                                <li><strong>MMPose Config</strong><br>Auto-generated per dataset</li>
+                                <li><strong>SLURM Submission</strong><br>GPU batch job with resource templates</li>
+                            </ul>
+                        </div>
+                        <div class="arch-component arch-output">
+                            <h4>📊 Outputs</h4>
+                            <ul>
+                                <li><strong>Trained Checkpoint</strong><br>MMPose model weights (.pth)</li>
+                                <li><strong>Validation Metrics</strong><br>PCK / AP scores per epoch</li>
+                                <li><strong>Visualizations</strong><br>Keypoint overlays on test images</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-technical">
+                    <h2>Technical Details</h2>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <h3>💻 Software Stack</h3>
+                            <ul>
+                                <li>Ubuntu 22.04 (local development environment)</li>
+                                <li>MMPose (OpenMMLab) — pose estimation framework</li>
+                                <li>MMEngine + MMCV — training engine and CV utilities</li>
+                                <li>PyTorch + CUDA — GPU-accelerated model training</li>
+                                <li>Conda — environment and dependency management</li>
+                                <li>SLURM — HPC job scheduler on MSU HPCC</li>
+                                <li>Python + Bash — automation scripting</li>
+                            </ul>
+                            <div class="tech-stack-logos">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" title="Python" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" alt="PyTorch" title="PyTorch" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/ubuntu/ubuntu-original.svg" alt="Ubuntu" title="Ubuntu" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg" alt="Bash" title="Bash" class="tech-logo">
+                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git" title="Git" class="tech-logo">
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <h3>🖥️ HPC Details</h3>
+                            <ul>
+                                <li>MSU HPCC — SLURM-managed cluster</li>
+                                <li>GPU nodes: NVIDIA A100 / V100 via SLURM allocation</li>
+                                <li>Module system for CUDA and cuDNN versions</li>
+                                <li>Shared filesystem for dataset and checkpoint storage</li>
+                                <li>Batch job walltime management for long training runs</li>
+                            </ul>
+                        </div>
+                        <div class="tech-item">
+                            <h3>🔑 Key Scripts</h3>
+                            <ul>
+                                <li><code>setup_env.sh</code> — one-command Conda environment build</li>
+                                <li><code>convert_to_coco.py</code> — annotation → COCO JSON conversion</li>
+                                <li><code>gen_config.py</code> — parameterized MMPose config generator</li>
+                                <li><code>submit_train.sh</code> — SLURM batch job template</li>
+                                <li><code>visualize_results.py</code> — inference + keypoint overlay rendering</li>
+                                <li><code>parse_logs.py</code> — training metric extraction and plotting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-challenges">
+                    <h2>Challenges &amp; Solutions</h2>
+                    <div class="challenge-item">
+                        <h3>OpenMMLab Version Compatibility on HPCC</h3>
+                        <p><strong>Challenge:</strong> MMPose, MMEngine, MMCV, and PyTorch have tight interdependencies that frequently break when versions don't match. HPCC's available CUDA module versions further constrain the compatible package matrix, making naive <code>pip install</code> approaches fail.</p>
+                        <p><strong>Solution:</strong> Pinned a tested, working version matrix for all OpenMMLab packages against the HPCC CUDA 11.7 module. Documented the exact Conda environment spec as a <code>environment.yml</code>, allowing one-command reproducible setup across any HPCC user account.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>COCO Format Dataset Generation</h3>
+                        <p><strong>Challenge:</strong> MMPose requires datasets in COCO keypoint JSON format — a specific nested schema that annotation tools don't always export directly. Manual conversion is tedious and error-prone, especially for custom keypoint schemas that don't match standard COCO body joints.</p>
+                        <p><strong>Solution:</strong> Wrote a flexible <code>convert_to_coco.py</code> script parameterized by keypoint names and skeleton connectivity. The script handles arbitrary keypoint counts, generates proper category metadata, and validates the output JSON against MMPose's expected schema before training.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>SLURM Job Configuration for GPU Training</h3>
+                        <p><strong>Challenge:</strong> HPCC SLURM jobs require precise resource specification — wrong GPU count, memory, or walltime estimates lead to failed or inefficient jobs. First-time HPCC users in the lab had no starting point for deep learning job configuration.</p>
+                        <p><strong>Solution:</strong> Created templated SLURM batch scripts with sensible defaults for MMPose training workloads, with inline comments explaining each parameter. Included a small benchmark job to estimate per-epoch time before committing to a full training run.</p>
+                    </div>
+                </div>
+
+                <div class="project-results">
+                    <h2>Results &amp; Impact</h2>
+                    <p>The pipeline was successfully used to train the 7-keypoint piglet pose estimation model (see <a href="piglet-vision.html">Piglet Keypoint Detection</a>), validating the end-to-end workflow on real research data.</p>
+                    <ul class="features-list">
+                        <li>Full environment setup reduced from hours of manual troubleshooting to a single script execution</li>
+                        <li>COCO conversion handles arbitrary keypoint schemas — reusable for any future lab datasets</li>
+                        <li>SLURM templates successfully submitted and completed GPU training runs on HPCC A100 nodes</li>
+                        <li>Visualization pipeline confirmed correct keypoint predictions with confidence-based color coding</li>
+                        <li>Workflow documented and transferable to other lab members for future pose estimation tasks</li>
+                    </ul>
+                </div>
+
+                <div class="project-links">
+                    <h2>Project Resources</h2>
+                    <div class="resource-links">
+                        <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline" class="resource-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                        <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline?tab=readme-ov-file#training-your-model" class="resource-link" target="_blank" rel="noopener noreferrer">Training Instructions</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 James <span class="highlight-w">W</span>illiams. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/MustardWombat" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/james-williams-491329317/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
