@@ -41,7 +41,7 @@ const projectsData = {
         title: 'Piglet Keypoint Detection System',
         subtitle: 'MMPose-based model for anatomical keypoint detection in piglets',
         description: 'Developed a machine learning pipeline for 7-keypoint pose estimation of piglets using the OpenMMLab MMPose framework on the MSU High Performance Computing Cluster (HPCC). Built automated workflows for dataset transfer, model training, and pose visualization for livestock behavior analysis.',
-        image: 'Images/Pigs.gif',
+        image: 'Images/piglet.gif',
         tags: ['Computer Vision', 'Python', 'MMPose', 'PyTorch', 'OpenMMLab', 'Deep Learning', 'Conda', 'SLURM', 'HPC'],
         focusAreas: ['computer-vision', 'software'],
         keywords: ['keypoint detection', 'pose estimation', 'Roboflow', 'COCO format', 'HPCC', 'GPU training', 'data augmentation', 'optical flow', 'custom dataset', 'training pipeline', 'model validation', 'SLURM', 'conda environment', 'OpenMMLab', 'PyTorch', 'MMPose', 'MMEngine', 'MMCV', 'HPC', 'CUDA', 'animal behavior analysis'],
