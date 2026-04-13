@@ -54,11 +54,11 @@
         <section class="project-content">
             <div class="container">
                 <div class="project-media">
-                    <img src="../Images/mmpose.png" alt="MMPose Annotation Workflow" class="featured-image" style="max-height: 300px; object-fit: contain; background: #f8f9fa; border-radius: 8px;">
+                    <img src="../Images/output_heatmap_web.gif" alt="MMPose Annotation Workflow" class="featured-image" style="max-height: 300px; object-fit: contain; background: #f8f9fa; border-radius: 8px;">
                 </div>
 
                 <div class="project-overview">
-                    <h2>Project Overview</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>hy</span> This Project Matters</h2>
                     <p>This project delivered a complete, reproducible software workflow for keypoint annotation and pose estimation model training using <strong>MMPose</strong> on the <strong>MSU High Performance Computing Cluster (HPCC)</strong>. Developed on Ubuntu, the pipeline covers every step from raw image annotation through SLURM-submitted GPU training jobs.</p>
 
                     <p>The goal was to remove the manual friction from HPC-based deep learning work — environment setup on a shared cluster is notoriously brittle, dataset formats are inconsistent, and training jobs require careful SLURM configuration. This workflow automates and documents all of it, making the full pipeline reproducible for any future keypoint detection task in the lab.</p>
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="project-details">
-                    <h2>Pipeline Stages</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>orkflow</span> Features</h2>
                     <ul class="features-list">
                         <li><strong>Environment Setup:</strong> Automated Conda environment creation with pinned MMPose, MMEngine, MMCV, and PyTorch versions compatible with HPCC's CUDA modules</li>
                         <li><strong>Image Annotation:</strong> Ubuntu-based annotation tooling for defining and labeling custom keypoint schemas on raw image datasets</li>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="project-architecture">
-                    <h2>Workflow Architecture</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>ith</span> System Architecture</h2>
                     <div class="architecture-diagram">
                         <div class="arch-component arch-input">
                             <h4>📁 Data Preparation</h4>
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="project-technical">
-                    <h2>Technical Details</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>hich</span> Tools &amp; Stack</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <h3>💻 Software Stack</h3>
@@ -156,7 +156,7 @@
                 </div>
 
                 <div class="project-challenges">
-                    <h2>Challenges &amp; Solutions</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>rinkles</span> We Solved</h2>
                     <div class="challenge-item">
                         <h3>OpenMMLab Version Compatibility on HPCC</h3>
                         <p><strong>Challenge:</strong> MMPose, MMEngine, MMCV, and PyTorch have tight interdependencies that frequently break when versions don't match. HPCC's available CUDA module versions further constrain the compatible package matrix, making naive <code>pip install</code> approaches fail.</p>
@@ -175,7 +175,7 @@
                 </div>
 
                 <div class="project-results">
-                    <h2>Results &amp; Impact</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>ins</span> &amp; Impact</h2>
                     <p>The pipeline was successfully used to train the 7-keypoint piglet pose estimation model (see <a href="piglet-vision.html">Piglet Keypoint Detection</a>), validating the end-to-end workflow on real research data.</p>
                     <ul class="features-list">
                         <li>Full environment setup reduced from hours of manual troubleshooting to a single script execution</li>
@@ -187,7 +187,7 @@
                 </div>
 
                 <div class="project-links">
-                    <h2>Project Resources</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>here</span> to Explore More</h2>
                     <div class="resource-links">
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline" class="resource-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline?tab=readme-ov-file#training-your-model" class="resource-link" target="_blank" rel="noopener noreferrer">Training Instructions</a>

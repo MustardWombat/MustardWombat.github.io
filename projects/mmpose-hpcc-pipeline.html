@@ -55,13 +55,13 @@
         <section class="project-content">
             <div class="container">
                 <div class="project-overview">
-                    <h2>Project Overview</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>hy</span> This Project Matters</h2>
                     <p>A research-grade computer vision pipeline for bottom-up pig pose estimation, developed at MSU's SMARTS lab. The system takes images or video of piglets and predicts the locations of 7 anatomical keypoints — <strong>Snout, Head, Shoulder, Back, Tail, Left Ear, Right Ear</strong> — drawing a labeled skeleton overlay on the output.</p>
                     <p>It is designed to run on both local machines and SLURM-managed GPU cluster nodes, and includes a <strong>Gradio web UI</strong> (~2,400 lines) accessible remotely via SSH port forwarding for non-technical researchers.</p>
                 </div>
 
                 <div class="project-technical">
-                    <h2>Technical Stack</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>hich</span> Tools &amp; Stack</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <h3>Model Architecture</h3>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="project-details">
-                    <h2>Key Components</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>orkflow</span> Features</h2>
                     <ul class="features-list">
                         <li><strong>PigDataset7kpts</strong> — Custom MMPose dataset class with per-keypoint OKS sigmas and a <code>category_id</code> int-coercion fix for Roboflow COCO exports.</li>
                         <li><strong>run_image_overlay.py</strong> — Single image or video inference with OpenCV skeleton overlay. Keypoint/skeleton topology is read from the COCO training JSON to guarantee index ordering matches the trained model.</li>
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="project-challenges">
-                    <h2>Notable Engineering Decisions</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>rinkles</span> We Solved</h2>
                     <div class="challenge-item">
                         <h3>PYTHONPATH Package Shadowing</h3>
                         <p><strong>Problem:</strong> Both the repo root and the cloned MMPose submodule were on the path, causing the nested <code>mmpose</code> package to shadow the installed one at import time.</p>
@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="project-links">
-                    <h2>Project Resources</h2>
+                    <h2><span class="w-keyword"><span class="w-letter">W</span>here</span> to Explore More</h2>
                     <div class="resource-links">
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline" class="resource-link" target="_blank">GitHub Repository</a>
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline?tab=readme-ov-file#training-your-model" class="resource-link" target="_blank">Training Instructions</a>

@@ -80,7 +80,7 @@ const projectsData = {
         title: 'HPCC MMPose Annotation Workflow',
         subtitle: 'Ubuntu-based pipeline for keypoint annotation, dataset prep, and MMPose training on MSU HPCC',
         description: 'Built a complete, reproducible software workflow for keypoint annotation and pose estimation model training using MMPose on the MSU HPCC. Covers environment setup, COCO dataset conversion, SLURM job submission, and inference visualization on Ubuntu.',
-        image: 'Images/mmpose.png',
+        image: 'Images/output_heatmap_web.gif',
         tags: ['MMPose', 'Python', 'Ubuntu', 'HPCC', 'SLURM', 'Bash', 'OpenMMLab'],
         focusAreas: ['computer-vision', 'software'],
         resumeBullets: [

@@ -1,55 +1,19 @@
-/* Row for award photos, side by side if space allows */
-.award-photo-row {
-    display: flex;
-    flex-direction: row;
-    gap: 0.6rem;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    margin-bottom: 0.2em;
-}
-.award-photo-row .award-photo {
-    flex: 1 1 0;
-    max-width: 210px;
-}
-@media (max-width: 600px) {
-    .award-photo-row {
-        flex-direction: column;
-        gap: 0.4rem;
-        align-items: center;
-    }
-    .award-photo-row .award-photo {
-        max-width: 95vw;
-    }
-}
-/* Improved hamburger style for award media (photo + video) */
-
-/* Always hamburger (column) style for award media */
+/* Awards media */
 .award-media-flex {
     display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5em;
+    align-items: flex-start;
+    margin-bottom: 1em;
     width: 100%;
     box-sizing: border-box;
 }
 
-.award-media-flex .award-photo,
-.award-media-flex .award-video {
-    width: 100%;
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    padding: 0.2rem 0 0.1rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 .award-media-flex .award-photo {
+    flex: 1 1 320px;
+    min-width: 220px;
+    max-width: 400px;
     text-align: center;
 }
 .award-media-flex .award-photo img {
@@ -62,40 +26,12 @@
     margin: 0 auto;
     display: block;
 }
-.award-media-flex .award-video {
-    text-align: center;
-}
-.award-media-flex .award-video iframe {
-    width: 100%;
-    max-width: 400px;
-    height: 240px;
-    border-radius: 8px;
-    aspect-ratio: 16/9;
-    margin: 0 auto;
-    display: block;
-}
-/* Responsive hamburger style for award media (photo + video) */
-.award-media-flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 1em;
-}
-.award-media-flex .award-photo,
-.award-media-flex .award-video {
-    flex: 1 1 320px;
-    min-width: 220px;
-    max-width: 400px;
-}
 @media (max-width: 800px) {
     .award-media-flex {
         flex-direction: column;
         align-items: center;
     }
-    .award-media-flex .award-photo,
-    .award-media-flex .award-video {
+    .award-media-flex .award-photo {
         max-width: 100%;
         min-width: 0;
     }
@@ -404,21 +340,50 @@ nav {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
-    background-color: var(--secondary-color);
+    padding: 1rem 2.25rem;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
     color: var(--white);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 999px;
     font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: visible;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     animation: fadeInUp 1s ease 0.6s both;
     margin-top: 1rem;
 }
 
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 1rem);
+    transform: translateY(-50%);
+    width: min(42vw, 560px);
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 140, 0, 0.85) 35%, rgba(255, 140, 0, 0.35) 100%);
+    box-shadow: 0 0 18px rgba(255, 140, 0, 0.35);
+    pointer-events: none;
+}
+
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
-    background-color: var(--accent-color);
+    box-shadow: 0 14px 30px rgba(255, 140, 0, 0.35);
+    filter: brightness(1.03);
+}
+
+.cta-button:hover::before {
+    width: min(48vw, 680px);
+}
+
+@media (max-width: 900px) {
+    .cta-button::before {
+        width: min(26vw, 180px);
+    }
 }
 
 /* Sections */
