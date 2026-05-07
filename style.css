@@ -718,6 +718,37 @@ h2 {
     width: 100%;
 }
 
+/* Student Org showcase tweaks */
+.org-showcase {
+    margin-top: 1rem;
+}
+
+.org-showcase .ps-item {
+    min-height: 400px;
+}
+
+.org-showcase .ps-visual img {
+    object-position: center top;
+}
+
+.org-showcase .ps-number {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    padding: 0.35rem 0.8rem;
+    background: var(--secondary-color);
+    color: #fff;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.ps-role {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 1.2rem;
+    margin-top: -0.4rem;
+    font-weight: 500;
+}
+
 @media (max-width: 768px) {
     .ps-item,
     .ps-item.ps-flip {
