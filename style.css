@@ -751,6 +751,8 @@ h2 {
 .sticker-field {
     position: absolute;
     inset: 0;
+    will-change: transform;
+    contain: layout style;
 }
 
 .sticker {
@@ -762,6 +764,7 @@ h2 {
     display: inline !important;
     filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.45));
     pointer-events: none;
+    will-change: transform, opacity;
     --tx: -50%;
     --ty: -50%;
 }
