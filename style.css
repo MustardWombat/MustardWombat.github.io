@@ -71,22 +71,6 @@
     z-index: 1;
 }
 
-#education::after {
-    content: "";
-    position: absolute;
-    left: -160px;
-    bottom: -120px;
-    width: 700px;
-    height: 700px;
-    background: url('Images/MSU.png') no-repeat left bottom;
-    background-size: contain;
-    opacity: 1;
-    pointer-events: none;
-    z-index: -2;
-    margin: 0;
-    padding: 0;
-}
-
 .education-bg > * {
     position: relative;
     z-index: 1;
@@ -535,11 +519,11 @@ h2 {
     transform: translateX(105%);
 }
 
-.ps-item.is-visible .ps-visual img {
+.ps-item.is-visible .ps-visual img:not(.sticker) {
     transform: translateX(0) scale(1) !important;
 }
 
-.ps-item.is-visible:hover .ps-visual img {
+.ps-item.is-visible:hover .ps-visual img:not(.sticker) {
     transform: translateX(0) scale(1.04) !important;
     transition: transform 0.5s ease !important;
 }
@@ -717,6 +701,151 @@ h2 {
 .ps-item:hover .ps-link::after {
     width: 100%;
 }
+
+/* Non-clickable static showcase panels */
+.ps-static {
+    cursor: default;
+}
+
+/* Static panels: skip wipe-in, show immediately */
+.ps-static .ps-visual img:not(.sticker) {
+    transform: translateX(0) !important;
+}
+
+.ps-static .ps-text {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+.ps-static:hover .ps-visual img:not(.sticker) {
+    transform: translateX(0) scale(1) !important;
+    transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Logo-only visual panels (e.g. MSU) */
+.ps-logo-bg img {
+    object-fit: contain !important;
+}
+
+/* Award links row inside ps-text */
+.ps-award-links {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tighten showcase section headings */
+.about-showcase,
+.edu-showcase,
+.award-showcase,
+.exp-showcase {
+    margin-top: 1rem;
+}
+
+/* MSU sticker collage panel */
+.msu-sticker-panel {
+    position: relative;
+}
+
+.sticker-field {
+    position: absolute;
+    inset: 0;
+}
+
+.sticker {
+    position: absolute;
+    /* Reset the .ps-visual img base rule that forces 100%/100%/cover */
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: inline !important;
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.45));
+    pointer-events: none;
+    --tx: -50%;
+    --ty: -50%;
+}
+
+/* Sticker placement keyframe */
+@keyframes sticker-place {
+    0%   { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0) rotate(var(--r)); filter: var(--f); }
+    50%  { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1.12) rotate(var(--r)); filter: var(--f); }
+    75%  { transform: translate(var(--tx), var(--ty)) scale(0.95) rotate(var(--r)); }
+    90%  { transform: translate(var(--tx), var(--ty)) scale(1.03) rotate(var(--r)); }
+    100% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1) rotate(var(--r)); filter: var(--f); }
+}
+
+/* Hidden before placement */
+.msu-sticker-panel .sticker {
+    opacity: 0;
+}
+
+/* Trigger when section is visible — JS sets animation-delay per sticker */
+.ps-item.is-visible .ps-visual .sticker {
+    animation-name: sticker-place;
+    animation-duration: 0.21s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: both;
+}
+
+/* Hero Spartan — centered, bigger boom */
+@keyframes sticker-hero-place {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0); filter: var(--f); }
+    55%  { opacity: 1; transform: translate(-50%, -50%) scale(1.45); filter: var(--f) brightness(1.15); }
+    75%  { transform: translate(-50%, -50%) scale(0.9); }
+    90%  { transform: translate(-50%, -50%) scale(1.06); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: var(--f); }
+}
+
+.sticker-hero {
+    left: 50% !important;
+    top: 50% !important;
+    z-index: 9999 !important;
+}
+
+.ps-item.is-visible .ps-visual .sticker-hero {
+    animation-name: sticker-hero-place !important;
+    animation-duration: 0.6s !important;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+    animation-fill-mode: both !important;
+}
+
+/* Ripple shockwave ring */
+@keyframes ripple-ring {
+    0%   { transform: translate(-50%, -50%) scale(0.1); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(5);   opacity: 0; }
+}
+
+.sticker-ripple-ring {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 120px; height: 120px;
+    border: 3px solid rgba(255,255,255,0.75);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: ripple-ring 0.65s ease-out forwards;
+    z-index: 19;
+}
+
+.sticker-ripple-ring.ring-2 {
+    animation-delay: 0.1s;
+    border-width: 2px;
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* Sticker filter types — used by keyframe filter: var(--f) */
+.sticker.s-msu    { --f: brightness(0) invert(1) drop-shadow(0 0 0 rgba(0,0,0,0)); }
+.sticker.s-msu.sticker-hero { --f: brightness(0) invert(1) drop-shadow(6px 12px 24px rgba(0,0,0,0.95)) drop-shadow(0px 0px 40px rgba(0,0,0,0.7)); }
+.sticker.s-spartan { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-gruff  { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-letter { --f: brightness(0) invert(1) drop-shadow(2px 5px 12px rgba(0,0,0,0.4)); }
+.sticker.s-blocks { --f: brightness(0) invert(1) drop-shadow(2px 5px 12px rgba(0,0,0,0.4)); }
+.sticker.s-mac    { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-spartymod { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-swirl     { --f: brightness(0) invert(1) drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-letter    { --f: brightness(0) invert(1) drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-michstate { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-statecenter { --f: brightness(0) invert(1) drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
 
 /* Student Org showcase tweaks */
 .org-showcase {
