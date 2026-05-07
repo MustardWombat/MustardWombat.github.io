@@ -24,7 +24,7 @@ const resumeData = {
             school: "Michigan State University, College of Engineering",
             location: "East Lansing, MI",
             degree: "Technology Engineering, Mechatronics Concentration, CS minor",
-            gpa: "3.3",
+            gpa: "3.5",
             date: "August 2024 - May 2028"
         }
     ],
