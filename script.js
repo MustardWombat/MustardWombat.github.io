@@ -86,3 +86,18 @@ function rotateBackground() {
 if (bgMedia.length > 0) {
     setInterval(rotateBackground, 8000);
 }
+
+// Project showcase: wipe-in animation on scroll
+const showcaseItems = document.querySelectorAll('.ps-item');
+if (showcaseItems.length > 0) {
+    const showcaseObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                showcaseObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    showcaseItems.forEach(item => showcaseObserver.observe(item));
+}
