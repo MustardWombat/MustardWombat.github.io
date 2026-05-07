@@ -38,8 +38,9 @@
 }
 #about {
     position: relative;
-    background: none;
+    background-color: var(--light-bg);
     overflow: hidden;
+    z-index: 1;
 }
 
 #about::after {
@@ -66,7 +67,8 @@
 
 #education {
     position: relative;
-    background: none;
+    background-color: var(--white);
+    z-index: 1;
 }
 
 #education::after {
@@ -230,13 +232,15 @@ nav {
 #hero {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--grey-dark) 100%);
     color: var(--white);
-    min-height: 100vh;
+    height: calc(100vh - 60px);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem;
     margin-top: 60px;
-    position: relative;
+    position: sticky;
+    top: 60px;
+    z-index: 0;
     overflow: hidden;
 }
 
@@ -389,6 +393,8 @@ nav {
 /* Sections */
 section {
     padding: 5rem 0;
+    position: relative;
+    z-index: 1;
 }
 
 section:nth-child(even) {
