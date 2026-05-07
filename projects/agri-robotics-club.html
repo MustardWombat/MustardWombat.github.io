@@ -56,71 +56,41 @@
                 </div>
 
                 <div class="project-overview">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hy</span> This Project Matters</h2>
-                    <p>The Autonomous Agricultural Robot is a ground-based mobile platform designed to revolutionize precision farming operations. This robot autonomously navigates agricultural fields to perform critical tasks including crop health monitoring, weed detection and mapping, soil analysis, and targeted intervention—all while reducing the need for manual labor and minimizing environmental impact.</p>
-                    
-                    <p>Built on the Robot Operating System (ROS) framework, the robot integrates multiple sensor systems including GPS, LiDAR, cameras, and IMUs to achieve reliable autonomous navigation in challenging outdoor environments. The modular design allows the robot to be equipped with different tools and sensors depending on the farming task, making it a versatile platform for various agricultural applications.</p>
-                    
-                    <p>The robot's navigation system combines GPS waypoint following with real-time obstacle avoidance, enabling it to traverse crop rows, avoid obstacles, and maintain accurate positioning even in areas with partial GPS coverage. Computer vision algorithms process camera data to identify crop health issues, detect weeds, and assess field conditions in real-time.</p>
-                    
-                    <p>This project represents a practical application of robotics in agriculture, addressing real-world challenges faced by modern farmers while promoting sustainable farming practices through precision technology.</p>
-                </div>
-
-                <div class="project-details">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>orkflow</span> Features</h2>
-                    <ul class="features-list">
-                        <li>Autonomous GPS-based navigation with waypoint following</li>
-                        <li>Real-time obstacle detection and avoidance using LiDAR</li>
-                        <li>Computer vision-based crop row detection and following</li>
-                        <li>Weed detection and mapping for targeted intervention</li>
-                        <li>Multi-spectral imaging for crop health assessment</li>
-                        <li>Modular tool attachment system for various farming tasks</li>
-                        <li>All-terrain mobility with four-wheel independent drive</li>
-                        <li>Remote monitoring and control interface</li>
-                        <li>Data logging and field mapping capabilities</li>
-                    </ul>
+                    <h2 class="section-word"><span class="w-letter">W</span>hy</h2>
+                    <p>A ground-based autonomous platform built to perform precision farming tasks — crop health monitoring, weed detection and mapping, and targeted intervention — with minimal human input. Built on ROS, the robot fuses GPS, LiDAR, IMU, and camera data to navigate real crop rows reliably, even through partial GPS dropout or variable lighting.</p>
+                    <p>The modular architecture means the same platform can swap tools depending on the task: survey pass, weed mapping, or soil sampling.</p>
                 </div>
 
                 <div class="project-technical">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hich</span> Tools &amp; Stack</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>hich</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <h3>🔧 Mechanical Design</h3>
+                            <h3>🔧 Mechanical</h3>
                             <ul>
-                                <li>Custom aluminum chassis for agricultural terrain</li>
-                                <li>Four-wheel independent drive system</li>
-                                <li>High ground clearance for crop row navigation</li>
-                                <li>Weatherproof enclosures for electronics</li>
-                                <li>Modular mounting system for sensors and tools</li>
-                                <li>Quick-swap battery system for extended operation</li>
-                                <li>Payload capacity: 20kg for sensors and implements</li>
+                                <li>Custom aluminum chassis · high ground clearance</li>
+                                <li>Four-wheel independent drive</li>
+                                <li>Weatherproof electronics housing</li>
+                                <li>Modular sensor &amp; tool mounting</li>
+                                <li>Quick-swap 48V Li-ion battery</li>
                             </ul>
                         </div>
                         <div class="tech-item">
-                            <h3>⚡ Hardware Systems</h3>
+                            <h3>⚡ Hardware</h3>
                             <ul>
-                                <li>NVIDIA Jetson Xavier NX for onboard computing</li>
-                                <li>RTK-GPS module for centimeter-level positioning</li>
-                                <li>360° LiDAR for obstacle detection and mapping</li>
-                                <li>Stereo camera system for depth perception</li>
-                                <li>RGB and multispectral cameras for crop analysis</li>
-                                <li>IMU for orientation and motion tracking</li>
-                                <li>High-torque brushless DC motors with encoders</li>
-                                <li>48V lithium-ion battery system (4-6 hour runtime)</li>
-                                <li>4G/LTE module for remote communication</li>
+                                <li>NVIDIA Jetson Xavier NX</li>
+                                <li>RTK-GPS · 360° LiDAR · stereo camera</li>
+                                <li>RGB + multispectral cameras</li>
+                                <li>IMU · brushless motors + encoders</li>
+                                <li>4G/LTE for remote monitoring</li>
                             </ul>
                         </div>
                         <div class="tech-item">
-                            <h3>💻 Software Architecture</h3>
+                            <h3>💻 Software</h3>
                             <ul>
-                                <li>ROS Noetic framework for robot control</li>
-                                <li>Custom navigation stack with GPS integration</li>
-                                <li>SLAM (Simultaneous Localization and Mapping)</li>
-                                <li>Computer vision pipeline using OpenCV</li>
-                                <li>Path planning algorithms for field coverage</li>
-                                <li>Sensor fusion for robust localization</li>
+                                <li>ROS Noetic · SLAM · sensor fusion</li>
+                                <li>OpenCV crop row &amp; weed detection</li>
+                                <li>Path planning for full-field coverage</li>
                                 <li>Web-based ground control station</li>
-                                <li>Data logging and field analytics tools</li>
                             </ul>
                             <div class="tech-stack-logos">
                                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" title="Python" class="tech-logo">
@@ -133,47 +103,34 @@
                 </div>
 
                 <div class="project-challenges">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>rinkles</span> We Solved</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>rinkles</h2>
                     <div class="challenge-item">
-                        <h3>GPS Reliability in Agricultural Fields</h3>
-                        <p><strong>Challenge:</strong> Agricultural fields often have areas with poor GPS signal quality due to tree coverage, hills, or other obstructions. Traditional GPS-only navigation can lead to significant positioning errors and navigation failures in these areas.</p>
-                        <p><strong>Solution:</strong> Implemented an RTK-GPS system with local base station for centimeter-level accuracy. Developed a sensor fusion algorithm that combines GPS, IMU, wheel odometry, and visual odometry to maintain accurate positioning even during GPS signal loss. The system uses LiDAR-based localization as a backup when GPS is unavailable.</p>
-                        <p><strong>Impact:</strong> Achieved consistent navigation accuracy within ±5cm in open field conditions and maintained functional navigation with ±15cm accuracy even during temporary GPS signal loss. The robot can now operate reliably across the entire field without interruption.</p>
+                        <h3>GPS Dropout in the Field</h3>
+                        <p><strong>Challenge —</strong> Tree lines and hills degrade GPS, causing positioning failures mid-run.</p>
+                        <p><strong>Solution —</strong> Sensor fusion combines RTK-GPS, IMU, wheel odometry, and visual odometry. LiDAR-based localization serves as fallback during signal loss. Result: ±5cm open field, ±15cm during dropout.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>Crop Row Detection in Varying Conditions</h3>
-                        <p><strong>Challenge:</strong> Crop rows can be difficult to detect due to varying lighting conditions, crop growth stages, weeds, and soil types. Traditional vision algorithms often fail in early-season crops or during variable lighting (shadows, overcast, etc.).</p>
-                        <p><strong>Solution:</strong> Developed a robust computer vision pipeline that uses edge detection combined with Hough transform to identify crop rows. Implemented adaptive thresholding to handle varying lighting conditions. Added machine learning-based crop detection to distinguish between crop plants and weeds. The system processes multiple camera angles to improve reliability.</p>
-                        <p><strong>Impact:</strong> Achieved 94% crop row detection accuracy across different crop types and growth stages. The robot can now follow crop rows reliably from early seedling stage through full maturity, adapting to different lighting conditions throughout the day.</p>
+                        <h3>Crop Row Detection Across Growth Stages</h3>
+                        <p><strong>Challenge —</strong> Lighting variation, weeds, and crop growth stage all break naive vision approaches.</p>
+                        <p><strong>Solution —</strong> Adaptive thresholding + Hough transform for row edges; ML-based crop/weed classification. 94% detection accuracy from seedling through full maturity.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>Power Management for Extended Field Operations</h3>
-                        <p><strong>Challenge:</strong> Agricultural robots need to operate for extended periods (4-6 hours) to cover large fields efficiently. The combination of motors, sensors, and onboard computing creates significant power demands that drain batteries quickly.</p>
-                        <p><strong>Solution:</strong> Designed a high-capacity 48V lithium-ion battery system with intelligent power management. Implemented power-efficient motor control algorithms that optimize speed and torque based on terrain. Added dynamic sensor management that adjusts sensor sampling rates based on operational needs. Designed a quick-swap battery system allowing field battery changes without returning to base.</p>
-                        <p><strong>Impact:</strong> Extended operational runtime to 5+ hours under typical field conditions. The power management system reduced energy consumption by 30% compared to initial design. Quick-swap batteries enable all-day operation with minimal downtime.</p>
+                        <h3>Battery Life for Full-Field Runs</h3>
+                        <p><strong>Challenge —</strong> Motors, sensors, and onboard compute drain batteries fast — need 4–6 hour operational range.</p>
+                        <p><strong>Solution —</strong> Power-efficient motor control + dynamic sensor sampling + quick-swap battery design. Extended to 5+ hours; energy use down 30% vs initial design.</p>
                     </div>
                 </div>
 
                 <div class="project-results">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>ins</span> &amp; Impact</h2>
-                    <p>The autonomous agricultural robot has demonstrated strong performance in field trials across multiple metrics:</p>
-                    
-                    <h3>Performance Metrics</h3>
+                    <h2 class="section-word"><span class="w-letter">W</span>ins</h2>
                     <ul class="features-list">
-                        <li><strong>Navigation Accuracy:</strong> ±5cm in open field, ±15cm during GPS dropout</li>
-                        <li><strong>Crop Row Following:</strong> 94% detection accuracy across crop types</li>
-                        <li><strong>Obstacle Avoidance:</strong> 100% success rate in test scenarios</li>
-                        <li><strong>Field Coverage:</strong> 2-3 acres per hour at survey speed</li>
-                        <li><strong>Operating Time:</strong> 5+ hours on single battery charge</li>
-                        <li><strong>Max Speed:</strong> 1.5 m/s (adjustable based on terrain)</li>
+                        <li><strong>Navigation:</strong> ±5cm open field · ±15cm during GPS dropout</li>
+                        <li><strong>Crop Row Detection:</strong> 94% accuracy across types &amp; growth stages</li>
+                        <li><strong>Obstacle Avoidance:</strong> 100% success in test scenarios</li>
+                        <li><strong>Coverage:</strong> 2–3 acres/hour at survey speed</li>
+                        <li><strong>Runtime:</strong> 5+ hours per charge</li>
+                        <li><strong>Scouting Labor:</strong> 70% reduction vs manual in field trials</li>
                     </ul>
-                    
-                    <h3>Practical Applications</h3>
-                    <p>The robot has been tested for several agricultural applications including automated crop scouting, weed mapping for targeted herbicide application, and soil sampling across large fields. Initial field trials show the robot can reduce manual scouting labor by 70% while providing more comprehensive and consistent data collection.</p>
-                    
-                    <p>The modular design enables the platform to be adapted for different crops and tasks, making it a versatile tool for various farming operations. Data collected by the robot provides valuable insights for precision agriculture decision-making, enabling farmers to optimize inputs, reduce waste, and improve crop yields.</p>
-                    
-                    <p>This project bridges the gap between research robotics and practical agricultural applications, demonstrating that autonomous robots can be reliable, cost-effective tools for modern farming operations.</p>
                 </div>
             </div>
         </section>

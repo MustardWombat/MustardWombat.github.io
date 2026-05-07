@@ -116,6 +116,38 @@
     color: var(--secondary-color);
 }
 
+/* Single-word punchy section headers */
+.section-word {
+    font-size: 3.5rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.02em;
+    line-height: 1 !important;
+    margin-bottom: 1.75rem !important;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 0.6rem;
+}
+
+.section-word::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 3px;
+    background: var(--secondary-color);
+}
+
+.section-word .w-letter {
+    font-size: inherit;
+}
+
+@media (max-width: 768px) {
+    .section-word {
+        font-size: 2.5rem !important;
+    }
+}
+
 .project-overview p,
 .project-results p {
     font-size: 1.1rem;

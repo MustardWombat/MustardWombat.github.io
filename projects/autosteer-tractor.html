@@ -51,184 +51,138 @@
 
         <section class="project-content">
             <div class="container">
+
                 <div class="project-media">
                     <img src="../Images/autosteer_Tractor.gif" alt="Autosteer tractor demonstration" class="featured-image">
                 </div>
 
                 <div class="project-overview">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hy</span> This Project Matters</h2>
-                    <p>The Autosteer Tractor System is an autonomous steering solution designed to enhance precision in agricultural operations. Using RTK-GPS technology with centimeter-level accuracy, this system enables tractors to navigate fields along predetermined paths, reducing operator fatigue and improving operational efficiency.</p>
-                    
-                    <p>Precision agriculture technology has traditionally been accessible only to large-scale farming operations due to prohibitive costs—commercial autosteer systems can exceed $10,000. This project demonstrates that high-precision GPS guidance can be built for under $2,200 using open-source software and readily available components, making advanced agricultural technology accessible to small and mid-size farmers.</p>
-                    
-                    <p>By leveraging the open-source AgOpenGPS platform and transparent hardware design, this system prioritizes <strong>repairability and user empowerment</strong>. Farmers can understand, modify, and repair their own equipment rather than relying on proprietary systems with restrictive licensing. This approach aligns with the right-to-repair movement in agriculture, giving farmers full control over their technology investments while reducing long-term operational costs.</p>
-                    
-                    <p>The system uses a multi-band GNSS receiver that receives correction data from a local RTK base station via radio modules, achieving ±2cm positioning accuracy. An Inertial Measurement Unit (IMU) measures the tractor's pitch, roll, and heading to compensate for terrain variations. A Wheel Angle Sensor (WAS) provides real-time feedback on the steering position, enabling the PID controller to make precise adjustments. These components work together through the AgOpenGPS software to maintain accurate path following even on sloped or uneven terrain.</p>
-                    
-                    <p>The environmental and economic benefits are significant: precision steering reduces overlap in field operations, minimizing fuel consumption, fertilizer waste, and chemical runoff while increasing crop yields through optimized planting patterns and consistent row spacing.</p>
+                    <h2 class="section-word"><span class="w-letter">W</span>hy</h2>
+                    <p>Commercial autosteer systems top $10,000. This one cost <strong>$2,200</strong> — built on open-source hardware and AgOpenGPS, giving small and mid-size farmers centimeter-level GPS guidance they can understand, repair, and own outright. No subscriptions. No locked firmware. Full right-to-repair.</p>
+                    <p>RTK-GPS corrections flow from a local base station over radio, so the system works in dead zones with no cell signal. An IMU handles slope compensation; a Wheel Angle Sensor closes the steering loop. The result: ±2cm cross-track accuracy in real production fields.</p>
                 </div>
 
                 <div class="project-gallery">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>atch</span> It in Action</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>atch</h2>
                     <div class="gallery-item">
                         <img src="../Images/Tractorposter.jpg" alt="Autosteer Tractor System in field operation" class="gallery-image">
-                        <p class="gallery-caption">The autosteer system operating in a production field, demonstrating precise GPS-guided navigation. The system maintains consistent row spacing and optimal path following even in challenging terrain conditions.</p>
+                        <p class="gallery-caption">Production field run — consistent row spacing maintained across the full pass, even on uneven terrain.</p>
                     </div>
                 </div>
 
                 <div class="project-architecture">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>ith</span> System Architecture</h2>
-                    <p>The autosteer system integrates multiple hardware and software components to achieve precise autonomous steering:</p>
-                    
+                    <h2 class="section-word"><span class="w-letter">W</span>ith</h2>
                     <div class="architecture-diagram">
                         <div class="arch-component arch-input">
-                            <h4>📡 Positioning & Sensing</h4>
+                            <h4>📡 Sense</h4>
                             <ul>
-                                <li><strong>u-blox ZED-F9P GNSS Receiver</strong><br>Dual-band RTK positioning (±2cm accuracy)</li>
-                                <li><strong>RTK Base Station</strong><br>Transmits correction data via radio</li>
-                                <li><strong>IMU (Inertial Measurement Unit)</strong><br>Measures pitch, roll, heading</li>
-                                <li><strong>Wheel Angle Sensor (WAS)</strong><br>Current steering position feedback</li>
+                                <li><strong>u-blox ZED-F9P</strong><br>Dual-band RTK GNSS · ±2cm</li>
+                                <li><strong>RTK Base Station</strong><br>Radio correction link</li>
+                                <li><strong>IMU</strong><br>Pitch, roll, heading</li>
+                                <li><strong>Wheel Angle Sensor</strong><br>Live steering feedback</li>
                             </ul>
                         </div>
-                        
                         <div class="arch-component arch-control">
-                            <h4>💻 Processing & Control</h4>
+                            <h4>💻 Think</h4>
                             <ul>
-                                <li><strong>Tablet (AgOpenGPS Software)</strong><br>Path planning, user interface, GPS processing</li>
-                                <li><strong>Auto-steer Controller (PCB)</strong><br>PID control loop, motor driver interface</li>
+                                <li><strong>AgOpenGPS (Tablet)</strong><br>Path planning · XTE calc</li>
+                                <li><strong>Auto-steer PCB</strong><br>PID loop · motor driver</li>
                             </ul>
                         </div>
-                        
                         <div class="arch-component arch-output">
-                            <h4>⚙️ Actuation</h4>
+                            <h4>⚙️ Act</h4>
                             <ul>
-                                <li><strong>Steering Motor</strong><br>Interfaces with hydraulic steering system</li>
-                                <li><strong>Tractor Hydraulics</strong><br>Physical steering mechanism</li>
+                                <li><strong>Steering Motor</strong><br>Hydraulic interface</li>
+                                <li><strong>Tractor Hydraulics</strong><br>Physical actuation</li>
                             </ul>
                         </div>
                     </div>
-                    
                     <div class="architecture-flow">
                         <h4>Data Flow</h4>
                         <ol>
-                            <li><strong>Position Acquisition:</strong> ZED-F9P receives GPS signals and RTK corrections from base station</li>
-                            <li><strong>Sensor Integration:</strong> IMU provides orientation data; WAS reports current steering angle</li>
-                            <li><strong>Path Calculation:</strong> AgOpenGPS calculates cross-track error (XTE) from desired path</li>
-                            <li><strong>Control Output:</strong> Auto-steer controller runs PID algorithm to determine steering correction</li>
-                            <li><strong>Actuation:</strong> Motor adjusts steering position; WAS closes feedback loop</li>
+                            <li><strong>Acquire</strong> — ZED-F9P locks onto GPS + RTK corrections from base</li>
+                            <li><strong>Orient</strong> — IMU feeds heading; WAS reports current steering angle</li>
+                            <li><strong>Calculate</strong> — AgOpenGPS computes cross-track error from AB line</li>
+                            <li><strong>Correct</strong> — PID controller outputs motor command</li>
+                            <li><strong>Confirm</strong> — WAS closes the loop; cycle repeats at 10Hz</li>
                         </ol>
                     </div>
-                    
-                    <p><em>Note: This is a high-level system overview. Detailed component specifications and wiring diagrams will be added as documentation is compiled.</em></p>
                 </div>
 
-                <div class="project-details">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>orkflow</span> Features</h2>
+                <div class="project-challenges">
+                    <h2 class="section-word"><span class="w-letter">W</span>rinkles</h2>
+                    <div class="challenge-item">
+                        <h3>No Signal, No Problem</h3>
+                        <p><strong>Challenge —</strong> Fields lack cellular coverage, blocking cloud-based RTK correction streams and degrading GPS accuracy mid-run.</p>
+                        <p><strong>Solution —</strong> Deployed a local RTK base station with 900MHz radio modules for direct base-to-rover correction at full field range — zero internet dependency.</p>
+                        <p><strong>Result —</strong> Consistent ±2cm accuracy regardless of cell coverage, making the system truly field-deployable.</p>
+                    </div>
+                </div>
+
+                <div class="project-results">
+                    <h2 class="section-word"><span class="w-letter">W</span>ins</h2>
+                    <p>Five consecutive runs, 183 data points. Cross-track error distribution centers tightly around zero.</p>
+
+                    <div class="gallery-item">
+                        <img src="../Images/Combined_All_Runs.png" alt="GPS path tracking visualization showing 5 runs" class="gallery-image">
+                        <p class="gallery-caption">Five overlaid GPS paths — all hugging the AB guidance line with high repeatability.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="../Images/Combined_XTE_Histogram.png" alt="Cross-track error distribution histogram" class="gallery-image">
+                        <p class="gallery-caption">XTE histogram — normal distribution centered near zero confirms predictable, unbiased performance.</p>
+                    </div>
+
                     <ul class="features-list">
-                        <li>RTK-GPS integration for centimeter-level positioning accuracy (±2cm)</li>
-                        <li>IMU (Inertial Measurement Unit) for pitch, roll, and heading compensation on slopes</li>
-                        <li>Wheel Angle Sensor (WAS) for real-time steering position feedback</li>
-                        <li>PID control system for smooth steering corrections</li>
-                        <li>Modified open-source software to record XTE (cross-track error) values for configuration optimization</li>
-                        <li>Data collection and analysis pipeline for performance tuning</li>
-                        <li>Path planning and AB-line following algorithms</li>
-                        <li>User-friendly interface for field boundary setup</li>
-                        <li>Safety features including manual override and obstacle detection</li>
+                        <li><strong>Mean XTE:</strong> −1.0 cm</li>
+                        <li><strong>Std Dev:</strong> 1.5 cm</li>
+                        <li><strong>Mean Absolute Error:</strong> 1.4 cm</li>
+                        <li><strong>Max Error:</strong> 5.1 cm</li>
+                        <li><strong>95th Percentile:</strong> 3.3 cm</li>
                     </ul>
                 </div>
 
                 <div class="project-technical">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hich</span> Tools &amp; Stack</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>hich</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
                             <h3>🔧 Mechanical</h3>
                             <ul>
-                                <li>Steering motor integration with hydraulic system</li>
-                                <li>Wheel Angle Sensor (WAS) mounting and calibration</li>
-                                <li>Custom printed circuit board enclosure with auto-steer controller</li>
-                                <li>Weatherproof electronics housing</li>
-                                <li>GPS antenna mounting for optimal satellite visibility</li>
-                                <li>RTK base station tripod setup</li>
-                                <li>12V power system integration</li>
-                                <li>Cable routing and protection</li>
+                                <li>Motor-to-hydraulic steering integration</li>
+                                <li>WAS mounting &amp; calibration</li>
+                                <li>Weatherproof PCB enclosure</li>
+                                <li>GPS antenna placement (sky-clear)</li>
+                                <li>12V power routing</li>
                             </ul>
                         </div>
                         <div class="tech-item">
                             <h3>⚡ Hardware</h3>
                             <ul>
-                                <li>Steering motor with driver ($250)</li>
-                                <li>Wheel Angle Sensor (WAS) ($101)</li>
-                                <li>u-blox ZED-F9P dual-band RTK GNSS receiver with survey-grade multiband antenna ($600)</li>
-                                <li>RTK base station ($500)</li>
-                                <li>Auto-steer controller (printed circuit board)</li>
-                                <li>Tablet for AgOpenGPS interface ($700)</li>
-                                <li>12V power supply system</li>
-                                <li>RF communication module for RTK corrections</li>
+                                <li>u-blox ZED-F9P + multiband antenna — $600</li>
+                                <li>RTK base station — $500</li>
+                                <li>Steering motor + driver — $250</li>
+                                <li>Wheel Angle Sensor — $101</li>
+                                <li>Auto-steer controller PCB</li>
+                                <li>Tablet (AgOpenGPS) — $700</li>
                             </ul>
                         </div>
                         <div class="tech-item">
                             <h3>💻 Software</h3>
                             <ul>
-                                <li>AgOpenGPS open-source software</li>
-                                <li>Custom modifications for XTE data logging</li>
-                                <li>RTK correction processing algorithms</li>
-                                <li>Tablet-based control interface</li>
-                                <li>Field mapping and path planning tools</li>
-                                <li>Real-time GPS position tracking</li>
-                                <li>Steering control algorithms</li>
+                                <li>AgOpenGPS (open-source)</li>
+                                <li>Custom XTE data logging fork</li>
+                                <li>AB-line path planning</li>
+                                <li>Python analysis pipeline</li>
                             </ul>
-                            <div class="tech-stack-logos" id="autosteer-tech-logos">
-                                <!-- Icons will be loaded dynamically -->
-                            </div>
+                            <div class="tech-stack-logos" id="autosteer-tech-logos"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-challenges">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>rinkles</span> We Solved</h2>
-                    <div class="challenge-item">
-                        <h3>Internet Reliability & RTK Corrections</h3>
-                        <p><strong>Challenge:</strong> Agricultural fields often lack reliable internet connectivity, making it difficult to receive real-time RTK correction data from internet-based services. This resulted in inconsistent GPS accuracy and unreliable autonomous operation.</p>
-                        <p><strong>Solution:</strong> Implemented a local RTK base station with radio modules for direct base-to-rover communication. This created a robust, offline RTK system that doesn't depend on internet connectivity. The radio modules provide reliable correction data transmission within the field, ensuring consistent centimeter-level accuracy regardless of cellular coverage.</p>
-                        <p><strong>Impact:</strong> Achieved reliable autonomous steering with consistent ±2cm accuracy in all field conditions, eliminating dependency on internet infrastructure and making the system truly field-deployable.</p>
-                    </div>
-                </div>
-
-                <div class="project-results">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>ins</span> &amp; Impact</h2>
-                    <p>Extensive field testing was conducted to validate the system's performance, with data collection across multiple runs to measure cross-track error (XTE) - the lateral offset from the intended guidance line.</p>
-                    
-                    <div class="gallery-item">
-                        <img src="../Images/Combined_All_Runs.png" alt="GPS path tracking visualization showing 5 runs" class="gallery-image">
-                        <p class="gallery-caption">GPS path visualization showing tight clustering around the A-B guidance line across 5 consecutive runs, demonstrating excellent repeatability and path-following accuracy.</p>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="../Images/Combined_XTE_Histogram.png" alt="Cross-track error distribution histogram" class="gallery-image">
-                        <p class="gallery-caption">Cross-track error distribution revealing a normal distribution centered near zero, indicating reliable and predictable performance.</p>
-                    </div>
-                    
-                    <h3>Performance Metrics</h3>
-                    <p>Analysis of 5 consecutive runs (183 data points) demonstrated:</p>
-                    <ul class="features-list">
-                        <li><strong>Mean Cross-Track Error:</strong> -1.0cm (systematic offset)</li>
-                        <li><strong>Standard Deviation:</strong> 1.5cm (consistency measure)</li>
-                        <li><strong>Mean Absolute Error:</strong> 1.4cm (typical deviation from path)</li>
-                        <li><strong>Maximum Error:</strong> 5.1cm (worst-case deviation)</li>
-                        <li><strong>95th Percentile Error:</strong> 3.3cm (95% of points within this range)</li>
-                    </ul>
-                    
-                    <p><em>Note: Cross-track error represents the combined effect of both steering accuracy and RTK-GPS positioning error. Without ground truth reference, these error sources cannot be separated.</em></p>
-                </div>
-
                 <div class="project-presentation">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>here</span> It Was Presented</h2>
-                    <p>This autosteer tractor system was presented at the <a href="https://www.glexpo.com/" target="_blank" rel="noopener noreferrer">Great Lakes Expo 2025</a>, one of the premier agricultural trade shows in the Great Lakes region. The expo brings together farmers, agricultural professionals, and technology innovators to showcase the latest advancements in farming equipment and precision agriculture.</p>
-                    
-                    <p>The presentation focused on demonstrating how open-source technology and affordable components can make precision agriculture accessible to small and mid-size farming operations. Attendees showed significant interest in the system's cost-effectiveness, transparency, and repairability—key factors that differentiate this approach from commercial proprietary solutions.</p>
-                    
-                    <p>The opportunity to present at Great Lakes Expo provided valuable feedback from real-world farmers and industry professionals, validating the practical applicability of the system and highlighting the growing demand for affordable, farmer-controlled agricultural technology.</p>
+                    <h2 class="section-word"><span class="w-letter">W</span>here</h2>
+                    <p>Presented at <a href="https://www.glexpo.com/" target="_blank" rel="noopener noreferrer"><strong>Great Lakes Expo 2025</strong></a> — one of the region's premier ag trade shows. Farmers and industry professionals responded strongly to the cost transparency and right-to-repair angle, validating demand for affordable, owner-controlled precision ag tech.</p>
                 </div>
+
             </div>
         </section>
     </main>

@@ -38,9 +38,8 @@
         <section class="project-hero">
             <div class="container">
                 <a href="../index.html#projects" class="back-link">← Back to Projects</a>
-                <h1>Pig Posture Detection System</h1>
                 <h1>Piglet Keypoint Detection System</h1>
-                <p class="project-subtitle">MMPOSE-based model for anatomical keypoint detection in piglets</p>
+                <p class="project-subtitle">MMPose-based 7-keypoint pose estimation for livestock behavior research</p>
                 <div class="project-tags">
                     <span class="tag">Computer Vision</span>
                     <span class="tag">Python</span>
@@ -56,115 +55,82 @@
 
         <section class="project-content">
             <div class="container">
-                <div class="project-overview">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hy</span> This Project Matters</h2>
-                    <p>Developed a machine learning pipeline for <strong>7-keypoint pose estimation of piglets</strong> using the <strong>OpenMMLab MMPose</strong> framework on the Michigan State University High Performance Computing Cluster (HPCC). The system enables automated behavioral analysis and posture tracking for livestock monitoring research.</p>
-                    <ul>
-                        <li>Built scripts to automate dataset transfer from Roboflow, convert datasets to COCO format, and organize them for model training</li>
-                        <li>Implemented <strong>SLURM-based GPU training workflows</strong> to efficiently train pose estimation models on HPC infrastructure</li>
-                        <li>Created tools for visualizing pose predictions, overlaying detected keypoints and skeleton connections on images with confidence-based color coding</li>
-                        <li>Automated environment setup and dependency installation to simplify deployment of MMPose and OpenMMLab libraries on shared GPU clusters</li>
-                        <li>Annotated over 1,100 piglet images for custom dataset training</li>
-                    </ul>
-                </div>
 
                 <div class="project-gallery">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>atch</span> It in Action</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>atch</h2>
                     <div class="gallery-item">
                         <img src="../Images/piglet.gif" alt="Piglet keypoint detection demonstration" class="gallery-video">
-                        <p class="gallery-caption">Demonstration showing MMPOSE-based model detecting anatomical keypoints (snout, head, ears, shoulder, back, tail) on piglets in diverse conditions.</p>
+                        <p class="gallery-caption">MMPose model detecting all 7 anatomical keypoints (snout, head, ears, shoulder, back, tail) live on piglets in varied conditions.</p>
                     </div>
                 </div>
 
-                <div class="project-details">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>orkflow</span> Features</h2>
-                    <ul class="features-list">
-                        <li><strong>MMPose-based anatomical keypoint detection</strong> using OpenMMLab framework</li>
-                        <li>Seven keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
-                        <li><strong>Roboflow API integration</strong> for automated dataset download and management</li>
-                        <li>Training pipeline using <strong>PyTorch</strong> (deep learning backend) and <strong>MMEngine/MMCV</strong> (core OpenMMLab infrastructure)</li>
-                        <li><strong>SLURM job scheduling</strong> for GPU training (sbatch, srun) on MSU HPCC</li>
-                        <li><strong>COCO dataset format</strong> standardized annotation for training</li>
-                        <li>Custom Python scripts for keypoint and skeleton overlay visualization</li>
-                        <li><strong>Conda environment management</strong> for reproducible HPC deployments</li>
-                    </ul>
+                <div class="project-overview">
+                    <h2 class="section-word"><span class="w-letter">W</span>hy</h2>
+                    <p>Livestock behavioral research depends on reliable pose tracking — but off-the-shelf models are trained on humans, not piglets. This pipeline trains a <strong>7-keypoint MMPose model</strong> from scratch on 1,100+ hand-annotated images using MSU's GPU cluster, producing a model purpose-built for piglet body language analysis.</p>
+                    <p>The bigger goal: remove the manual bottleneck from HPC-based deep learning. Environment setup on shared clusters is brittle, COCO format conversion is tedious, and SLURM config is opaque. This project automates all of it into a reproducible, one-command workflow reusable for any future keypoint dataset in the lab.</p>
                 </div>
 
                 <div class="project-technical">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hich</span> Tools &amp; Stack</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>hich</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <h3>Model Architecture</h3>
+                            <h3>Model</h3>
                             <ul>
-                                <li>MMPose pose estimation framework (OpenMMLab)</li>
-                                <li>Custom-trained on a dataset of 1,100 annotated piglet images</li>
-                                <li>Seven anatomical keypoints: snout, head, left ear, right ear, shoulder, back, tail</li>
-                                <li>Optical flow analysis to anchor skeleton keypoints and maintain accuracy during occlusion</li>
+                                <li>MMPose (OpenMMLab) framework</li>
+                                <li>7 keypoints: snout, head, L/R ear, shoulder, back, tail</li>
+                                <li>Optical flow anchoring for occluded keypoints</li>
+                                <li>1,100+ annotated images with augmentation</li>
                             </ul>
                         </div>
                         <div class="tech-item">
-                            <h3>Training & Data Pipeline</h3>
+                            <h3>Pipeline</h3>
                             <ul>
-                                <li>Manual annotation of piglet images using Roboflow labeling tools</li>
-                                <li>Automated dataset download via <strong>Roboflow API</strong> (COCO format)</li>
-                                <li><strong>Conda environment</strong> management for reproducible GPU environments</li>
-                                <li>Model training and validation on <strong>MSU HPCC cluster</strong> using SLURM</li>
-                                <li>Training command: <code>python tools/train.py configs/bottomup_pig_pose_7kpts.py</code></li>
-                                <li>Data augmentation (rotation, brightness, flip) for lighting and pose diversity</li>
-                                <li>Custom visualization scripts with confidence-based color coding for keypoint overlay</li>
+                                <li>Roboflow API → COCO JSON conversion</li>
+                                <li>Conda environment (pinned OpenMMLab stack)</li>
+                                <li>SLURM batch training on MSU HPCC A100s</li>
+                                <li>Confidence-based keypoint overlay visualization</li>
                             </ul>
-                            <h4 style="margin-top: 1rem;">Technologies & Libraries</h4>
+                            <div class="tech-stack-logos" id="piglet-tech-logos"></div>
+                        </div>
+                        <div class="tech-item">
+                            <h3>Stack</h3>
                             <ul>
-                                <li><strong>ML/CV:</strong> MMPose, PyTorch, MMEngine, MMCV</li>
-                                <li><strong>Data:</strong> Roboflow API, COCO format</li>
-                                <li><strong>HPC:</strong> SLURM, CUDA GPU, MSU HPCC</li>
-                                <li><strong>Environment:</strong> Conda, pip</li>
-                                <li><strong>Development:</strong> Python, Bash scripting, Git/GitLab</li>
+                                <li>PyTorch · MMPose · MMEngine · MMCV</li>
+                                <li>OpenCV · NumPy · matplotlib</li>
+                                <li>Roboflow API · COCO format</li>
+                                <li>SLURM · CUDA · Conda · Bash · Git</li>
                             </ul>
-                            <div class="tech-stack-logos" id="piglet-tech-logos">
-                                <!-- Icons will be loaded dynamically -->
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-challenges">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>rinkles</span> We Solved</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>rinkles</h2>
                     <div class="challenge-item">
-                        <h3>HPC Environment Setup</h3>
-                        <p><strong>Challenge:</strong> Installing MMPose and its dependencies (PyTorch, MMCV, MMEngine) on shared HPC clusters involves complex dependency management and system constraints.</p>
-                        <p><strong>Solution:</strong> Created automated shell scripts for environment setup with proper module loading, Conda environment isolation, and documented workflows for reproducible deployments. SSH key management considerations were addressed by recommending HTTPS with personal access tokens for simpler credential management on shared systems.</p>
+                        <h3>Occlusion in Group Settings</h3>
+                        <p><strong>Challenge —</strong> Piglets overlap constantly, hiding keypoints mid-sequence.</p>
+                        <p><strong>Solution —</strong> Optical flow analysis anchors skeleton keypoints across frames, maintaining tracking through temporary occlusion.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>Occlusion & Keypoint Visibility</h3>
-                        <p><strong>Challenge:</strong> Piglets frequently overlap in group settings, causing occlusion and making keypoints difficult to detect and track.</p>
-                        <p><strong>Solution:</strong> We implemented optical flow analysis to anchor skeleton keypoints, maintaining accuracy even when some keypoints are temporarily occluded. This approach, combined with targeted data augmentation, improved robustness in real-world scenarios.</p>
+                        <h3>HPC Environment Fragility</h3>
+                        <p><strong>Challenge —</strong> MMPose's dependency chain breaks easily against HPCC's CUDA module versions.</p>
+                        <p><strong>Solution —</strong> Pinned a tested version matrix into a <code>environment.yml</code> — one-command setup for any HPCC account.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>Lighting & Pose Diversity</h3>
-                        <p><strong>Challenge:</strong> Diverse lighting and piglet poses introduced significant variability in image appearance and keypoint locations.</p>
-                        <p><strong>Solution:</strong> We curated a dataset with images from multiple lighting environments and piglet poses, and used augmentation (rotation, brightness, flip) to improve model generalization.</p>
+                        <h3>Lighting &amp; Pose Diversity</h3>
+                        <p><strong>Challenge —</strong> Variable pen lighting and piglet orientations introduced heavy appearance variance.</p>
+                        <p><strong>Solution —</strong> Curated images across conditions; augmented with rotation, brightness, and flip transforms at training time.</p>
                     </div>
-                    <div class="challenge-item">
-                        <h3>Dataset & Repository Management</h3>
-                        <p><strong>Challenge:</strong> Managing large datasets and coordinating Git repositories on HPC systems introduced complexity with nested repos and branch synchronization.</p>
-                        <p><strong>Solution:</strong> Implemented proper Git workflows with clear branch management, avoided accidental submodule creation, and automated dataset ingestion through Roboflow API integration for streamlined data pipelines.</p>
-                    </div>
-                </div>
-
-                <div class="project-results">
-                    <!-- Results & Impact section removed as requested: no application or metrics -->
                 </div>
 
                 <div class="project-links">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>here</span> to Explore More</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>here</h2>
                     <div class="resource-links">
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline" target="_blank" class="resource-link">GitHub Repository</a>
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline?tab=readme-ov-file#training-your-model" target="_blank" class="resource-link">Training Instructions</a>
-                        <a href="#" class="resource-link">Model Documentation</a>
-                        <a href="#" class="resource-link">Dataset Information</a>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>

@@ -59,51 +59,35 @@
                 </div>
 
                 <div class="project-overview">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hy</span> This Project Matters</h2>
-                    <p>This project delivered a complete, reproducible software workflow for keypoint annotation and pose estimation model training using <strong>MMPose</strong> on the <strong>MSU High Performance Computing Cluster (HPCC)</strong>. Developed on Ubuntu, the pipeline covers every step from raw image annotation through SLURM-submitted GPU training jobs.</p>
-
-                    <p>The goal was to remove the manual friction from HPC-based deep learning work — environment setup on a shared cluster is notoriously brittle, dataset formats are inconsistent, and training jobs require careful SLURM configuration. This workflow automates and documents all of it, making the full pipeline reproducible for any future keypoint detection task in the lab.</p>
-
-                    <p>Built during lab research (Jan–Mar 2026), this directly underpins the piglet pose estimation work and is designed to be reused for future animal or object keypoint datasets.</p>
-                </div>
-
-                <div class="project-details">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>orkflow</span> Features</h2>
-                    <ul class="features-list">
-                        <li><strong>Environment Setup:</strong> Automated Conda environment creation with pinned MMPose, MMEngine, MMCV, and PyTorch versions compatible with HPCC's CUDA modules</li>
-                        <li><strong>Image Annotation:</strong> Ubuntu-based annotation tooling for defining and labeling custom keypoint schemas on raw image datasets</li>
-                        <li><strong>Dataset Conversion:</strong> Scripts to convert annotated data into COCO-format JSON required by MMPose, including train/val split generation</li>
-                        <li><strong>Config Generation:</strong> Automated MMPose config file generation parameterized by dataset path, keypoint count, and model architecture</li>
-                        <li><strong>SLURM Job Submission:</strong> Templated SLURM batch scripts for GPU training jobs with configurable resource allocation (CPUs, GPUs, memory, walltime)</li>
-                        <li><strong>Training Monitoring:</strong> Log parsing and visualization scripts for tracking loss curves and validation metrics across epochs</li>
-                        <li><strong>Inference & Visualization:</strong> Post-training scripts for running inference on new images with confidence-based keypoint overlay rendering</li>
-                    </ul>
+                    <h2 class="section-word"><span class="w-letter">W</span>hy</h2>
+                    <p>HPC-based deep learning is powerful but brutal to set up — mismatched OpenMMLab versions, brittle Conda installs, COCO format quirks, and SLURM job configuration all create friction before a single training run starts. This pipeline eliminates that overhead: a complete, reproducible workflow from raw image annotation through SLURM-submitted GPU training on the <strong>MSU HPCC</strong>, documented for reuse by any lab member on any future keypoint dataset.</p>
+                    <p>Built Jan–Mar 2026. Directly underpins the <a href="piglet-vision.html">Piglet Keypoint Detection</a> project.</p>
                 </div>
 
                 <div class="project-architecture">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>ith</span> System Architecture</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>ith</h2>
                     <div class="architecture-diagram">
                         <div class="arch-component arch-input">
-                            <h4>📁 Data Preparation</h4>
+                            <h4>📁 Prepare</h4>
                             <ul>
-                                <li><strong>Raw Images</strong><br>Transferred from Roboflow or local storage</li>
-                                <li><strong>Annotation Tool</strong><br>Ubuntu GUI for keypoint labeling</li>
-                                <li><strong>COCO Converter</strong><br>Python script → COCO JSON format</li>
+                                <li><strong>Raw Images</strong><br>Roboflow or local storage</li>
+                                <li><strong>Annotation Tool</strong><br>Ubuntu GUI keypoint labeling</li>
+                                <li><strong>COCO Converter</strong><br>Python → COCO JSON format</li>
                             </ul>
                         </div>
                         <div class="arch-component arch-control">
-                            <h4>⚙️ HPCC Training</h4>
+                            <h4>⚙️ Train</h4>
                             <ul>
-                                <li><strong>Conda Environment</strong><br>Pinned OpenMMLab stack on HPCC</li>
+                                <li><strong>Conda Environment</strong><br>Pinned OpenMMLab stack</li>
                                 <li><strong>MMPose Config</strong><br>Auto-generated per dataset</li>
-                                <li><strong>SLURM Submission</strong><br>GPU batch job with resource templates</li>
+                                <li><strong>SLURM Submission</strong><br>GPU batch job templates</li>
                             </ul>
                         </div>
                         <div class="arch-component arch-output">
-                            <h4>📊 Outputs</h4>
+                            <h4>📊 Output</h4>
                             <ul>
-                                <li><strong>Trained Checkpoint</strong><br>MMPose model weights (.pth)</li>
-                                <li><strong>Validation Metrics</strong><br>PCK / AP scores per epoch</li>
+                                <li><strong>Checkpoint (.pth)</strong><br>Trained model weights</li>
+                                <li><strong>Metrics</strong><br>PCK / AP per epoch</li>
                                 <li><strong>Visualizations</strong><br>Keypoint overlays on test images</li>
                             </ul>
                         </div>
@@ -111,18 +95,14 @@
                 </div>
 
                 <div class="project-technical">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>hich</span> Tools &amp; Stack</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>hich</h2>
                     <div class="tech-grid">
                         <div class="tech-item">
-                            <h3>💻 Software Stack</h3>
+                            <h3>💻 Stack</h3>
                             <ul>
-                                <li>Ubuntu 22.04 (local development environment)</li>
-                                <li>MMPose (OpenMMLab) — pose estimation framework</li>
-                                <li>MMEngine + MMCV — training engine and CV utilities</li>
-                                <li>PyTorch + CUDA — GPU-accelerated model training</li>
-                                <li>Conda — environment and dependency management</li>
-                                <li>SLURM — HPC job scheduler on MSU HPCC</li>
-                                <li>Python + Bash — automation scripting</li>
+                                <li>Ubuntu 22.04 · MMPose · MMEngine · MMCV</li>
+                                <li>PyTorch + CUDA · Conda · SLURM</li>
+                                <li>Python + Bash scripting</li>
                             </ul>
                             <div class="tech-stack-logos">
                                 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" title="Python" class="tech-logo">
@@ -133,62 +113,61 @@
                             </div>
                         </div>
                         <div class="tech-item">
-                            <h3>🖥️ HPC Details</h3>
+                            <h3>🖥️ HPC</h3>
                             <ul>
                                 <li>MSU HPCC — SLURM-managed cluster</li>
-                                <li>GPU nodes: NVIDIA A100 / V100 via SLURM allocation</li>
-                                <li>Module system for CUDA and cuDNN versions</li>
-                                <li>Shared filesystem for dataset and checkpoint storage</li>
-                                <li>Batch job walltime management for long training runs</li>
+                                <li>NVIDIA A100 / V100 via SLURM allocation</li>
+                                <li>CUDA + cuDNN module system</li>
+                                <li>Shared filesystem for datasets &amp; checkpoints</li>
                             </ul>
                         </div>
                         <div class="tech-item">
                             <h3>🔑 Key Scripts</h3>
                             <ul>
-                                <li><code>setup_env.sh</code> — one-command Conda environment build</li>
-                                <li><code>convert_to_coco.py</code> — annotation → COCO JSON conversion</li>
-                                <li><code>gen_config.py</code> — parameterized MMPose config generator</li>
-                                <li><code>submit_train.sh</code> — SLURM batch job template</li>
-                                <li><code>visualize_results.py</code> — inference + keypoint overlay rendering</li>
-                                <li><code>parse_logs.py</code> — training metric extraction and plotting</li>
+                                <li><code>setup_env.sh</code> — one-command Conda build</li>
+                                <li><code>convert_to_coco.py</code> — annotation → COCO JSON</li>
+                                <li><code>gen_config.py</code> — MMPose config generator</li>
+                                <li><code>submit_train.sh</code> — SLURM batch template</li>
+                                <li><code>visualize_results.py</code> — keypoint overlay</li>
+                                <li><code>parse_logs.py</code> — metric extraction + plotting</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-challenges">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>rinkles</span> We Solved</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>rinkles</h2>
                     <div class="challenge-item">
-                        <h3>OpenMMLab Version Compatibility on HPCC</h3>
-                        <p><strong>Challenge:</strong> MMPose, MMEngine, MMCV, and PyTorch have tight interdependencies that frequently break when versions don't match. HPCC's available CUDA module versions further constrain the compatible package matrix, making naive <code>pip install</code> approaches fail.</p>
-                        <p><strong>Solution:</strong> Pinned a tested, working version matrix for all OpenMMLab packages against the HPCC CUDA 11.7 module. Documented the exact Conda environment spec as a <code>environment.yml</code>, allowing one-command reproducible setup across any HPCC user account.</p>
+                        <h3>OpenMMLab Version Hell on HPCC</h3>
+                        <p><strong>Challenge —</strong> MMPose/MMEngine/MMCV/PyTorch have tight interdependencies. HPCC's CUDA module version further constrains the compatible matrix — naive <code>pip install</code> reliably fails.</p>
+                        <p><strong>Solution —</strong> Pinned a tested version matrix against HPCC CUDA 11.7 and exported as <code>environment.yml</code> — one-command reproducible setup for any HPCC account.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>COCO Format Dataset Generation</h3>
-                        <p><strong>Challenge:</strong> MMPose requires datasets in COCO keypoint JSON format — a specific nested schema that annotation tools don't always export directly. Manual conversion is tedious and error-prone, especially for custom keypoint schemas that don't match standard COCO body joints.</p>
-                        <p><strong>Solution:</strong> Wrote a flexible <code>convert_to_coco.py</code> script parameterized by keypoint names and skeleton connectivity. The script handles arbitrary keypoint counts, generates proper category metadata, and validates the output JSON against MMPose's expected schema before training.</p>
+                        <h3>Custom Keypoint COCO Conversion</h3>
+                        <p><strong>Challenge —</strong> Annotation tools don't export custom keypoint schemas in COCO format. Manual conversion is tedious and error-prone.</p>
+                        <p><strong>Solution —</strong> <code>convert_to_coco.py</code> is parameterized by keypoint names and skeleton connectivity — handles arbitrary counts, generates proper metadata, and validates output JSON against MMPose's expected schema.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>SLURM Job Configuration for GPU Training</h3>
-                        <p><strong>Challenge:</strong> HPCC SLURM jobs require precise resource specification — wrong GPU count, memory, or walltime estimates lead to failed or inefficient jobs. First-time HPCC users in the lab had no starting point for deep learning job configuration.</p>
-                        <p><strong>Solution:</strong> Created templated SLURM batch scripts with sensible defaults for MMPose training workloads, with inline comments explaining each parameter. Included a small benchmark job to estimate per-epoch time before committing to a full training run.</p>
+                        <h3>SLURM Config for First-Timers</h3>
+                        <p><strong>Challenge —</strong> Wrong GPU count, memory, or walltime estimates kill SLURM jobs silently. New lab members had no starting point.</p>
+                        <p><strong>Solution —</strong> Templated batch scripts with sensible defaults and inline comments. Includes a short benchmark job to estimate per-epoch time before committing to a full run.</p>
                     </div>
                 </div>
 
                 <div class="project-results">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>ins</span> &amp; Impact</h2>
-                    <p>The pipeline was successfully used to train the 7-keypoint piglet pose estimation model (see <a href="piglet-vision.html">Piglet Keypoint Detection</a>), validating the end-to-end workflow on real research data.</p>
+                    <h2 class="section-word"><span class="w-letter">W</span>ins</h2>
+                    <p>Pipeline validated end-to-end training the 7-keypoint piglet model on HPCC A100 nodes.</p>
                     <ul class="features-list">
-                        <li>Full environment setup reduced from hours of manual troubleshooting to a single script execution</li>
-                        <li>COCO conversion handles arbitrary keypoint schemas — reusable for any future lab datasets</li>
-                        <li>SLURM templates successfully submitted and completed GPU training runs on HPCC A100 nodes</li>
-                        <li>Visualization pipeline confirmed correct keypoint predictions with confidence-based color coding</li>
-                        <li>Workflow documented and transferable to other lab members for future pose estimation tasks</li>
+                        <li>Environment setup: hours of troubleshooting → single script</li>
+                        <li>COCO converter reusable for any future lab keypoint dataset</li>
+                        <li>SLURM templates successfully completed GPU training runs</li>
+                        <li>Visualization pipeline confirmed correct keypoint predictions</li>
+                        <li>Fully documented — transferable to any lab member</li>
                     </ul>
                 </div>
 
                 <div class="project-links">
-                    <h2><span class="w-keyword"><span class="w-letter">W</span>here</span> to Explore More</h2>
+                    <h2 class="section-word"><span class="w-letter">W</span>here</h2>
                     <div class="resource-links">
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline" class="resource-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                         <a href="https://github.com/MustardWombat/mmpose-hpcc-pipeline?tab=readme-ov-file#training-your-model" class="resource-link" target="_blank" rel="noopener noreferrer">Training Instructions</a>
