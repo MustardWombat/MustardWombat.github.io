@@ -124,18 +124,6 @@
     line-height: 1 !important;
     margin-bottom: 1.75rem !important;
     color: var(--primary-color);
-    position: relative;
-    padding-bottom: 0.6rem;
-}
-
-.section-word::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 2.5rem;
-    height: 3px;
-    background: var(--secondary-color);
 }
 
 .section-word .w-letter {

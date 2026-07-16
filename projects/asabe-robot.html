@@ -39,31 +39,39 @@
             <div class="container">
                 <a href="../index.html#projects" class="back-link">← Back to Projects</a>
                 <h1>ASABE Agricultural Robotics Challenge Robot '26</h1>
-                <p class="project-subtitle">Autonomous ground robot for precision crop scouting, weed detection, and field intervention</p>
+                <p class="project-subtitle">Fully autonomous cornfield robot — line following, plant classification, and precision removal</p>
                 <div class="project-tags">
                     <span class="tag">ROS2</span>
-                    <span class="tag">C++</span>
+                    <span class="tag">YOLO</span>
                     <span class="tag">Python</span>
-                    <span class="tag">Autonomous Navigation</span>
-                    <span class="tag">Computer Vision</span>
-                    <span class="tag">Sensor Fusion</span>
-                </div>
-                <div class="project-tags" style="margin-top: 0.5rem;">
-                    <span class="tag" style="background: #fef3c7; color: #92400e; border: 1px solid #fde68a;">🚧 In Progress — Jan 2026 – Present</span>
+                    <span class="tag">Jetson Nano Orin</span>
+                    <span class="tag">Arduino Mega</span>
+                    <span class="tag">Mecanum Wheels</span>
                 </div>
             </div>
         </section>
 
         <section class="project-content">
             <div class="container">
+
                 <div class="project-media">
-                    <img src="../Images/robot.png" alt="ASABE Agricultural Robotics Challenge Robot" class="featured-image" style="max-height: 420px; object-fit: contain; background: #f8f9fa; border-radius: 8px;">
+                    <img src="../Images/PARC2026.gif" alt="ASABE Robot in action" class="featured-image">
                 </div>
 
                 <div class="project-overview">
                     <h2 class="section-word"><span class="w-letter">W</span>hy</h2>
-                    <p>A year-long, ground-up build for the <strong>ASABE Agricultural Robotics Challenge</strong>. Unlike the autosteer project — which added autonomy to existing equipment — this is a purpose-built autonomous robot designed from scratch for real outdoor field operation: crop scouting, weed detection, and precision intervention.</p>
-                    <p>My focus is low-level controls and sensor integration — translating noisy real-world sensor data (GPS dropouts, uneven terrain, IMU drift) into reliable robot behavior via a ROS2 navigation stack and EKF sensor fusion.</p>
+                    <p>Built for the <strong>ASABE Student Robotics Challenge 2026 — Standard Division</strong>. The task: traverse a 5-lane simulated cornfield, identify bad (yellow) corn plants among good (green) ones, and remove only the bad ones using a precision actuator — all autonomously, as fast as possible.</p>
+                    <p>As VP of the MSU Precision Agriculture Robotics Club (PARC), I led the team across mechanical, electrical, and software subteams from initial design through competition-ready testing. The result is a fully autonomous robot built on a custom 3D-printed chassis, Mecanum wheels for omnidirectional movement, and a ROS2 pub/sub architecture tying navigation, vision, and actuation together.</p>
+                </div>
+
+                <div class="project-gallery">
+                    <h2 class="section-word"><span class="w-letter">W</span>atch</h2>
+                    <div class="gallery-item">
+                        <video controls playsinline class="gallery-image" style="background:#000;">
+                            <source src="../Images/ParcCornFinal.mp4" type="video/mp4">
+                        </video>
+                        <p class="gallery-caption">Full autonomous run — line following, plant detection, and bad-plant removal across the competition field.</p>
+                    </div>
                 </div>
 
                 <div class="project-architecture">
@@ -72,111 +80,106 @@
                         <div class="arch-component arch-input">
                             <h4>📡 Sense</h4>
                             <ul>
-                                <li><strong>RTK-GPS</strong><br>Centimeter-level outdoor positioning</li>
-                                <li><strong>IMU</strong><br>Orientation &amp; heading</li>
-                                <li><strong>RGB Camera</strong><br>Crop row &amp; weed detection</li>
-                                <li><strong>Wheel Encoders</strong><br>Dead-reckoning odometry</li>
+                                <li><strong>2× HBV CAM V2101 V11</strong><br>Front camera: line following<br>Side camera: row transition</li>
                             </ul>
                         </div>
                         <div class="arch-component arch-control">
                             <h4>💻 Think</h4>
                             <ul>
-                                <li><strong>EKF (robot_localization)</strong><br>GPS + IMU + odometry fusion</li>
-                                <li><strong>Nav2</strong><br>Path planning &amp; waypoint following</li>
-                                <li><strong>Vision Pipeline</strong><br>OpenCV crop row &amp; weed detection</li>
+                                <li><strong>Jetson Nano Orin</strong><br>YOLO detection · ROS2 nodes · camera processing</li>
+                                <li><strong>Arduino Mega</strong><br>5 motor controllers via GPIO</li>
                             </ul>
                         </div>
                         <div class="arch-component arch-output">
                             <h4>⚙️ Act</h4>
                             <ul>
-                                <li><strong>Differential Drive</strong><br>Independent L/R motor control</li>
-                                <li><strong>Intervention Actuator</strong><br>Precision weed targeting</li>
+                                <li><strong>4× FIT0441 Gearmotors</strong><br>60mm Mecanum wheels — omnidirectional drive</li>
+                                <li><strong>Plant Removal System</strong><br>Lateral slide + rotational end effector lifts bad plants off magnetic base</li>
                             </ul>
                         </div>
                     </div>
                     <div class="architecture-flow">
                         <h4>Control Flow</h4>
                         <ol>
-                            <li><strong>Localize</strong> — EKF fuses RTK-GPS, IMU, encoders into stable pose</li>
-                            <li><strong>Perceive</strong> — Camera detects crop rows and flags weed locations</li>
-                            <li><strong>Plan</strong> — Nav2 routes through field waypoints, replanning around obstacles</li>
-                            <li><strong>Drive</strong> — Velocity commands to differential motors via closed-loop feedback</li>
-                            <li><strong>Intervene</strong> — On weed detection, halt and trigger actuator</li>
+                            <li><strong>Follow</strong> — detect_node reads front camera, publishes line state; drive_node runs PID to minimize pixel tracking error</li>
+                            <li><strong>Detect</strong> — YOLO model classifies each plant base as Green Corn, Yellow Corn, or empty</li>
+                            <li><strong>Decide</strong> — on Yellow Corn detection, drive_node halts robot and triggers actuation sequence</li>
+                            <li><strong>Remove</strong> — actuator slides laterally, aligns prongs, rotates to lift bad plant off magnetic base, resets</li>
+                            <li><strong>Transition</strong> — at row end, detect_node switches to side camera to navigate to the next lane</li>
                         </ol>
-                    </div>
-                </div>
-
-                <div class="project-technical">
-                    <h2 class="section-word"><span class="w-letter">W</span>hich</h2>
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <h3>⚡ Hardware</h3>
-                            <ul>
-                                <li>Differential-drive mobile base</li>
-                                <li>RTK-GPS · IMU · RGB camera</li>
-                                <li>Wheel encoders for odometry</li>
-                                <li>SBC running ROS2</li>
-                                <li>Battery-powered for field operation</li>
-                            </ul>
-                        </div>
-                        <div class="tech-item">
-                            <h3>💻 Software</h3>
-                            <ul>
-                                <li>ROS2 Humble — nodes, topics, tf, launch</li>
-                                <li>robot_localization EKF sensor fusion</li>
-                                <li>Nav2 autonomous navigation stack</li>
-                                <li>OpenCV crop row &amp; weed detection</li>
-                                <li>C++ (controls) · Python (vision)</li>
-                            </ul>
-                            <div class="tech-stack-logos">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg" alt="ROS2" title="ROS2" class="tech-logo">
-                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++" title="C++" class="tech-logo">
-                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" title="Python" class="tech-logo">
-                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg" alt="OpenCV" title="OpenCV" class="tech-logo">
-                                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git" title="Git" class="tech-logo">
-                            </div>
-                        </div>
-                        <div class="tech-item">
-                            <h3>🔧 My Role</h3>
-                            <ul>
-                                <li>ROS2 node architecture &amp; system integration</li>
-                                <li>EKF sensor fusion setup &amp; tuning</li>
-                                <li>Motor controller interface &amp; drive pipeline</li>
-                                <li>Nav2 configuration for outdoor terrain</li>
-                                <li>Vision pipeline integration into ROS2</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
 
                 <div class="project-challenges">
                     <h2 class="section-word"><span class="w-letter">W</span>rinkles</h2>
                     <div class="challenge-item">
-                        <h3>Reliable Outdoor Localization</h3>
-                        <p><strong>Challenge —</strong> GPS alone is noisy. IMU drifts. Odometry accumulates error on rough terrain. None reliable individually.</p>
-                        <p><strong>Solution —</strong> EKF via <code>robot_localization</code> fuses all three, with per-sensor covariances tuned to real-world noise. Stable continuous pose even when individual sensors degrade.</p>
+                        <h3>Live Detection vs. Training Accuracy</h3>
+                        <p><strong>Challenge —</strong> YOLO trained on 255 still images under controlled lighting. Live camera conditions introduced lighting variance that dropped precision/recall below training metrics.</p>
+                        <p><strong>Solution —</strong> Identified the gap between static image training and live camera inference. Planned re-training with augmented lighting conditions for future iterations; adjusted confidence thresholds for the competition environment.</p>
                     </div>
                     <div class="challenge-item">
-                        <h3>Multi-Developer ROS2 Integration</h3>
-                        <p><strong>Challenge —</strong> Concurrent subsystem development causes topic/interface mismatches when hardware is shared and test time is scarce.</p>
-                        <p><strong>Solution —</strong> Established shared message type conventions and topic naming standards early. Git branches per subsystem with scheduled integration sessions.</p>
+                        <h3>Actuation Alignment Tolerance</h3>
+                        <p><strong>Challenge —</strong> The end effector prongs had to align precisely with the plant base center — too far off and the plant wouldn't lift cleanly off its magnet.</p>
+                        <p><strong>Solution —</strong> Simplified the actuation system to a single-axis movement (horizontal + one rotational axis), minimizing degrees of freedom and error accumulation compared to a multi-DOF robotic arm. Tuned stop position using bounding box center coordinates from the vision system.</p>
                     </div>
                 </div>
 
                 <div class="project-results">
                     <h2 class="section-word"><span class="w-letter">W</span>ins</h2>
-                    <p>Targeting competition at <strong>ASABE Summer 2026</strong>. Current status:</p>
+                    <p>Tested on a full-scale replica of the ASABE competition arena.</p>
                     <ul class="features-list">
-                        <li>✅ ROS2 architecture &amp; base nodes running</li>
-                        <li>✅ EKF sensor fusion operational (GPS + IMU)</li>
-                        <li>✅ Motor controller integration &amp; drive commands</li>
-                        <li>🔄 Nav2 stack tuning for outdoor terrain</li>
-                        <li>🔄 Vision pipeline for crop row following</li>
-                        <li>⬜ Full field autonomy integration &amp; testing</li>
-                        <li>⬜ Weed detection &amp; intervention module</li>
-                        <li>⬜ Competition field trials</li>
+                        <li><strong>Fastest run:</strong> 62.63 seconds end-to-end</li>
+                        <li><strong>Average time per row:</strong> 11.37 seconds</li>
+                        <li><strong>YOLO mAP:</strong> 0.991 overall — 0.995 Base · 0.984 Green · 0.995 Yellow</li>
+                        <li><strong>Plant ID scoring:</strong> projected 100% singles · 90% doubles</li>
+                        <li><strong>Navigation:</strong> reliable line following across all documented test runs</li>
                     </ul>
+                    <br>
+                    <a href="../Images/2026-MSU-Robot-Design-Report.pdf" target="_blank" rel="noopener noreferrer" class="cta-button" style="display:inline-block; margin-top:0.5rem;">Read the Full Design Report →</a>
                 </div>
+
+                <div class="project-technical">
+                    <h2 class="section-word"><span class="w-letter">W</span>hich</h2>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <h3>🔧 Mechanical</h3>
+                            <ul>
+                                <li>Custom chassis — Fusion 360, Bambu Labs P2S, PLA+</li>
+                                <li>Square form factor housing all electronics + batteries</li>
+                                <li>4× motor mounts for Mecanum wheels</li>
+                                <li>Camera mounts + center wire pass-through</li>
+                                <li>Actuator housing on underside</li>
+                            </ul>
+                        </div>
+                        <div class="tech-item">
+                            <h3>⚡ Hardware</h3>
+                            <ul>
+                                <li>Jetson Nano Orin — main compute</li>
+                                <li>Arduino Mega — motor control</li>
+                                <li>4× FIT0441 DC Gearmotors + 60mm Mecanum wheels</li>
+                                <li>2× HBV CAM V2101 V11 cameras</li>
+                                <li>12V 5200mAh LiPo battery (&gt;1 hr runtime)</li>
+                                <li>Plant removal system: lateral slide + rotational end effector</li>
+                            </ul>
+                        </div>
+                        <div class="tech-item">
+                            <h3>💻 Software</h3>
+                            <ul>
+                                <li>ROS2 — pub/sub node architecture</li>
+                                <li>drive_node — PID line following</li>
+                                <li>detect_node — camera switching + color detection</li>
+                                <li>YOLO — plant classification (Roboflow, 255 images)</li>
+                                <li>Python — all nodes and vision pipeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-presentation">
+                    <h2 class="section-word"><span class="w-letter">W</span>here</h2>
+                    <p>Competed at the <strong>ASABE Annual International Meeting 2026</strong> in Indianapolis, Indiana — the premier conference for agricultural, biological, and food engineers. The robot competed in the Student Robotics Challenge Standard Division against university teams from across the country.</p>
+                </div>
+
             </div>
         </section>
     </main>

@@ -177,24 +177,29 @@
             <div class="project-showcase">
 
                 <!-- 01 — ASABE Robot -->
-                <div class="ps-item ps-in-progress" onclick="window.location.href='projects/asabe-robot.html'" role="button" tabindex="0">
+                <div class="ps-item" onclick="window.location.href='projects/asabe-robot.html'" role="button" tabindex="0">
                     <div class="ps-visual">
                         <img src="Images/PARC2026.gif" alt="ASABE Agricultural Robotics Challenge Robot">
                     </div>
                     <div class="ps-text">
                         <span class="ps-number">01</span>
-                        <div class="ps-status in-progress">● In Progress</div>
-                        <span class="ps-date">Jan 2026 – Present</span>
+                        <div class="ps-status done">✓ Complete</div>
+                        <span class="ps-date">Jan 2026 – Jul 2026</span>
                         <h3>ASABE Agricultural Robotics Challenge Robot</h3>
+                        <p class="ps-role">VP · MSU PARC Team &nbsp;·&nbsp; ASABE Student Robotics Challenge 2026</p>
                         <ul class="ps-bullets">
-                            <li>Autonomous ground robot for crop scouting and weed detection</li>
-                            <li>ROS2 navigation stack with sensor fusion and path planning</li>
-                            <li>Computer vision pipeline for precision field intervention</li>
+                            <li>Mecanum-wheeled robot traversing a 5-lane simulated cornfield via camera-based black line following and PID control</li>
+                            <li>YOLO plant detection (0.991 mAP) classifying green/yellow corn across 255 Roboflow-annotated images on Jetson Nano Orin</li>
+                            <li>ROS2 publish/subscribe architecture: drive_node + detect_node + actuation for fully autonomous bad-plant removal</li>
+                            <li>Custom 3D-printed chassis (Fusion 360 → Bambu Labs P2S, PLA+) — fastest field run: 62.63 seconds</li>
                         </ul>
                         <div class="ps-tags">
-                            <span>Robotics</span><span>ROS2</span><span>Autonomous Nav</span><span>Computer Vision</span>
+                            <span>ROS2</span><span>YOLO</span><span>Python</span><span>Jetson</span><span>Arduino</span><span>Mecanum</span>
                         </div>
-                        <div class="ps-link">View Details →</div>
+                        <div class="ps-award-links">
+                            <a href="Images/2026-MSU-Robot-Design-Report.pdf" target="_blank" rel="noopener noreferrer" class="ps-link" onclick="event.stopPropagation()">Design Report →</a>
+                            <a href="projects/asabe-robot.html" class="ps-link" onclick="event.stopPropagation()">View Details →</a>
+                        </div>
                     </div>
                 </div>
 
