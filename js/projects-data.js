@@ -116,7 +116,7 @@ const projectsData = {
         title: 'Auto-Steering Cultivator',
         subtitle: '',
         description: '',
-        image: 'Images/CropRowFollow.png',
+        image: 'Images/Cultivator.jpg',
         tags: ['Robotics', 'Cultivator', 'Precision Agriculture'],
         focusAreas: ['robotics', 'mechatronics'],
         comingSoon: true,

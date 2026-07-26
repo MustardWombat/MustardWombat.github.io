@@ -5,368 +5,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const focusButtons = document.querySelectorAll('.focus-btn');
     const detailButtons = document.querySelectorAll('.detail-btn');
     const downloadBtn = document.getElementById('download-pdf');
+    const presetSelect = document.getElementById('tailor-preset');
 
     // Current state
     let currentFocus = 'all';
     let currentDetail = 'technical'; // 'technical' or 'compact'
 
-    // ── AI Tailor State ──────────────────────────────────────────
-    let aiTailoredData = null; // null = normal mode; object = AI mode
+    // ── Tailored Preset State ──────────────────────────────────────
+    // Presets are hand-written in js/resume-presets.js — added periodically
+    // when James wants a resume pre-tailored for a specific role. No live
+    // API calls; nothing here depends on visitors having any credentials.
+    let activePreset = null; // null = normal mode; object from resumePresets = preset mode
 
-    // Restore saved API key from localStorage
-    const apiKeyInput = document.getElementById('ai-api-key');
-    if (apiKeyInput && localStorage.getItem('xai_api_key')) {
-        apiKeyInput.value = localStorage.getItem('xai_api_key');
-    }
-    if (apiKeyInput) {
-        apiKeyInput.addEventListener('change', function() {
-            if (this.value.trim()) {
-                localStorage.setItem('xai_api_key', this.value.trim());
+    if (presetSelect) {
+        Object.keys(resumePresets).forEach(function(key) {
+            const opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = resumePresets[key].label;
+            presetSelect.appendChild(opt);
+        });
+        presetSelect.addEventListener('change', function() {
+            if (this.value && resumePresets[this.value]) {
+                activePreset = resumePresets[this.value];
+                applyPreset();
             } else {
-                localStorage.removeItem('xai_api_key');
+                clearPreset();
             }
         });
     }
 
-    // Toggle manual JD textarea
-    const jdToggleBtn = document.getElementById('ai-jd-toggle');
-    const jdTextarea  = document.getElementById('ai-job-desc');
-    let jdExpanded = false;
-    if (jdToggleBtn) {
-        jdToggleBtn.addEventListener('click', function() {
-            jdExpanded = !jdExpanded;
-            jdTextarea.style.display = jdExpanded ? 'block' : 'none';
-            jdToggleBtn.textContent  = jdExpanded
-                ? '− Hide job description'
-                : '+ Paste job description manually instead';
-        });
-    }
-
-    document.getElementById('ai-generate-btn').addEventListener('click', generateAiResume);
-    document.getElementById('ai-clear-btn').addEventListener('click', clearAiMode);
-
-    // ── Build the prompt sent to Grok ────────────────────────────
-    function buildPrompt(jobTitle, company, jobInfo) {
-        // Flatten all bullet content so the model can choose the best ones
-        const expFlat = resumeData.experience.map(exp => ({
-            role: exp.title + ' – ' + exp.organization,
-            projects: exp.researchProjects.map(rp => ({
-                title: rp.title,
-                bullets: Object.values(rp.bullets).flat()
-                    .filter((b, i, a) => b && a.indexOf(b) === i) // unique
-            }))
-        }));
-
-        const projFlat = resumeData.projects.map(p => ({
-            title: p.title,
-            date: p.date,
-            bullets: Object.values(p.bullets).flat()
-                .filter((b, i, a) => b && a.indexOf(b) === i)
-        }));
-
-        const skillsRaw = resumeData.skills;
-
-        // Build a flat list of every tool/technology explicitly mentioned in the source data
-        // so the model can reference it for fact-checking
-        const allSourceText = [
-            JSON.stringify(skillsRaw),
-            ...expFlat.map(e => JSON.stringify(e)),
-            ...projFlat.map(p => JSON.stringify(p))
-        ].join(' ');
-
-        const jdBlock = jobInfo.found
-            ? `ACTUAL JOB POSTING (scraped from the web):
-Title: ${jobInfo.title || jobTitle}
-Required Skills: ${(jobInfo.requiredSkills || []).join(', ')}
-Preferred Skills: ${(jobInfo.preferredSkills || []).join(', ')}
-Key Responsibilities: ${(jobInfo.keyResponsibilities || []).join(' | ')}
-ATS Keywords to target: ${(jobInfo.atsKeywords || []).join(', ')}
-Full description excerpt: ${jobInfo.jobDescription || ''}`
-            : `No live posting found — use general knowledge of "${jobTitle}" roles at companies like "${company}".`;
-
-        return `You are an expert resume writer and ATS optimization specialist.
-Your ONLY job is to SELECT and lightly REWORD the candidate's existing bullets to better match the job posting language.
-You are NOT a creative writer. You cannot add any fact, tool, language, framework, or metric that does not already appear in the SOURCE BULLETS below.
-
-TARGET ROLE: ${jobTitle} at ${company}
-
-${jdBlock}
-
-════════════════════════════════════════════════════
-CANDIDATE SOURCE DATA — THE ONLY FACTS YOU MAY USE
-════════════════════════════════════════════════════
-
-SKILLS:
-${JSON.stringify(skillsRaw, null, 2)}
-
-EXPERIENCE SOURCE BULLETS:
-${JSON.stringify(expFlat, null, 2)}
-
-PROJECT SOURCE BULLETS:
-${JSON.stringify(projFlat, null, 2)}
-
-════════════════════════════════════════════════════
-STRICT RULES — VIOLATIONS ARE NOT ACCEPTABLE
-════════════════════════════════════════════════════
-1. NEVER mention a tool, language, library, framework, metric, or technology that does not appear word-for-word in the source data above. If "Java" is not in the source data, do not write "Java". If "ROS" is not in a source bullet for a project, do not add it.
-2. You MAY rephrase a bullet to use a synonym or the job posting's terminology ONLY if the underlying fact is already in the source — e.g. if source says "cross-track error" and JD says "lateral positioning error", that rephrasing is fine. But do NOT add new technical claims.
-3. Every number, percentage, and measurement in your output must come verbatim from a source bullet.
-4. skillsSummary must only list skills that appear in the SKILLS section above.
-5. Only include projects genuinely relevant to this role.
-6. Order projects by relevance to this specific posting (most relevant first).
-7. Return 2-4 projects total in the projects array.
-
-Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
-{
-  "subtitle": "A 1-line tailored headline using only the candidate's actual experience areas",
-  "skillsSummary": "Comma-separated string of the most ATS-relevant skills — ONLY from the SKILLS section above, using job posting terminology where exact equivalents exist",
-  "experience": [
-    {
-      "role": "exact role string from input",
-      "projects": [
-        {
-          "title": "exact project title from input",
-          "primaryBullets": ["2-3 must-show bullets — the single most ATS-critical facts, reworded to match JD language"],
-          "additionalBullets": ["up to 4 more bullets ordered by descending relevance — used to fill page space, same factual rules apply"]
-        }
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "title": "exact project title from input",
-      "date": "exact date from input",
-      "primaryBullets": ["2 must-show bullets"],
-      "additionalBullets": ["up to 3 more bullets ordered by descending relevance"]
-    }
-  ]
-}`;
-    }
-
-    // ── Phase 1: Resolve the job posting (3-tier) ────────────────
-    // Tier 1: User pasted JD text → parse it directly (no API call needed for search)
-    // Tier 2: User provided URL  → Grok fetches that URL
-    // Tier 3: No URL/JD          → Grok web-searches (best effort)
-    async function searchJobPosting(jobTitle, company, apiKey) {
-        const pastedJD  = document.getElementById('ai-job-desc').value.trim();
-        const jobUrl    = document.getElementById('ai-job-url').value.trim();
-
-        // ── Tier 1: pasted JD ──────────────────────────────────────
-        if (pastedJD) {
-            const response = await fetch('https://api.x.ai/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + apiKey
-                },
-                body: JSON.stringify({
-                    model: 'grok-3',
-                    messages: [{
-                        role: 'user',
-                        content: `Extract structured data from this job description.\n\nJOB DESCRIPTION:\n${pastedJD}\n\n` +
-                            `Return ONLY valid JSON (no markdown): ` +
-                            `{ "found": true, "title": "job title", "jobDescription": "full text", ` +
-                            `"requiredSkills": [...], "preferredSkills": [...], ` +
-                            `"keyResponsibilities": [...], "atsKeywords": [...] }`
-                    }],
-                    temperature: 0.1
-                })
-            });
-            if (!response.ok) throw new Error('Parse API error ' + response.status);
-            const data = await response.json();
-            const raw  = data.choices[0].message.content.trim()
-                .replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
-            const result = JSON.parse(raw);
-            result._source = 'pasted';
-            return result;
-        }
-
-        // ── Tier 2: URL provided → Grok fetches it ─────────────────
-        if (jobUrl) {
-            const response = await fetch('https://api.x.ai/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + apiKey
-                },
-                body: JSON.stringify({
-                    model: 'grok-3',
-                    search_parameters: { mode: 'on' },
-                    messages: [{
-                        role: 'user',
-                        content: `Fetch and read the job posting at this URL: ${jobUrl}\n\n` +
-                            `Extract structured data from it. ` +
-                            `Return ONLY valid JSON (no markdown): ` +
-                            `{ "found": true, "title": "job title", "jobDescription": "full text or detailed summary", ` +
-                            `"requiredSkills": [...], "preferredSkills": [...], ` +
-                            `"keyResponsibilities": [...], "atsKeywords": [...] }. ` +
-                            `If the page cannot be accessed, return { "found": false }.`
-                    }],
-                    temperature: 0.1
-                })
-            });
-            if (!response.ok) throw new Error('Fetch API error ' + response.status);
-            const data = await response.json();
-            const raw  = data.choices[0].message.content.trim()
-                .replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
-            const result = JSON.parse(raw);
-            result._source = 'url';
-            return result;
-        }
-
-        // ── Tier 3: Search (best effort) ───────────────────────────
-        const response = await fetch('https://api.x.ai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + apiKey
-            },
-            body: JSON.stringify({
-                model: 'grok-3',
-                search_parameters: { mode: 'on' },
-                messages: [{
-                    role: 'user',
-                    content: `Search the web right now for a current open job posting for "${jobTitle}" at "${company}". ` +
-                        `Try these searches in order: ` +
-                        `1) site:${company.toLowerCase().replace(/\s+/g, '')}.com/careers "${jobTitle}" ` +
-                        `2) "${company}" "${jobTitle}" job posting site:careers.* OR site:jobs.* ` +
-                        `3) "${company}" "${jobTitle}" -site:linkedin.com -site:indeed.com ` +
-                        `4) "${company}" "${jobTitle}" job description requirements ` +
-                        `If you find a real posting, return ONLY valid JSON (no markdown): ` +
-                        `{ "found": true, "title": "exact job title", ` +
-                        `"jobDescription": "full text or summary (500+ words)", ` +
-                        `"requiredSkills": [...], "preferredSkills": [...], ` +
-                        `"keyResponsibilities": [...], "atsKeywords": [...] }. ` +
-                        `If no real posting is found, return { "found": false }.`
-                }],
-                temperature: 0.1
-            })
-        });
-        if (!response.ok) throw new Error('Search API error ' + response.status);
-        const data = await response.json();
-        const raw  = data.choices[0].message.content.trim()
-            .replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
-        const result = JSON.parse(raw);
-        result._source = 'search';
-        return result;
-    }
-
-    // ── Phase 2: Tailor resume using the found JD ─────────────────────────
-    async function tailorResume(jobTitle, company, jobInfo, apiKey) {
-        const response = await fetch('https://api.x.ai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + apiKey
-            },
-            body: JSON.stringify({
-                model: 'grok-3',
-                messages: [{ role: 'user', content: buildPrompt(jobTitle, company, jobInfo) }],
-                temperature: 0.4
-            })
-        });
-
-        if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            throw new Error(err.error?.message || 'Tailor API error ' + response.status);
-        }
-
-        const data = await response.json();
-        const raw  = data.choices[0].message.content.trim();
-        const jsonStr = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '');
-        return JSON.parse(jsonStr);
-    }
-
-    // ── Main entry point ──────────────────────────────────────────────────
-    async function generateAiResume() {
-        const jobTitle = document.getElementById('ai-job-title').value.trim();
-        const company  = document.getElementById('ai-company').value.trim();
-        const apiKey   = document.getElementById('ai-api-key').value.trim();
-        const genBtn   = document.getElementById('ai-generate-btn');
-
-        if (!jobTitle || !company) {
-            setAiStatus('⚠ Please enter both a job title and company.', 'error');
-            return;
-        }
-        if (!apiKey) {
-            setAiStatus('⚠ Please enter your xAI API key.', 'error');
-            return;
-        }
-
-        localStorage.setItem('xai_api_key', apiKey);
-        genBtn.disabled = true;
-
-        try {
-            // Phase 1 — resolve JD
-            const pastedJD = document.getElementById('ai-job-desc').value.trim();
-            const jobUrl   = document.getElementById('ai-job-url').value.trim();
-            const phase1Msg = pastedJD ? '📋 Parsing pasted job description…'
-                            : jobUrl   ? '🔗 Fetching job posting from URL…'
-                            :            '🔍 Searching for live job posting…';
-            setAiStatus(phase1Msg, 'loading');
-
-            let jobInfo = { found: false };
-            try {
-                jobInfo = await searchJobPosting(jobTitle, company, apiKey);
-            } catch (searchErr) {
-                console.warn('[AI Resume] Search phase failed, continuing without JD:', searchErr);
-            }
-
-            const sourceLabel = jobInfo._source === 'pasted' ? 'parsed from paste'
-                              : jobInfo._source === 'url'    ? 'fetched from URL'
-                              :                                'web search';
-            const foundMsg = jobInfo.found
-                ? `📄 JD found (${sourceLabel}) — tailoring resume…`
-                : '⚠ No live posting found — using role knowledge to tailor…';
-            setAiStatus(foundMsg, 'loading');
-
-            // Phase 2 — tailor
-            aiTailoredData = await tailorResume(jobTitle, company, jobInfo, apiKey);
-            aiTailoredData._jobTitle    = jobTitle;
-            aiTailoredData._company     = company;
-            aiTailoredData._jdFound     = jobInfo.found;
-            aiTailoredData._jdSource    = jobInfo._source || 'search';
-            aiTailoredData._atsKeywords = jobInfo.atsKeywords || [];
-
-            applyAiResume();
-            document.getElementById('ai-clear-btn').style.display = '';
-
-            const atsNote = aiTailoredData._atsKeywords.length
-                ? ' · ATS keywords: ' + aiTailoredData._atsKeywords.slice(0, 5).join(', ')
-                : '';
-            setAiStatus('✅ Tailored for ' + jobTitle + ' at ' + company + atsNote, 'success');
-
-        } catch (e) {
-            console.error('[AI Resume]', e);
-            setAiStatus('❌ ' + e.message, 'error');
-        } finally {
-            genBtn.disabled = false;
-        }
-    }
-
-    function setAiStatus(msg, type) {
-        const el = document.getElementById('ai-status');
-        el.textContent = msg;
-        el.className = 'ai-status ai-status-' + type;
-    }
-
-    // ── Render the AI-tailored resume ────────────────────────────
-    function applyAiResume() {
-        if (!aiTailoredData) return;
+    // ── Render the active tailored preset ─────────────────────────
+    function applyPreset() {
+        if (!activePreset) return;
 
         // Subtitle
         const subtitleEl = document.getElementById('resume-subtitle');
-        if (subtitleEl) subtitleEl.textContent = aiTailoredData.subtitle;
+        if (subtitleEl) subtitleEl.textContent = activePreset.subtitle;
 
         updateContactInfo();
         updateEducation(currentDetail);
 
-        // Skills — replace with AI-curated summary
+        // Skills — replace with the preset's curated summary
         const skillsContainer = document.getElementById('resume-skills');
         if (skillsContainer) {
             skillsContainer.innerHTML =
                 '<ul><li><strong>Relevant Skills:</strong> ' +
-                aiTailoredData.skillsSummary + '</li></ul>';
+                activePreset.skillsSummary + '</li></ul>';
         }
 
         // fillQueue: [{ulEl, bullets:[...remaining additionalBullets]}, ...]
@@ -378,8 +62,8 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
         if (expContainer) {
             expContainer.innerHTML = '';
             resumeData.experience.forEach(function(exp) {
-                const aiExp = aiTailoredData.experience.find(e => e.role === exp.title + ' – ' + exp.organization);
-                if (!aiExp) return;
+                const presetExp = activePreset.experience.find(e => e.role === exp.title + ' – ' + exp.organization);
+                if (!presetExp) return;
 
                 const expEl = document.createElement('div');
                 expEl.className = 'resume-item';
@@ -396,14 +80,14 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
                 expEl.innerHTML = html;
                 expContainer.appendChild(expEl);
 
-                aiExp.projects.forEach(function(aiProj) {
-                    const primary    = (aiProj.primaryBullets    || aiProj.bullets || []).filter(Boolean);
-                    const additional = (aiProj.additionalBullets || []).filter(Boolean);
+                presetExp.projects.forEach(function(presetProj) {
+                    const primary    = (presetProj.primaryBullets    || presetProj.bullets || []).filter(Boolean);
+                    const additional = (presetProj.additionalBullets || []).filter(Boolean);
                     if (primary.length === 0 && additional.length === 0) return;
 
                     const subDiv = document.createElement('div');
                     subDiv.className = 'resume-subproject';
-                    subDiv.innerHTML = '<div class="resume-subproject-title"><em>' + aiProj.title + '</em></div>';
+                    subDiv.innerHTML = '<div class="resume-subproject-title"><em>' + presetProj.title + '</em></div>';
 
                     const ul = document.createElement('ul');
                     primary.forEach(b => {
@@ -426,18 +110,18 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
         const projContainer = document.getElementById('resume-projects');
         if (projContainer) {
             projContainer.innerHTML = '';
-            aiTailoredData.projects.forEach(function(aiProj) {
-                const primary    = (aiProj.primaryBullets    || aiProj.bullets || []).filter(Boolean);
-                const additional = (aiProj.additionalBullets || []).filter(Boolean);
+            activePreset.projects.forEach(function(presetProj) {
+                const primary    = (presetProj.primaryBullets    || presetProj.bullets || []).filter(Boolean);
+                const additional = (presetProj.additionalBullets || []).filter(Boolean);
                 if (primary.length === 0 && additional.length === 0) return;
 
-                const orig = resumeData.projects.find(p => p.title === aiProj.title) || aiProj;
+                const orig = resumeData.projects.find(p => p.title === presetProj.title) || presetProj;
 
                 const projEl = document.createElement('div');
                 projEl.className = 'resume-project';
 
                 let header = '<div class="resume-project-line"><strong>' + orig.title + '</strong></div>';
-                if (aiProj.date) header += '<div class="resume-project-date">' + aiProj.date + '</div>';
+                if (presetProj.date) header += '<div class="resume-project-date">' + presetProj.date + '</div>';
                 projEl.innerHTML = header;
 
                 const ul = document.createElement('ul');
@@ -455,31 +139,27 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
             });
         }
 
-        // Add AI banner to resume
+        // Add preset banner to resume
         const resume = document.getElementById('resume');
-        let banner = document.getElementById('ai-mode-banner');
+        let banner = document.getElementById('preset-mode-banner');
         if (!banner) {
             banner = document.createElement('div');
-            banner.id = 'ai-mode-banner';
-            banner.className = 'ai-mode-banner';
+            banner.id = 'preset-mode-banner';
+            banner.className = 'preset-mode-banner';
             resume.insertBefore(banner, resume.firstChild);
         }
-        const sourceLabel = aiTailoredData._jdFound
-            ? ({ pasted: '· JD parsed', url: '· fetched from URL', search: '· live posting scraped' }[aiTailoredData._jdSource] || '· JD found')
-            : '· using role knowledge';
-        banner.textContent = '✨ AI-Tailored for: ' + aiTailoredData._jobTitle + ' @ ' + aiTailoredData._company
-            + ' ' + sourceLabel;
+        banner.textContent = '✨ Tailored for: ' + activePreset.label;
 
         // Fill to at least one page after layout settles
         if (fillQueue.length > 0) {
-            requestAnimationFrame(() => fillAiToOnePage(fillQueue));
+            requestAnimationFrame(() => fillPresetToOnePage(fillQueue));
         }
     }
 
-    // ── Fill AI resume to at least one page ──────────────────────
+    // ── Fill preset resume to at least one page ───────────────────
     // Round-robins through additional bullets (weighted: experience > projects)
     // until scrollHeight >= one page height, or all bullets used
-    function fillAiToOnePage(fillQueue) {
+    function fillPresetToOnePage(fillQueue) {
         const resume = document.getElementById('resume');
         // One page = letter width / 0.7727 (8.5" wide, 11" tall → 11/8.5 ≈ 1.294)
         // but we use the resume's own rendered width for accuracy
@@ -506,16 +186,14 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
         }
     }
 
-    function clearAiMode() {
-        aiTailoredData = null;
-        const banner = document.getElementById('ai-mode-banner');
+    function clearPreset() {
+        activePreset = null;
+        const banner = document.getElementById('preset-mode-banner');
         if (banner) banner.remove();
-        document.getElementById('ai-clear-btn').style.display = 'none';
-        setAiStatus('', '');
+        if (presetSelect) presetSelect.value = '';
         updateResume(currentFocus, currentDetail);
     }
-    // ── End AI Tailor ────────────────────────────────────────────
-    
+
     // Page height calculation:
     // Letter paper = 11 inches, margins = 0.5in top + 0.5in bottom = 1 inch total
     // Usable height = 10 inches
@@ -541,8 +219,8 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
             focusButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentFocus = this.dataset.focus;
-            if (aiTailoredData) {
-                applyAiResume(); // re-render AI resume (focus doesn't change AI output)
+            if (activePreset) {
+                applyPreset(); // re-render preset resume (focus doesn't change preset content)
             } else {
                 updateResume(currentFocus, currentDetail);
             }
@@ -555,8 +233,8 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
             detailButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             currentDetail = this.dataset.detail;
-            if (aiTailoredData) {
-                applyAiResume();
+            if (activePreset) {
+                applyPreset();
             } else {
                 updateResume(currentFocus, currentDetail);
                 if (currentDetail === 'compact') {
@@ -763,13 +441,13 @@ Return ONLY valid JSON (no markdown, no extra text) matching this exact schema:
         const activeDetail = document.querySelector('.detail-btn.active').dataset.detail;
         const focusName  = activeFocus === 'all' ? 'Full' : activeFocus.replace('-', '_');
         const detailName = activeDetail === 'compact' ? '_Compact' : '';
-        const aiSuffix   = aiTailoredData
-            ? '_AI_' + aiTailoredData._jobTitle.replace(/\s+/g, '_') + '_' + aiTailoredData._company.replace(/\s+/g, '_')
+        const presetSuffix = activePreset
+            ? '_' + activePreset.label.replace(/\s+/g, '_')
             : '';
-        const filename = 'James_Williams_Resume_' + focusName + detailName + aiSuffix + '.pdf';
+        const filename = 'James_Williams_Resume_' + focusName + detailName + presetSuffix + '.pdf';
 
         // Temporarily hide on-screen-only elements so they don't appear in PDF
-        const banner = document.getElementById('ai-mode-banner');
+        const banner = document.getElementById('preset-mode-banner');
         if (banner) banner.style.display = 'none';
 
         const opt = {

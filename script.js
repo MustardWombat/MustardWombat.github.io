@@ -170,14 +170,6 @@ function initStickerField() {
 
 function fireShockwave({ assigned, field, heroDelay, heroDuration }) {
     setTimeout(() => {
-        const ring1 = document.createElement('div');
-        ring1.className = 'sticker-ripple-ring';
-        field.appendChild(ring1);
-        const ring2 = document.createElement('div');
-        ring2.className = 'sticker-ripple-ring ring-2';
-        field.appendChild(ring2);
-        setTimeout(() => { ring1.remove(); ring2.remove(); }, 900);
-
         const fieldRect = field.getBoundingClientRect();
         const cx = fieldRect.width / 2;
         const cy = fieldRect.height / 2;

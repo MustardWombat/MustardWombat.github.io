@@ -53,31 +53,12 @@
                 <button class="detail-btn" data-detail="compact">Compact (1-page)</button>
             </div>
 
-            <!-- AI Resume Tailor -->
-            <div class="ai-tailor-section">
-                <div class="ai-tailor-header">
-                    <span class="ai-icon">✨</span>
-                    <span>AI Resume Tailor</span>
-                </div>
-                <p class="ai-tailor-desc">AI scrapes the real job posting and rewrites your bullets to match ATS keywords and the employer's exact language.</p>
-                <div class="ai-inputs">
-                    <div class="ai-inputs-row">
-                        <input type="text" id="ai-job-title" placeholder="Job Title  (e.g. Robotics Software Engineer)" />
-                        <input type="text" id="ai-company" placeholder="Company  (e.g. Boston Dynamics)" />
-                    </div>
-                    <input type="url" id="ai-job-url" placeholder="Job Posting URL  (optional but recommended — paste from LinkedIn, Indeed, etc.)" />
-                    <div class="ai-jd-toggle-row">
-                        <button type="button" id="ai-jd-toggle" class="ai-jd-toggle">+ Paste job description manually instead</button>
-                    </div>
-                    <textarea id="ai-job-desc" class="ai-job-desc" placeholder="Paste the full job description here…" style="display:none;"></textarea>
-                    <input type="password" id="ai-api-key" placeholder="xAI API Key  (saved in your browser)" />
-                    <p class="ai-key-hint">🔒 Your key is stored only in your browser and sent directly to xAI — never to any other server.</p>
-                </div>
-                <div class="ai-actions">
-                    <button id="ai-generate-btn" class="ai-generate-btn">✨ Generate Tailored Resume</button>
-                    <button id="ai-clear-btn" class="ai-clear-btn" style="display:none;">✕ Clear AI Mode</button>
-                    <span id="ai-status" class="ai-status"></span>
-                </div>
+            <!-- Tailored Resume Presets -->
+            <div class="tailor-selector">
+                <span class="detail-label">Tailored For:</span>
+                <select id="tailor-preset" class="tailor-preset-select">
+                    <option value="">General</option>
+                </select>
             </div>
 
             <button id="download-pdf" class="download-btn">
@@ -136,6 +117,7 @@
 
     <script src="js/resume-data.js"></script>
     <script src="js/projects-data.js"></script>
+    <script src="js/resume-presets.js"></script>
     <script src="js/resume-generator.js"></script>
 </body>
 </html>

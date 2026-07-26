@@ -373,182 +373,29 @@ ul:empty {
     break-after: avoid;
 }
 
-/* ── AI Resume Tailor Section ── */
-.ai-tailor-section {
-    background: linear-gradient(135deg, #fff8f0 0%, #f8f4ff 100%);
-    border: 2px solid var(--secondary-color);
-    border-radius: 12px;
-    padding: 1.4rem 1.6rem 1.2rem;
-    margin: 1.25rem 0 1.5rem;
-    text-align: left;
-}
-
-.ai-tailor-header {
+/* ── Tailored Resume Preset Selector ── */
+.tailor-selector {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.35rem;
-}
-
-.ai-icon {
-    font-size: 1.1rem;
-}
-
-.ai-tailor-desc {
-    color: var(--grey-medium);
-    font-size: 0.88rem;
-    margin-bottom: 0.9rem;
-    line-height: 1.5;
-}
-
-.ai-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    margin-bottom: 0.8rem;
-}
-
-.ai-inputs-row {
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-}
-
-.ai-inputs-row input {
-    flex: 1 1 200px;
-}
-
-.ai-inputs input {
-    width: 100%;
-    padding: 0.6rem 0.9rem;
-    border: 1.5px solid #ccc;
-    border-radius: 7px;
-    font-size: 0.92rem;
-    font-family: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: #fff;
-    color: var(--text-color);
-    box-sizing: border-box;
-}
-
-.ai-inputs input:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.15);
-}
-
-.ai-key-hint {
-    font-size: 0.78rem;
-    color: var(--grey-medium);
-    margin: 0.1rem 0 0;
-    line-height: 1.4;
-}
-
-.ai-jd-toggle-row {
-    margin: 0;
-}
-
-.ai-jd-toggle {
-    background: none;
-    border: none;
-    color: var(--secondary-color);
-    font-size: 0.83rem;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    font-family: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-.ai-jd-toggle:hover {
-    color: var(--accent-color);
-}
-
-.ai-job-desc {
-    width: 100%;
-    min-height: 120px;
-    padding: 0.6rem 0.9rem;
-    border: 1.5px solid #ccc;
-    border-radius: 7px;
-    font-size: 0.88rem;
-    font-family: inherit;
-    resize: vertical;
-    box-sizing: border-box;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    color: var(--text-color);
-}
-
-.ai-job-desc:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.15);
-}
-
-.ai-actions {
-    display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 0.75rem;
-    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
 }
 
-.ai-generate-btn {
-    padding: 0.6rem 1.4rem;
-    background: var(--secondary-color);
-    color: #fff;
-    border: none;
-    border-radius: 7px;
+.tailor-preset-select {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    background: var(--white);
+    color: var(--primary-color);
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 0.92rem;
+    font-size: 0.85rem;
     font-weight: 600;
     font-family: inherit;
-    transition: background 0.2s, transform 0.1s;
 }
 
-.ai-generate-btn:hover {
-    background: var(--accent-color);
-    transform: translateY(-1px);
-}
-
-.ai-generate-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.ai-clear-btn {
-    padding: 0.6rem 1rem;
-    background: transparent;
-    color: var(--grey-medium);
-    border: 1.5px solid #ccc;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 0.88rem;
-    font-weight: 500;
-    font-family: inherit;
-    transition: all 0.2s;
-}
-
-.ai-clear-btn:hover {
-    border-color: #999;
-    color: var(--text-color);
-}
-
-.ai-status {
-    font-size: 0.88rem;
-    font-weight: 500;
-    line-height: 1.4;
-}
-
-.ai-status-loading { color: var(--grey-medium); }
-.ai-status-success { color: #2e7d32; }
-.ai-status-error   { color: #c62828; }
-
-/* AI-mode active indicator on resume */
-.ai-mode-banner {
+/* Preset-mode active indicator on resume */
+.preset-mode-banner {
     background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
     color: #fff;
     text-align: center;
@@ -557,15 +404,6 @@ ul:empty {
     padding: 0.3rem;
     border-radius: 4px 4px 0 0;
     letter-spacing: 0.04em;
-}
-
-@media (max-width: 600px) {
-    .ai-inputs-row {
-        flex-direction: column;
-    }
-    .ai-tailor-section {
-        padding: 1rem;
-    }
 }
 
 /* Print / PDF Styles */
