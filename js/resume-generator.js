@@ -2,10 +2,7 @@
 // Uses data from resume-data.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    const focusButtons = document.querySelectorAll('.focus-btn');
-    const detailButtons = document.querySelectorAll('.detail-btn');
     const downloadBtn = document.getElementById('download-pdf');
-    const presetSelect = document.getElementById('tailor-preset');
 
     // Current state
     let currentFocus = 'all';
@@ -15,24 +12,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Presets are hand-written in js/resume-presets.js — added periodically
     // when James wants a resume pre-tailored for a specific role. No live
     // API calls; nothing here depends on visitors having any credentials.
+    //
+    // Preset buttons are injected as plain .focus-btn elements into the same
+    // group as All Skills/Robotics/etc. — one shared row, one mutually
+    // exclusive selection, same click handler. Not a separate control.
     let activePreset = null; // null = normal mode; object from resumePresets = preset mode
 
-    if (presetSelect) {
+    const tailorSelector = document.getElementById('tailor-selector');
+    if (tailorSelector) {
         Object.keys(resumePresets).forEach(function(key) {
-            const opt = document.createElement('option');
-            opt.value = key;
-            opt.textContent = resumePresets[key].label;
-            presetSelect.appendChild(opt);
-        });
-        presetSelect.addEventListener('change', function() {
-            if (this.value && resumePresets[this.value]) {
-                activePreset = resumePresets[this.value];
-                applyPreset();
-            } else {
-                clearPreset();
-            }
+            const btn = document.createElement('button');
+            btn.className = 'focus-btn';
+            btn.dataset.preset = key;
+            btn.textContent = resumePresets[key].label;
+            tailorSelector.appendChild(btn);
         });
     }
+
+    // Captured after preset buttons are injected so they're included in the group.
+    const focusButtons = document.querySelectorAll('.focus-btn');
+    const detailButtons = document.querySelectorAll('.detail-btn');
 
     // ── Render the active tailored preset ─────────────────────────
     function applyPreset() {
@@ -139,16 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Add preset banner to resume
-        const resume = document.getElementById('resume');
-        let banner = document.getElementById('preset-mode-banner');
-        if (!banner) {
-            banner = document.createElement('div');
-            banner.id = 'preset-mode-banner';
-            banner.className = 'preset-mode-banner';
-            resume.insertBefore(banner, resume.firstChild);
-        }
-        banner.textContent = '✨ Tailored for: ' + activePreset.label;
 
         // Fill to at least one page after layout settles
         if (fillQueue.length > 0) {
@@ -186,14 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function clearPreset() {
-        activePreset = null;
-        const banner = document.getElementById('preset-mode-banner');
-        if (banner) banner.remove();
-        if (presetSelect) presetSelect.value = '';
-        updateResume(currentFocus, currentDetail);
-    }
-
     // Page height calculation:
     // Letter paper = 11 inches, margins = 0.5in top + 0.5in bottom = 1 inch total
     // Usable height = 10 inches
@@ -213,15 +194,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Focus button click handlers
+    // Focus / preset button click handlers — one mutually exclusive group
     focusButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             focusButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            currentFocus = this.dataset.focus;
-            if (activePreset) {
-                applyPreset(); // re-render preset resume (focus doesn't change preset content)
+
+            const presetKey = this.dataset.preset;
+            if (presetKey) {
+                activePreset = resumePresets[presetKey];
+                applyPreset();
             } else {
+                currentFocus = this.dataset.focus;
+                activePreset = null;
                 updateResume(currentFocus, currentDetail);
             }
         });
@@ -437,18 +422,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Download PDF — uses html2pdf.js for a clean PDF with no browser chrome
     downloadBtn.addEventListener('click', function() {
         const resume = document.getElementById('resume');
-        const activeFocus = document.querySelector('.focus-btn.active').dataset.focus;
         const activeDetail = document.querySelector('.detail-btn.active').dataset.detail;
-        const focusName  = activeFocus === 'all' ? 'Full' : activeFocus.replace('-', '_');
         const detailName = activeDetail === 'compact' ? '_Compact' : '';
-        const presetSuffix = activePreset
-            ? '_' + activePreset.label.replace(/\s+/g, '_')
-            : '';
-        const filename = 'James_Williams_Resume_' + focusName + detailName + presetSuffix + '.pdf';
 
-        // Temporarily hide on-screen-only elements so they don't appear in PDF
-        const banner = document.getElementById('preset-mode-banner');
-        if (banner) banner.style.display = 'none';
+        // Active .focus-btn may be a plain focus button or an injected preset
+        // button (no dataset.focus) — name the file accordingly either way.
+        let focusName;
+        if (activePreset) {
+            focusName = activePreset.label.replace(/\s+/g, '_');
+        } else {
+            const activeFocus = document.querySelector('.focus-btn.active').dataset.focus;
+            focusName = activeFocus === 'all' ? 'Full' : activeFocus.replace('-', '_');
+        }
+        const filename = 'James_Williams_Resume_' + focusName + detailName + '.pdf';
 
         const opt = {
             margin:      0,
@@ -464,12 +450,10 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadBtn.disabled = true;
 
         html2pdf().set(opt).from(resume).save().then(function() {
-            if (banner) banner.style.display = '';
             downloadBtn.innerHTML = origHTML;
             downloadBtn.disabled = false;
         }).catch(function(err) {
             console.error('[PDF]', err);
-            if (banner) banner.style.display = '';
             downloadBtn.innerHTML = origHTML;
             downloadBtn.disabled = false;
         });
