@@ -32,8 +32,8 @@ const resumeData = {
     // Skills - categorized for resume format
     skills: {
         programming: "Python (PyTorch, OpenMMLab, MMPose), C++, C#, Java, JavaScript",
-        robotics_perception: "Computer vision (MMPose, OpenCV), sensor fusion, RTK-GPS, IMU, pose estimation, deep learning, PyTorch",
-        hardware: "NVIDIA Jetson, PoE, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve",
+        robotics_perception: "Computer vision (MMPose, OpenCV), sensor fusion, RTK-GPS, IMU, pose estimation, deep learning, PyTorch, PID control, closed-loop control",
+        hardware: "NVIDIA Jetson (Orin Nano), PoE, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939), Hall-Effect Angle Sensor",
         data_ml: "pandas, NumPy, matplotlib, data augmentation, experiment tracking (Weights & Biases)",
         tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js, Roboflow"
     },
@@ -128,40 +128,34 @@ const resumeData = {
                     title: "Auto-Steering Cultivator Development",
                     bullets: {
                         compact: [
-                            "Integrated a full-stack autonomous steering system for an agricultural cultivator using Jetson Nano, stereo camera vision, Python, ROS2 nodes, and a servo motor for actuation.",
-                            "Developed a vision-based lane guidance pipeline: stereo camera and Jetson Nano for real-time image processing, ROS2 nodes for control logic, and servo motor for precise steering.",
-                            "Implemented system-level integration of perception (vision-based XTE calculation), control (PID loop), and actuation (PWM to servo) for robust center line following.",
-                            "Coordinated hardware and software interfaces across power, compute, sensing, and mechanical subsystems to deliver a cohesive autonomous platform."
+                            "Designed a CAN-bus-based autonomous steering retrofit for a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy to reduce crop damage during mechanical weeding",
+                            "Built dual isolated CAN bus architecture (CANopen/DS402, J1939) on a Jetson Orin Nano with closed-loop PID steering control from an external Hall-effect angle sensor",
+                            "Designed motor mounts, structural brackets, and power transmission (chain/sprocket) in Fusion 360, validated with load path and fatigue analysis for reversing-load brackets",
+                            "Implemented defense-in-depth safety architecture: software soft limits, mechanical hard stops, overcurrent protection, and E-stop as independent layered safeguards"
                         ],
                         all: [
-                            "Designed and implemented a fully integrated, vision-based autonomous steering system for an agricultural cultivator; responsible for system architecture, perception-to-actuation pipeline, and deployment at MSU horticulture research site.",
-                            "Developed modular ROS2-based control stack for robust operation across variable field conditions, leveraging stereo camera vision and real-time image processing for lane guidance."
+                            "Leading design and fabrication of an autonomous, vision-guided steering retrofit for a Tilmor steerable cultivator, spanning CAN-bus embedded control (CANopen/DS402, J1939 on Jetson Orin Nano), mechanical design (Fusion 360 motor mounts, brackets, power transmission), and electrical power systems (motor driver protection, power distribution).",
+                            "Built a ROS2/Gazebo simulation environment mirroring the real CAN architecture for hardware-in-the-loop-style testing, and led BOM development, cross-vendor sourcing, and research/writing for an engineering paper on precision mechanical weed control."
                         ],
                         robotics: [
-                            "Developing autonomous implement control system enabling precision depth and position adjustment for tillage equipment based on RTK-GNSS guidance data and prescription maps",
-                            "Implementing ROS2-based control architecture with modular nodes for sensor input (/gnss/fix, /implement/feedback), state estimation, motion planning, and actuator output (/hydraulic/cmd)",
-                            "Designing sensor fusion algorithm combining RTK positioning (±2 cm), wheel angle feedback (±0.5°), and hydraulic pressure sensing for closed-loop implement control with 1-inch depth accuracy",
-                            "Developing state machine logic for implement control sequencing including lowering, working, raising, and transport modes with safety interlocks",
-                            "Implementing prescription map parser for variable-rate implement control based on georeferenced field management zones"
+                            "Designed real-time PID control loop for autonomous steering using closed-loop feedback from an external Hall-effect angle sensor, avoiding motor-shaft encoding to eliminate drivetrain slack/backlash error",
+                            "Architected dual isolated CAN bus control system (CANopen/DS402, J1939) on a Jetson Orin Nano, including device-tree/jetson-io configuration for hardware peripherals",
+                            "Built a ROS2/Gazebo simulation environment mirroring the physical CAN architecture, using SocketCAN virtual CAN bus configuration for sim-to-hardware parity before field deployment",
+                            "Implemented a layered, defense-in-depth safety architecture combining software soft limits, mechanical hard stops, driver-level overcurrent protection, and emergency stop systems"
                         ],
                         mechatronics: [
-                            "Designing hydraulic control interface using proportional solenoid valves with PWM current drivers for precise implement depth adjustment (0.5-inch resolution)",
-                            "Developing sensor mounting and wiring solutions for field-hardened operation including vibration-resistant connectors (Deutsch DT series) and IP67-rated enclosures",
-                            "Implementing pressure transducer integration for hydraulic load sensing, enabling automatic draft control and obstacle detection",
-                            "Creating electrical system architecture with CAN-bus communication between implement controller, tractor ISOBUS, and guidance system",
-                            "Designing fail-safe system with watchdog timer and default-raise behavior for safe implement positioning during communication loss"
+                            "Designed and fabricated motor mounts, structural brackets, and shaft collar assemblies in Fusion 360, validating torque-reacting brackets under cyclic/reversing loads (bending moment, stress concentration, fatigue)",
+                            "Sized chain/sprocket power transmission and shaft collar mechanical stops with torque margin calculations; designed U-bolt clamping mechanics and bolt-pattern load distribution",
+                            "Characterized DC motor behavior (back-EMF, stall current, torque-speed) and configured motor driver protection (overcurrent/thermal, DS402 heartbeat fail-safes) using programmable DC power supply bench testing",
+                            "Designed power distribution (voltage boost conversion, fusing, battery interconnects) for a mobile, vibration-heavy agricultural environment, selecting materials for corrosion resistance"
                         ],
                         software: [
-                            "Building ROS2-based control nodes using C++ for real-time performance with Python wrappers for configuration and monitoring interfaces",
-                            "Implementing state machine logic using SMACH library for tool operation sequencing with graphical state visualization for debugging",
-                            "Developing configuration GUI using Qt/PySide for operator-adjustable parameters (depth setpoints, response rates, zone boundaries) stored in YAML files",
-                            "Creating simulation environment in Gazebo for control algorithm testing before field deployment, including hydraulic system dynamics modeling",
-                            "Implementing data logging with rosbag2 for post-operation analysis and algorithm tuning using plotjuggler visualization"
+                            "Configured embedded Linux on a Jetson Orin Nano, including device-tree/jetson-io setup for hardware peripheral access",
+                            "Built a ROS2/Gazebo simulation environment replicating the dual CAN-bus hardware architecture, using SocketCAN for hardware-in-the-loop-style validation",
+                            "Implemented CANopen/DS402 and J1939 protocol handling across isolated CAN buses for motor control and safety heartbeat monitoring"
                         ],
                         "computer-vision": [
-                            "Integrating rear-facing camera system for implement positioning verification and soil disturbance quality assessment",
-                            "Developing visual monitoring dashboard displaying real-time camera feeds with overlay graphics showing target vs. actual implement position",
-                            "Exploring computer vision approaches for automatic tillage depth estimation from soil surface texture analysis"
+                            "Specified vision-guided steering requirements for a precision cultivator retrofit, integrating the guidance signal with a closed-loop Hall-effect angle sensor and PID steering controller"
                         ]
                     }
                 }

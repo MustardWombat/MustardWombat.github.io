@@ -114,31 +114,42 @@ const projectsData = {
     },
     'autonomous-farming-tool': {
         title: 'Auto-Steering Cultivator',
-        subtitle: '',
-        description: '',
+        subtitle: 'Autonomous, vision-guided steering retrofit for a Tilmor steerable cultivator',
+        description: 'Designed and built an autonomous, vision-guided steering retrofit for an implement-mounted precision cultivator, targeting 1-2cm intra-row steering accuracy to reduce crop damage during mechanical weeding, using a distributed CAN-bus control architecture (CANopen/DS402, J1939) on a Jetson Orin Nano.',
         image: 'Images/Cultivator.jpg',
-        tags: ['Robotics', 'Cultivator', 'Precision Agriculture'],
+        tags: ['Robotics', 'CAN Bus', 'Cultivator', 'Precision Agriculture'],
         focusAreas: ['robotics', 'mechatronics'],
-        comingSoon: true,
-        resumeBullets: [],
+        resumeBullets: [
+            'Autonomous steering retrofit for a Tilmor steerable cultivator: dual isolated CAN bus (CANopen/DS402, J1939) on Jetson Orin Nano, targeting 1-2cm intra-row accuracy',
+            'Closed-loop PID steering control from an external Hall-effect angle sensor, eliminating drivetrain slack/backlash error',
+            'Defense-in-depth safety design: software soft limits, mechanical hard stops, overcurrent protection, and E-stop as independent layered safeguards'
+        ],
 
         skills: {
+            mechanical: [
+                { name: 'Fusion 360', icon: null },
+                { name: 'Structural/Load Path Analysis', icon: null },
+                { name: 'Power Transmission Design (Chain/Sprocket)', icon: null },
+                { name: 'Fastener & Clamping Design', icon: null }
+            ],
+            hardware: [
+                { name: 'CAN Bus (CANopen/DS402, J1939)', icon: null },
+                { name: 'Jetson Orin Nano', icon: null },
+                { name: 'Hall-Effect Angle Sensor', icon: null },
+                { name: 'DC Motor Control', icon: null },
+                { name: 'Power Distribution', icon: null }
+            ],
             software: [
-                { name: 'Python', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg' },
-                { name: 'Computer Vision', icon: null },
-                { name: 'Machine Learning', icon: null },
-                { name: 'Qt', icon: null },
-                { name: 'PySide', icon: null },
-                { name: 'plotjuggler', icon: null },
-                { name: 'NumPy', icon: null },
-                { name: 'matplotlib', icon: null },
-                { name: 'pandas', icon: null }
+                { name: 'ROS2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
+                { name: 'Gazebo', icon: null },
+                { name: 'SocketCAN', icon: null },
+                { name: 'Embedded Linux', icon: null }
             ],
             robotics: [
-                { name: 'ROS2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },
-                { name: 'Row Following', icon: null },
-                { name: 'Autonomous Navigation', icon: null },
-                { name: 'Sensor Fusion', icon: null }
+                { name: 'PID Control', icon: null },
+                { name: 'Closed-Loop Control', icon: null },
+                { name: 'CAN Bus Architecture', icon: null },
+                { name: 'Defense-in-Depth Safety Design', icon: null }
             ]
         }
     }

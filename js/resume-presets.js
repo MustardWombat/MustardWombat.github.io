@@ -38,7 +38,7 @@ const resumePresets = {
     'ag-engineering': {
         label: 'Agricultural Engineering / Precision Ag',
         subtitle: 'Agricultural Engineering | Precision Agriculture & Autonomous Farm Systems',
-        skillsSummary: 'RTK-GPS, IMU, Wheel Angle Sensor, Hydraulic Valve, Sensor fusion, Computer vision (MMPose, OpenCV), pose estimation, deep learning, PyTorch, Python (PyTorch, OpenMMLab, MMPose), C++, C#, NVIDIA Jetson, Motor Controllers, PoE, pandas, NumPy, matplotlib, Git, Docker, SLURM, Qt, MQTT',
+        skillsSummary: 'RTK-GPS, IMU, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939), Hall-Effect Angle Sensor, PID control, Sensor fusion, Computer vision (MMPose, OpenCV), pose estimation, deep learning, PyTorch, Python (PyTorch, OpenMMLab, MMPose), C++, C#, NVIDIA Jetson (Orin Nano), Motor Controllers, PoE, Fusion 360, pandas, NumPy, matplotlib, Git, Docker, SLURM, ROS2, MQTT',
         experience: [
             {
                 role: 'Undergraduate Research Assistant – Michigan State University',
@@ -59,14 +59,14 @@ const resumePresets = {
                     {
                         title: 'Auto-Steering Cultivator Development',
                         primaryBullets: [
-                            'Designed and implemented a fully integrated, vision-based autonomous steering system for an agricultural cultivator; responsible for system architecture, perception-to-actuation pipeline, and deployment at MSU horticulture research site.',
-                            'Designing sensor fusion algorithm combining RTK positioning (±2 cm), wheel angle feedback (±0.5°), and hydraulic pressure sensing for closed-loop implement control with 1-inch depth accuracy',
-                            'Designing hydraulic control interface using proportional solenoid valves with PWM current drivers for precise implement depth adjustment (0.5-inch resolution)'
+                            'Designed a CAN-bus-based autonomous steering retrofit for a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy to reduce crop damage during mechanical weeding',
+                            'Architected dual isolated CAN bus control system (CANopen/DS402, J1939) on a Jetson Orin Nano, with closed-loop PID steering control from an external Hall-effect angle sensor',
+                            'Designed and fabricated motor mounts, structural brackets, and shaft collar assemblies in Fusion 360, validating torque-reacting brackets under cyclic/reversing loads'
                         ],
                         additionalBullets: [
-                            'Developing autonomous implement control system enabling precision depth and position adjustment for tillage equipment based on RTK-GNSS guidance data and prescription maps',
-                            'Implementing prescription map parser for variable-rate implement control based on georeferenced field management zones',
-                            'Creating electrical system architecture with CAN-bus communication between implement controller, tractor ISOBUS, and guidance system'
+                            'Implemented a layered, defense-in-depth safety architecture combining software soft limits, mechanical hard stops, driver-level overcurrent protection, and emergency stop systems',
+                            'Characterized DC motor behavior (back-EMF, stall current, torque-speed) and configured motor driver protection using programmable DC power supply bench testing',
+                            'Built a ROS2/Gazebo simulation environment mirroring the physical CAN architecture, using SocketCAN for hardware-in-the-loop-style validation before field deployment'
                         ]
                     },
                     {

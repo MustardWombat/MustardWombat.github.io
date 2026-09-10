@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Autonomous Farming Tool - James Williams Portfolio">
-    <title>Autonomous Farming Tool | James Williams</title>
+    <meta name="description" content="Auto-Steering Cultivator - James Williams Portfolio">
+    <title>Auto-Steering Cultivator | James Williams</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="project-detail.css">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -38,16 +38,13 @@
         <section class="project-hero">
             <div class="container">
                 <a href="../index.html#projects" class="back-link">← Back to Projects</a>
-                <h1>Autonomous Farming Tool</h1>
-                <p class="project-subtitle"></p>
+                <h1>Auto-Steering Cultivator</h1>
+                <p class="project-subtitle">Autonomous, vision-guided steering retrofit for a Tilmor steerable cultivator</p>
                 <div class="project-tags">
                     <span class="tag">Robotics</span>
-                    <span class="tag">Autonomous Systems</span>
+                    <span class="tag">CAN Bus</span>
+                    <span class="tag">Embedded Systems</span>
                     <span class="tag">Precision Agriculture</span>
-                    <span class="tag">AI</span>
-                </div>
-                <div class="coming-soon-banner">
-                    <span class="coming-soon-text">🚀 Coming Soon</span>
                 </div>
             </div>
         </section>
@@ -60,7 +57,7 @@
 
                 <div class="project-overview">
                     <h2 class="section-word"><span class="w-letter">W</span>hy</h2>
-                    <p>Mechanical weeding requires precise row-following and targeted actuation — but existing cultivators depend entirely on operator skill. This tool brings camera-based crop row detection and closed-loop steering to a cultivator frame, enabling autonomous between-row passes with precision actuator control for weed intervention. Built on a ROS2 navigation stack with real-time sensor fusion.</p>
+                    <p>Mechanical weeding requires precise intra-row steering — but existing cultivators depend entirely on operator skill, and a wrong move damages crops. This retrofit brings autonomous, vision-guided steering to a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy through a distributed CAN-bus control architecture rather than a single monolithic controller.</p>
                 </div>
 
                 <div class="project-technical">
@@ -69,36 +66,50 @@
                         <div class="tech-item">
                             <h3>🔧 Mechanical</h3>
                             <div class="skill-tags">
-                                <span class="skill-tag">CAD (SolidWorks)</span>
-                                <span class="skill-tag">3D Printing</span>
-                                <span class="skill-tag">Actuator Integration</span>
-                                <span class="skill-tag">Cultivator Frame</span>
+                                <span class="skill-tag">Fusion 360</span>
+                                <span class="skill-tag">Structural/Load Path Analysis</span>
+                                <span class="skill-tag">Chain/Sprocket Power Transmission</span>
+                                <span class="skill-tag">U-Bolt Clamping Design</span>
                             </div>
                         </div>
                         <div class="tech-item">
-                            <h3>⚡ Hardware</h3>
+                            <h3>⚡ Electrical & Power</h3>
                             <div class="skill-tags">
-                                <span class="skill-tag">GPS</span>
-                                <span class="skill-tag">Servo Actuators</span>
-                                <span class="skill-tag">Camera</span>
-                                <span class="skill-tag">Power Management</span>
+                                <span class="skill-tag">Hall-Effect Angle Sensor</span>
+                                <span class="skill-tag">DC Motor Characterization</span>
+                                <span class="skill-tag">Motor Driver Protection</span>
+                                <span class="skill-tag">Power Distribution</span>
                             </div>
                         </div>
                         <div class="tech-item">
-                            <h3>💻 Software</h3>
+                            <h3>💻 Embedded & Control</h3>
                             <div class="skill-tags">
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">ROS2</span>
-                                <span class="skill-tag">Computer Vision</span>
-                                <span class="skill-tag">Sensor Fusion</span>
+                                <span class="skill-tag">Jetson Orin Nano</span>
+                                <span class="skill-tag">Dual CAN Bus (CANopen/DS402, J1939)</span>
+                                <span class="skill-tag">PID Control</span>
+                                <span class="skill-tag">ROS2 / Gazebo / SocketCAN</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="project-challenges">
+                    <h2 class="section-word"><span class="w-letter">W</span>rinkles</h2>
+                    <div class="challenge-item">
+                        <h3>Drivetrain Slack Was Corrupting the Steering Loop</h3>
+                        <p><strong>Challenge —</strong> Closing the steering loop off the motor shaft encoder baked drivetrain slack and backlash directly into the position feedback.</p>
+                        <p><strong>Solution —</strong> Moved position feedback to an external Hall-effect angle sensor mounted on the steered element itself, decoupling the control loop from drivetrain error.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>Layered Safety for a Machine Operating Unattended in a Field</h3>
+                        <p><strong>Challenge —</strong> A single point of failure in steering control near people or equipment is unacceptable.</p>
+                        <p><strong>Solution —</strong> Defense-in-depth architecture: software soft limits, mechanical hard stops, driver-level overcurrent/thermal protection, and independent emergency stop systems, each capable of stopping the system on its own.</p>
+                    </div>
+                </div>
+
                 <div class="project-results">
                     <h2 class="section-word"><span class="w-letter">W</span>ins</h2>
-                    <p><em>Project in progress — Spring 2026. Results and media will be added as development continues.</em></p>
+                    <p><em>In progress.</em> Hardware bring-up and validation completed to date: DC motor characterization and stall-current/protection-circuit testing on a programmable bench power supply, and a ROS2/Gazebo simulation environment mirroring the physical dual-CAN-bus architecture (via SocketCAN) for hardware-in-the-loop-style testing ahead of field deployment. A technical writeup covering the system and a comparative analysis against existing commercial mechanical weed-control solutions is also underway.</p>
                 </div>
             </div>
         </section>
