@@ -121,23 +121,23 @@ const projectsData = {
         focusAreas: ['robotics', 'mechatronics'],
         resumeBullets: [
             'Autonomous steering retrofit for a Tilmor steerable cultivator: dual isolated CAN bus (CANopen/DS402, J1939) on Jetson Orin Nano, targeting 1-2cm intra-row accuracy',
-            'Closed-loop PID steering control from an external Hall-effect angle sensor, eliminating drivetrain slack/backlash error',
-            'Defense-in-depth safety design: software soft limits, mechanical hard stops, overcurrent protection, and E-stop as independent layered safeguards'
+            'Closed-loop PID steering control from an external, non-motor-shaft angle sensor (Piher PST-360G2), avoiding drivetrain slack/backlash error',
+            'Defense-in-depth safety design: software soft limits, a McMaster shaft-collar mechanical hard stop, driver-level overcurrent protection, and E-stop as independent layered safeguards'
         ],
 
         skills: {
             mechanical: [
                 { name: 'Fusion 360', icon: null },
-                { name: 'Structural/Load Path Analysis', icon: null },
-                { name: 'Power Transmission Design (Chain/Sprocket)', icon: null },
-                { name: 'Fastener & Clamping Design', icon: null }
+                { name: 'Structural/Load Path & Fatigue Analysis', icon: null },
+                { name: 'Chain/Sprocket Drivetrain Design', icon: null },
+                { name: 'Flush U-Bolt Clamp Mounting', icon: null }
             ],
             hardware: [
                 { name: 'CAN Bus (CANopen/DS402, J1939)', icon: null },
                 { name: 'Jetson Orin Nano', icon: null },
-                { name: 'Hall-Effect Angle Sensor', icon: null },
-                { name: 'DC Motor Control', icon: null },
-                { name: 'Power Distribution', icon: null }
+                { name: 'Piher PST-360G2 Angle Sensor', icon: null },
+                { name: 'Anaheim BDPG-60-110 Gearmotor', icon: null },
+                { name: 'Basicmicro MCP233 CAN Driver', icon: null }
             ],
             software: [
                 { name: 'ROS2', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ros/ros-original.svg' },

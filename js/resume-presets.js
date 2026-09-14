@@ -38,7 +38,7 @@ const resumePresets = {
     'ag-engineering': {
         label: 'Agricultural Engineering / Precision Ag',
         subtitle: 'Agricultural Engineering | Precision Agriculture & Autonomous Farm Systems',
-        skillsSummary: 'RTK-GPS, IMU, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939), Hall-Effect Angle Sensor, PID control, Sensor fusion, Computer vision (MMPose, OpenCV), pose estimation, deep learning, PyTorch, Python (PyTorch, OpenMMLab, MMPose), C++, C#, NVIDIA Jetson (Orin Nano), Motor Controllers, PoE, Fusion 360, pandas, NumPy, matplotlib, Git, Docker, SLURM, ROS2, MQTT',
+        skillsSummary: 'RTK-GPS, IMU, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939), PID control, Sensor fusion, Computer vision (MMPose, OpenCV), pose estimation, deep learning, PyTorch, Python (PyTorch, OpenMMLab, MMPose), C++, C#, NVIDIA Jetson (Orin Nano), Motor Controllers, PoE, Fusion 360, pandas, NumPy, matplotlib, Git, Docker, SLURM, ROS2, MQTT',
         experience: [
             {
                 role: 'Undergraduate Research Assistant – Michigan State University',
@@ -59,14 +59,14 @@ const resumePresets = {
                     {
                         title: 'Auto-Steering Cultivator Development',
                         primaryBullets: [
-                            'Designed a CAN-bus-based autonomous steering retrofit for a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy to reduce crop damage during mechanical weeding',
-                            'Architected dual isolated CAN bus control system (CANopen/DS402, J1939) on a Jetson Orin Nano, with closed-loop PID steering control from an external Hall-effect angle sensor',
-                            'Designed and fabricated motor mounts, structural brackets, and shaft collar assemblies in Fusion 360, validating torque-reacting brackets under cyclic/reversing loads'
+                            'Designing a CAN-bus-based autonomous steering retrofit for a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy to reduce crop damage during mechanical weeding',
+                            'Architecting dual isolated CAN bus control system (CANopen/DS402, J1939) on a Jetson Orin Nano, with closed-loop PID steering control from an external, non-motor-shaft angle sensor',
+                            'Iterated motor-mount design in Fusion 360 from a cantilevered arm to a flush U-bolt clamp assembly bolted directly to the base plate, eliminating a bending/fatigue risk under reversing pivot loads'
                         ],
                         additionalBullets: [
-                            'Implemented a layered, defense-in-depth safety architecture combining software soft limits, mechanical hard stops, driver-level overcurrent protection, and emergency stop systems',
-                            'Characterized DC motor behavior (back-EMF, stall current, torque-speed) and configured motor driver protection using programmable DC power supply bench testing',
-                            'Built a ROS2/Gazebo simulation environment mirroring the physical CAN architecture, using SocketCAN for hardware-in-the-loop-style validation before field deployment'
+                            'Designing a layered, defense-in-depth safety architecture combining software soft limits, a mechanical shaft-collar hard stop, driver-level overcurrent protection, and emergency stop systems',
+                            'Specified a non-back-drivable planetary gearmotor (326:1) paired with a CAN motor driver, with bench validation of stall current and driver overcurrent protection planned as the final safety-chain verification step',
+                            'Scoped a ROS2/Gazebo simulation environment to mirror the physical CAN architecture, using SocketCAN for hardware-in-the-loop-style validation ahead of field deployment'
                         ]
                     },
                     {

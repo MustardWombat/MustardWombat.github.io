@@ -33,7 +33,7 @@ const resumeData = {
     skills: {
         programming: "Python (PyTorch, OpenMMLab, MMPose), C++, C#, Java, JavaScript",
         robotics_perception: "Computer vision (MMPose, OpenCV), sensor fusion, RTK-GPS, IMU, pose estimation, deep learning, PyTorch, PID control, closed-loop control",
-        hardware: "NVIDIA Jetson (Orin Nano), PoE, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939), Hall-Effect Angle Sensor",
+        hardware: "NVIDIA Jetson (Orin Nano), PoE, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939)",
         data_ml: "pandas, NumPy, matplotlib, data augmentation, experiment tracking (Weights & Biases)",
         tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js, Roboflow"
     },
@@ -128,34 +128,34 @@ const resumeData = {
                     title: "Auto-Steering Cultivator Development",
                     bullets: {
                         compact: [
-                            "Designed a CAN-bus-based autonomous steering retrofit for a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy to reduce crop damage during mechanical weeding",
-                            "Built dual isolated CAN bus architecture (CANopen/DS402, J1939) on a Jetson Orin Nano with closed-loop PID steering control from an external Hall-effect angle sensor",
-                            "Designed motor mounts, structural brackets, and power transmission (chain/sprocket) in Fusion 360, validated with load path and fatigue analysis for reversing-load brackets",
-                            "Implemented defense-in-depth safety architecture: software soft limits, mechanical hard stops, overcurrent protection, and E-stop as independent layered safeguards"
+                            "Designing a CAN-bus-based autonomous steering retrofit for a Tilmor steerable cultivator, targeting 1-2cm intra-row accuracy to reduce crop damage during mechanical weeding",
+                            "Architecting dual isolated CAN bus (CANopen/DS402, J1939) on a Jetson Orin Nano with closed-loop PID steering control from an external, non-motor-shaft angle sensor",
+                            "Iterated motor-mount design in Fusion 360 to a flush U-bolt clamp assembly, eliminating a bending-fatigue risk from earlier cantilevered brackets under reversing pivot loads",
+                            "Designing defense-in-depth safety architecture: software soft limits, a mechanical shaft-collar hard stop, driver-level overcurrent protection, and E-stop as independent layered safeguards"
                         ],
                         all: [
-                            "Leading design and fabrication of an autonomous, vision-guided steering retrofit for a Tilmor steerable cultivator, spanning CAN-bus embedded control (CANopen/DS402, J1939 on Jetson Orin Nano), mechanical design (Fusion 360 motor mounts, brackets, power transmission), and electrical power systems (motor driver protection, power distribution).",
-                            "Built a ROS2/Gazebo simulation environment mirroring the real CAN architecture for hardware-in-the-loop-style testing, and led BOM development, cross-vendor sourcing, and research/writing for an engineering paper on precision mechanical weed control."
+                            "Leading design and fabrication of an autonomous, vision-guided steering retrofit for a Tilmor steerable cultivator, spanning CAN-bus embedded control (CANopen/DS402, J1939 on Jetson Orin Nano), mechanical design (Fusion 360 motor mounts, brackets, drivetrain), and electrical systems (motor/driver selection, safety hard stop).",
+                            "Scoped a ROS2/Gazebo simulation environment to mirror the real CAN architecture for hardware-in-the-loop-style testing, and leading BOM development, cross-vendor sourcing, and research/writing for an engineering paper on precision mechanical weed control."
                         ],
                         robotics: [
-                            "Designed real-time PID control loop for autonomous steering using closed-loop feedback from an external Hall-effect angle sensor, avoiding motor-shaft encoding to eliminate drivetrain slack/backlash error",
-                            "Architected dual isolated CAN bus control system (CANopen/DS402, J1939) on a Jetson Orin Nano, including device-tree/jetson-io configuration for hardware peripherals",
-                            "Built a ROS2/Gazebo simulation environment mirroring the physical CAN architecture, using SocketCAN virtual CAN bus configuration for sim-to-hardware parity before field deployment",
-                            "Implemented a layered, defense-in-depth safety architecture combining software soft limits, mechanical hard stops, driver-level overcurrent protection, and emergency stop systems"
+                            "Designing real-time PID control loop for autonomous steering using closed-loop feedback from an external, non-motor-shaft angle sensor, to avoid drivetrain slack/backlash error confirmed in the chain-and-sprocket drivetrain",
+                            "Architecting dual isolated CAN bus control system (CANopen/DS402, J1939) on a Jetson Orin Nano, including device-tree/jetson-io configuration for hardware peripherals",
+                            "Scoped a ROS2/Gazebo simulation environment to mirror the physical CAN0/CAN1 hardware split, using SocketCAN virtual CAN bus configuration for sim-to-hardware parity ahead of field deployment",
+                            "Designing a layered, defense-in-depth safety architecture combining software soft limits, a mechanical hard stop, driver-level overcurrent protection, and emergency stop systems"
                         ],
                         mechatronics: [
-                            "Designed and fabricated motor mounts, structural brackets, and shaft collar assemblies in Fusion 360, validating torque-reacting brackets under cyclic/reversing loads (bending moment, stress concentration, fatigue)",
-                            "Sized chain/sprocket power transmission and shaft collar mechanical stops with torque margin calculations; designed U-bolt clamping mechanics and bolt-pattern load distribution",
-                            "Characterized DC motor behavior (back-EMF, stall current, torque-speed) and configured motor driver protection (overcurrent/thermal, DS402 heartbeat fail-safes) using programmable DC power supply bench testing",
-                            "Designed power distribution (voltage boost conversion, fusing, battery interconnects) for a mobile, vibration-heavy agricultural environment, selecting materials for corrosion resistance"
+                            "Iterated motor-mount design in Fusion 360 from a cantilevered arm to a flush U-bolt clamp assembly bolted directly to the base plate, eliminating a bending/fatigue risk under the pivot's cyclic, reversing loads",
+                            "Sized a chain/sprocket drivetrain (motor to pivot shaft) against calculated torque margins, and designed a two-piece shaft-collar mechanical hard stop with an adjustable, rubber-bumped stop bolt backing up the software soft-limit layer",
+                            "Specified a non-back-drivable planetary gearmotor (326:1) paired with a CAN motor driver, with bench validation of stall current and driver overcurrent protection planned as the final verification step in the safety chain",
+                            "Selected a hollow-shaft angle sensor mounted on the pivot shaft (rather than the motor shaft) for true position feedback, currently reconciling rotor bore diameter against the measured pivot shaft before finalizing the mount"
                         ],
                         software: [
                             "Configured embedded Linux on a Jetson Orin Nano, including device-tree/jetson-io setup for hardware peripheral access",
-                            "Built a ROS2/Gazebo simulation environment replicating the dual CAN-bus hardware architecture, using SocketCAN for hardware-in-the-loop-style validation",
-                            "Implemented CANopen/DS402 and J1939 protocol handling across isolated CAN buses for motor control and safety heartbeat monitoring"
+                            "Scoped a ROS2/Gazebo simulation environment to replicate the dual CAN-bus hardware architecture, using SocketCAN for hardware-in-the-loop-style validation",
+                            "Implementing CANopen/DS402 and J1939 protocol handling across isolated CAN buses for motor control and safety heartbeat monitoring"
                         ],
                         "computer-vision": [
-                            "Specified vision-guided steering requirements for a precision cultivator retrofit, integrating the guidance signal with a closed-loop Hall-effect angle sensor and PID steering controller"
+                            "Specified vision-guided steering requirements for a precision cultivator retrofit, integrating the guidance signal with a closed-loop external angle sensor and PID steering controller"
                         ]
                     }
                 }
@@ -171,7 +171,7 @@ const resumeData = {
             date: "January 2026",
             bullets: {
                 compact: [
-                    "Developed 36-hour hackathon dashcam safety scoring system using YOLOP neural network for lane detection, drivable area segmentation, and object detection",
+                    "Developed 24-hour hackathon dashcam safety scoring system using YOLOP neural network for lane detection, drivable area segmentation, and object detection",
                     "Built full-stack web app with React/TypeScript frontend and Node.js backend; implemented video processing pipeline with OpenCV and PyTorch inference",
                     "Won Best Beginner Hack and Auto-Owners Insurance Vehicle Safety Award recognizing practical insurance industry applications"
                 ],
