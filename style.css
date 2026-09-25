@@ -604,6 +604,7 @@ h2 {
 
 .ps-status.done        { color: #f97316; }
 .ps-status.in-progress { color: #9ca3af; }
+.ps-status.upcoming    { color: #3b82f6; }
 
 .ps-date {
     font-size: 0.78rem;
@@ -741,6 +742,15 @@ h2 {
 .award-showcase,
 .exp-showcase {
     margin-top: 1rem;
+}
+
+/* Standardized logo footprint for Experience cards, regardless of source image proportions */
+.exp-showcase .ps-logo {
+    max-width: 220px;
+    max-height: 140px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 /* CAD section — Sketchfab iframe fills the visual pane */

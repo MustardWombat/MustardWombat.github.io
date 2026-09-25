@@ -24,7 +24,7 @@ const resumeData = {
             school: "Michigan State University, College of Engineering",
             location: "East Lansing, MI",
             degree: "Technology Engineering, Mechatronics Concentration, CS minor",
-            gpa: "3.5",
+            gpa: "3.4",
             date: "August 2024 - May 2028"
         }
     ],
@@ -32,7 +32,7 @@ const resumeData = {
     // Skills - categorized for resume format
     skills: {
         programming: "Python (PyTorch, OpenMMLab, MMPose), C++, C#, Java, JavaScript",
-        robotics_perception: "Computer vision (MMPose, OpenCV), sensor fusion, RTK-GPS, IMU, pose estimation, deep learning, PyTorch, PID control, closed-loop control",
+        robotics_perception: "Computer vision (MMPose, OpenCV), sensor fusion, RTK-GPS, IMU, pose estimation, deep learning, PyTorch, PID control, closed-loop control, ROS2",
         hardware: "NVIDIA Jetson (Orin Nano), PoE, Motor Controllers, Sensors, Wheel Angle Sensor, Hydraulic Valve, CAN Bus (CANopen/DS402, J1939)",
         data_ml: "pandas, NumPy, matplotlib, data augmentation, experiment tracking (Weights & Biases)",
         tools: "Git, Docker, SLURM, Qt, MQTT, Vite, React, Node.js, Roboflow"
