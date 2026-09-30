@@ -744,10 +744,16 @@ h2 {
     margin-top: 1rem;
 }
 
+/* Fixed visual-pane height so video backdrops match across cards, regardless of text length */
+.exp-showcase .ps-visual {
+    height: 500px;
+    align-self: center;
+}
+
 /* Standardized logo footprint for Experience cards, regardless of source image proportions */
 .exp-showcase .ps-logo {
-    max-width: 220px;
-    max-height: 140px;
+    max-width: 80%;
+    max-height: 80%;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -889,6 +895,10 @@ h2 {
 
     .ps-visual {
         width: 100%;
+        height: 280px;
+    }
+
+    .exp-showcase .ps-visual {
         height: 280px;
     }
 
