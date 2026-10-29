@@ -43,6 +43,7 @@
                 <li><a href="#cad">CAD</a></li>
                 <li><a href="#ai-models">AI Models</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#workshop">Workshop</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="resume.html">Resume</a></li>
             </ul>
@@ -283,11 +284,8 @@
                     </div>
                 </div>
 
-                <!-- 03 — Piglet Keypoint Detection -->
-                <div class="ps-item" onclick="window.location.href='projects/piglet-vision.html'" role="button" tabindex="0">
-                    <div class="ps-visual">
-                        <img src="Images/piglet.gif" alt="Piglet keypoint detection system">
-                    </div>
+                <!-- 03 — Piglet Keypoint Detection (flip) -->
+                <div class="ps-item ps-flip" onclick="window.location.href='projects/piglet-vision.html'" role="button" tabindex="0">
                     <div class="ps-text">
                         <span class="ps-number">03</span>
                         <div class="ps-status done">✓ Complete</div>
@@ -303,10 +301,16 @@
                         </div>
                         <div class="ps-link">View Details →</div>
                     </div>
+                    <div class="ps-visual">
+                        <img src="Images/piglet.gif" alt="Piglet keypoint detection system">
+                    </div>
                 </div>
 
-                <!-- 04 — Autosteer Tractor (flip) -->
-                <div class="ps-item ps-flip" onclick="window.location.href='projects/autosteer-tractor.html'" role="button" tabindex="0">
+                <!-- 04 — Autosteer Tractor -->
+                <div class="ps-item" onclick="window.location.href='projects/autosteer-tractor.html'" role="button" tabindex="0">
+                    <div class="ps-visual">
+                        <img src="Images/autosteer_Tractor.gif" alt="Autosteer tractor system">
+                    </div>
                     <div class="ps-text">
                         <span class="ps-number">04</span>
                         <div class="ps-status done">✓ Complete</div>
@@ -321,9 +325,6 @@
                             <span>Arduino</span><span>GPS</span><span>C#</span><span>Mechatronics</span>
                         </div>
                         <div class="ps-link">View Details →</div>
-                    </div>
-                    <div class="ps-visual">
-                        <img src="Images/autosteer_Tractor.gif" alt="Autosteer tractor system">
                     </div>
                 </div>
 
@@ -439,6 +440,37 @@
                 <h2>Skills</h2>
                 <div class="skills-grid" id="skills-container">
                     <!-- Skills will be dynamically loaded from projects-data.js -->
+                </div>
+            </div>
+        </section>
+
+        <section id="workshop">
+            <div class="container">
+                <h2><span class="highlight-w">W</span>orkshop</h2>
+                <p class="workbench-intro">A few snapshots of general prototyping and fabrication work that doesn't belong to one specific project above.</p>
+                <div class="workbench-media">
+                    <div class="workbench-item">
+                        <a href="Images/gen1-arm-schematic.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="Images/gen1-arm-schematic-preview.jpg" alt="Gen1 Robotic Arm PCB schematic in KiCad">
+                        </a>
+                        <p class="workbench-caption">KiCad schematic for a Gen1 robotic arm controller — Arduino Nano driving 4 servos off 4 potentiometer inputs.</p>
+                    </div>
+                    <div class="workbench-item">
+                        <img src="Images/breadboard-prototype.jpg" alt="Arduino Nano breadboard prototype with potentiometer inputs">
+                        <p class="workbench-caption">Breadboarding that Gen1 arm controller before laying out the PCB.</p>
+                    </div>
+                    <div class="workbench-item">
+                        <video controls preload="metadata" poster="Images/pcb-mill-poster.jpg">
+                            <source src="Images/pcb-mill.mp4" type="video/mp4">
+                        </video>
+                        <p class="workbench-caption">Milling a custom PCB on the shop's desktop CNC.</p>
+                    </div>
+                    <div class="workbench-item">
+                        <a href="Images/sprocket-machining-order.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="Images/sprocket-preview.jpg" alt="Redlined McMaster-Carr sprocket drawing">
+                        </a>
+                        <p class="workbench-caption">Redlined a McMaster-Carr sprocket drawing (green) to flag the bore for a machine shop order.</p>
+                    </div>
                 </div>
             </div>
         </section>
