@@ -895,18 +895,15 @@ h2 {
 }
 
 /* Sticker filter types — used by keyframe filter: var(--f) */
-.sticker.s-msu    { --f: brightness(0) invert(1) drop-shadow(0 0 0 rgba(0,0,0,0)); }
-.sticker.s-msu.sticker-hero { --f: brightness(0) invert(1) drop-shadow(6px 12px 24px rgba(0,0,0,0.95)) drop-shadow(0px 0px 40px rgba(0,0,0,0.7)); }
+.sticker.s-msu    { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
+.sticker.s-msu.sticker-hero { --f: drop-shadow(6px 12px 24px rgba(0,0,0,0.95)) drop-shadow(0px 0px 40px rgba(0,0,0,0.7)); }
 .sticker.s-spartan { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
 .sticker.s-gruff  { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
-.sticker.s-letter { --f: brightness(0) invert(1) drop-shadow(2px 5px 12px rgba(0,0,0,0.4)); }
+.sticker.s-letter { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
 .sticker.s-blocks { --f: brightness(0) invert(1) drop-shadow(2px 5px 12px rgba(0,0,0,0.4)); }
 .sticker.s-mac    { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
 .sticker.s-spartymod { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
-.sticker.s-swirl     { --f: brightness(0) invert(1) drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
-.sticker.s-letter    { --f: brightness(0) invert(1) drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
 .sticker.s-michstate { --f: drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
-.sticker.s-statecenter { --f: brightness(0) invert(1) drop-shadow(2px 4px 10px rgba(0,0,0,0.5)); }
 
 /* Student Org showcase tweaks */
 .org-showcase {

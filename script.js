@@ -101,7 +101,7 @@ function initStickerField() {
     const heroEl = field.querySelector('.sticker-hero');
     const stickers = allStickers.filter(s => !s.classList.contains('sticker-hero'));
 
-    const types = ['s-msu','s-spartan','s-gruff','s-mac','s-statecenter','s-spartymod','s-swirl','s-letter','s-michstate'];
+    const types = ['s-msu','s-spartan','s-gruff','s-mac','s-spartymod','s-letter','s-michstate'];
 
     // Round-robin interleave by type so same logos never get placed back-to-back
     const typeQueues = {};
